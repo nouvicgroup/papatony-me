@@ -4,15 +4,15 @@ import test from "node:test";
 
 const routes = [
   ["/", "en", "Know the ground before you commit in Cameroon"],
-  ["/enterprise", "en", "Opportunity needs more than capital"],
-  ["/leadership", "en", "Convening people"],
+  ["/enterprise", "en", "Before money moves"],
+  ["/leadership", "en", "Leaders are formed in rooms"],
   ["/about", "en", "A builder shaped"],
   ["/ministry", "en", "Faith that forms people"],
   ["/contact", "en", "Tell me what you"],
   ["/privacy", "en", "A simple, respectful"],
   ["/fr", "fr", "Connaissez le terrain avant de vous engager"],
-  ["/fr/enterprise", "fr", "Une opportunité exige"],
-  ["/fr/leadership", "fr", "Rassembler les personnes"],
+  ["/fr/enterprise", "fr", "il faut connaître le terrain"],
+  ["/fr/leadership", "fr", "Les leaders se forment"],
   ["/fr/about", "fr", "Un bâtisseur façonné"],
   ["/fr/ministry", "fr", "Une foi qui forme"],
   ["/fr/contact", "fr", "Dites-moi ce que vous avez en vue"],
@@ -182,17 +182,18 @@ test("navigation uses drawn icons rather than placeholder glyphs", async () => {
   assert.doesNotMatch(nav, /[⌂◫◎✦]/u);
 });
 
-test("contact form is honest about unavailable delivery", async () => {
+test("contact page never asserts delivery status in static copy", async () => {
   const response = await render("/contact");
   const html = await response.text();
-  assert.match(html, /no email address or WhatsApp number has been published/i);
+  // Delivery status is reported by the form at submit time, not by the page.
+  assert.doesNotMatch(html, /send yet|nothing can be sent|no email address or whatsapp/i);
   assert.match(html, /Review my message/i);
   assert.doesNotMatch(html, /message sent|thank you for your submission/i);
 });
 
-test("the home page states the delivery gap rather than implying it works", async () => {
+test("the home page never asserts delivery status in static copy", async () => {
   const html = await (await render("/")).text();
-  assert.match(html, /send yet/i);
+  assert.doesNotMatch(html, /send yet|can(?:'|’)t send|nothing can be sent/i);
   assert.doesNotMatch(html, /message sent|we will get back to you/i);
 });
 
