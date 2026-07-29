@@ -128,9 +128,10 @@ test.describe("desktop experience", () => {
     );
     await page.getByLabel("Your name *").fill("Test Partner");
     await page.getByLabel("Email *").fill("partner@example.com");
+    await page.getByRole("button", { name: /What is this about/ }).click();
     await page
-      .getByLabel("What is this about *")
-      .selectOption("A business or investment partnership");
+      .getByRole("option", { name: "A business or investment partnership" })
+      .click();
     await page
       .getByLabel("What are you looking at? *")
       .fill(
@@ -138,7 +139,7 @@ test.describe("desktop experience", () => {
       );
     await page.getByRole("button", { name: "Review my message" }).click();
     await expect(page.getByRole("alert")).toContainText(
-      "nowhere to send it yet",
+      "no email or WhatsApp number is published",
     );
   });
 
@@ -306,16 +307,15 @@ test.describe("mobile experience", () => {
 
     await sheet.getByLabel("Your name *").fill("Test Partner");
     await sheet.getByLabel("Email *").fill("partner@example.com");
-    await sheet
-      .getByLabel("What is this about *")
-      .selectOption("Property or land");
+    await sheet.getByRole("button", { name: /What is this about/ }).click();
+    await sheet.getByRole("option", { name: "Property or land" }).click();
     await sheet
       .getByLabel("What are you looking at? *")
       .fill("A clearly scoped property question we would like to discuss.");
     await sheet.getByRole("button", { name: "Review my message" }).click();
 
     const alert = page.getByRole("alert");
-    await expect(alert).toContainText("nowhere to send it yet");
+    await expect(alert).toContainText("no email or WhatsApp number is published");
     await expect(alert).toContainText("Nothing has been sent");
 
     await page.keyboard.press("Escape");

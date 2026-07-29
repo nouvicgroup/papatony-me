@@ -15,16 +15,16 @@ const content = {
     "name": "Dr. Anthony Nkumbe",
     "known": "Known as Papa Tony",
     "headline": "Know the ground before you commit in Cameroon.",
-    "leadFull": "You have something in mind here — a property, a partner, a project. Papa Tony helps you find out whether it is real, who you would actually be dealing with, and what it would take to move.",
-    "leadShort": "Find out whether it is real, who you would be dealing with, and what it takes to move.",
+    "leadFull": "You've got something in mind here — a property, a partner, a project. I help you find out whether it's real, who you'd actually be dealing with, and what it would take to move.",
+    "leadShort": "Find out whether it's real, who you'd be dealing with, and what it takes to move.",
     "primary": "Start a conversation",
-    "secondary": "See how he works",
+    "secondary": "See how I work",
     "heroAlt": "Anthony Nkumbe seated at a wood-panelled executive desk in a dark suit",
     "heroCaption": "Dr. Anthony Nkumbe",
     "heroCaptionMeta": "Cameroon",
     "recordKicker": "The record",
-    "recordTitle": "The positions he holds today.",
-    "recordLead": "These are current roles, not past ones. Results belong to the people he worked with, so you will not find figures on this page that cannot be backed up.",
+    "recordTitle": "What I do, and where.",
+    "recordLead": "These are roles I hold now, not ones I used to. Results belong to the people I worked with, so you won't find numbers on this page I can't back up.",
     "roles": [
       [
         "Chief Executive",
@@ -59,17 +59,17 @@ const content = {
         "Kingdom World for Jesus Int’l Church Fellowship"
       ]
     ],
-    "provenance": "Dates, scale and outside references are still being confirmed. They will appear here once they are verified, and not before.",
+    "provenance": "Dates, scale and outside references are still being confirmed. They'll appear here once they're verified, and not before.",
     "pendingLabel": "Coming, once verified",
     "pending": [
       "Specific projects, with dates and where they happened",
       "Results, confirmed by the people involved",
       "References, named and with permission"
     ],
-    "mandateKicker": "What he can help with",
-    "mandateTitle": "Four reasons people call.",
-    "mandateLead": "Whatever you bring, the first job is the same: work out what is actually there, who matters, and what still needs checking.",
-    "pagerLabel": "What he can help with",
+    "mandateKicker": "What I can help with",
+    "mandateTitle": "Four reasons people call me.",
+    "mandateLead": "Whatever you bring, the first job is the same: work out what's actually there, who matters, and what still needs checking.",
+    "pagerLabel": "What I can help with",
     "pillars": [
       {
         "number": "01",
@@ -89,7 +89,7 @@ const content = {
       {
         "number": "04",
         "title": "Building your people",
-        "text": "Training and bringing leaders together, through his school and summits."
+        "text": "Training and bringing leaders together, through my school and summits."
       }
     ],
     "enterpriseTitle": "Property, Land and Building Site. At the Center of the Project",
@@ -100,31 +100,31 @@ const content = {
     "engagementTitle": "How a conversation usually goes.",
     "steps": [
       [
-        "You explain it",
-        "The property, the business, the people involved, your timing, and what a good outcome would look like for you."
+        "You tell me what it is",
+        "The property, the business, who's involved, your timing, and what a good outcome looks like for you."
       ],
       [
-        "He separates fact from assumption",
-        "What is actually known, what someone has assumed, and where you will need a lawyer, a surveyor or an accountant."
+        "I separate fact from assumption",
+        "What's actually known, what someone has assumed, and where you'll need a lawyer, a surveyor or an accountant."
       ],
       [
-        "He brings in the right people",
-        "A bounded conversation with the people who matter, everyone clear on who is who and what is being discussed."
+        "I bring in the right people",
+        "A bounded conversation with the people who matter, everyone clear on who's who and what's being discussed."
       ],
       [
         "You decide the next step",
-        "Legal, technical and financial checks stay yours. He will point you to them; he will not do them for you."
+        "The legal, technical and financial checks stay yours. I'll point you to them; I won't do them for you."
       ]
     ],
-    "engagementNote": "He is a real estate consultant and investment facilitator. He is not a financial adviser and not a wealth manager. He does not promise returns.",
+    "engagementNote": "I'm a real estate consultant and investment facilitator. I'm not a financial adviser and not a wealth manager. I don't promise returns.",
     "engagementAlt": "Anthony Nkumbe explaining a point at a laptop during a working session",
     "operatorKicker": "Background",
-    "operatorTitle": "He started with soil, not spreadsheets.",
+    "operatorTitle": "I started with soil, not spreadsheets.",
     "operatorStory": [
-      "He trained as an agronomist at FASA in Dschang. That is where the habit started — look at the actual land, the actual yield, the actual people, before deciding anything.",
-      "Property, negotiation, building, cooperatives and investment came later. The job never really changed: work out what is there, read the room, find the right person to talk to."
+      "I trained as an agronomist at FASA in Dschang. That's where the habit started — look at the actual land, the actual yield, the actual people, before deciding anything.",
+      "Property, negotiation, building, cooperatives and investment came later. The job never really changed: work out what's there, read the room, find the right person to talk to."
     ],
-    "credentialsLabel": "Where he trained",
+    "credentialsLabel": "Where I trained",
     "credentials": [
       "Agronomy — FASA, University of Dschang",
       "Certified real estate consultant, negotiator, and facilitator",
@@ -135,9 +135,9 @@ const content = {
     "operatorLink": "Read the full profile",
     "operatorAlt": "Anthony Nkumbe standing at an office desk holding a portfolio",
     "institutionsKicker": "Leadership & ministry",
-    "institutionsTitle": "He builds the rooms other leaders grow in.",
-    "institutionsBody": "Papa Tony founded and runs a school, and convenes the summits where entrepreneurs, ministers and leaders are trained.",
-    "institutionsLink": "See what he leads",
+    "institutionsTitle": "I build the rooms where other leaders grow.",
+    "institutionsBody": "I founded and run a school, and I convene the summits where entrepreneurs, ministers and leaders are trained.",
+    "institutionsLink": "See what I lead",
     "platforms": [
       [
         "ESMEL",
@@ -152,33 +152,33 @@ const content = {
         "Business thinking for ministers"
       ]
     ],
-    "ministryLine": "His faith is not a separate compartment. Through Eagles’ Family Assembly he works on the same things — people who know who they are, handle money well, and do not forget the rural communities they came from.",
+    "ministryLine": "My faith isn't a separate compartment. Through Eagles’ Family Assembly I work on the same things — people who know who they are, handle money well, and don't forget the rural communities they came from.",
     "ministryLink": "Visit Eagles’ Family Assembly",
     "ministrySecondary": "More on the ministry",
     "legacyKicker": "Family & legacy",
     "legacyQuote": "Build people who can build beyond you.",
-    "legacyBody": "Papa Tony and Rev. Carine Nkumbe have four children of their own, and a much wider family of adopted and spiritual sons and daughters. He measures the work by who can carry it without him.",
+    "legacyBody": "My wife, Rev. Carine Nkumbe, and I have four children of our own, and a much wider family of adopted and spiritual sons and daughters. I measure the work by who can carry it without me.",
     "ctaKicker": "Before you get in touch",
-    "ctaTitle": "Tell him what you are looking at.",
-    "ctaBody": "Property, a business, an invitation to speak, a leadership programme, or something to do with the ministry. Say what it is and what you want to happen.",
+    "ctaTitle": "Tell me what you're looking at.",
+    "ctaBody": "A property, a business, an invitation to speak, a leadership programme, or something to do with the ministry. Say what it is and what you want to happen.",
     "cta": "Start a conversation",
-    "ctaStatus": "The form cannot send yet — no email or WhatsApp number has been published on the site. Until one is, it will tell you so rather than pretend."
+    "ctaStatus": "The form can't send yet — there's no email or WhatsApp number published on the site. Until there is, it'll tell you so rather than pretend."
   },
   fr: {
     "eyebrow": "Cameroun · Immobilier · Entreprise",
     "name": "Dr Anthony Nkumbe",
     "known": "Connu sous le nom de Papa Tony",
     "headline": "Connaissez le terrain avant de vous engager au Cameroun.",
-    "leadFull": "Vous avez quelque chose en tête ici : un bien, un partenaire, un projet. Papa Tony vous aide à savoir si c’est du solide, avec qui vous traiteriez réellement, et ce qu’il faudrait pour avancer.",
+    "leadFull": "Vous avez quelque chose en tête ici : un bien, un partenaire, un projet. Je vous aide à savoir si c’est du solide, avec qui vous traiteriez réellement, et ce qu’il faudrait pour avancer.",
     "leadShort": "Savoir si c’est du solide, avec qui vous traiteriez, et ce qu’il faut pour avancer.",
     "primary": "Entamer l’échange",
-    "secondary": "Voir sa façon de travailler",
+    "secondary": "Ma façon de travailler",
     "heroAlt": "Anthony Nkumbe assis à un bureau de direction lambrissé, en costume sombre",
     "heroCaption": "Dr Anthony Nkumbe",
     "heroCaptionMeta": "Cameroun",
     "recordKicker": "Le parcours",
-    "recordTitle": "Les fonctions qu’il exerce aujourd’hui.",
-    "recordLead": "Ce sont des fonctions actuelles, pas anciennes. Les résultats appartiennent à ceux avec qui il a travaillé : vous ne trouverez donc pas ici de chiffres invérifiables.",
+    "recordTitle": "Ce que je fais, et où.",
+    "recordLead": "Ce sont des fonctions que j’exerce aujourd’hui, pas d’anciennes. Les résultats appartiennent à ceux avec qui j’ai travaillé : vous ne trouverez donc pas ici de chiffres que je ne peux pas étayer.",
     "roles": [
       [
         "Directeur général",
@@ -220,10 +220,10 @@ const content = {
       "Des résultats, confirmés par les personnes concernées",
       "Des références, nommées et avec autorisation"
     ],
-    "mandateKicker": "Ce sur quoi il peut aider",
-    "mandateTitle": "Quatre raisons de l’appeler.",
+    "mandateKicker": "Ce sur quoi je peux aider",
+    "mandateTitle": "Quatre raisons de m’appeler.",
     "mandateLead": "Quel que soit le sujet, le premier travail est le même : établir ce qui existe vraiment, qui compte, et ce qu’il reste à vérifier.",
-    "pagerLabel": "Ce sur quoi il peut aider",
+    "pagerLabel": "Ce sur quoi je peux aider",
     "pillars": [
       {
         "number": "01",
@@ -243,7 +243,7 @@ const content = {
       {
         "number": "04",
         "title": "Former vos équipes",
-        "text": "Former et rassembler des dirigeants, via son école et ses sommets."
+        "text": "Former et rassembler des dirigeants, via mon école et mes sommets."
       }
     ],
     "enterpriseTitle": "Immobilier, foncier et chantier. Au centre du projet",
@@ -254,31 +254,31 @@ const content = {
     "engagementTitle": "Le déroulement habituel d’un échange.",
     "steps": [
       [
-        "Vous exposez",
+        "Vous m’exposez la situation",
         "Le bien, l’entreprise, les personnes concernées, votre calendrier, et ce qu’un bon résultat représenterait pour vous."
       ],
       [
-        "Il sépare le fait de l’hypothèse",
+        "Je sépare le fait de l’hypothèse",
         "Ce qui est avéré, ce qui n’est que supposé, et là où il vous faudra un avocat, un géomètre ou un comptable."
       ],
       [
-        "Il réunit les bonnes personnes",
+        "Je réunis les bonnes personnes",
         "Un échange délimité avec ceux qui comptent, chacun sachant qui est qui et de quoi l’on parle."
       ],
       [
         "Vous décidez de la suite",
-        "Les vérifications juridiques, techniques et financières restent les vôtres. Il vous y oriente ; il ne les fait pas à votre place."
+        "Les vérifications juridiques, techniques et financières restent les vôtres. Je vous y oriente ; je ne les fais pas à votre place."
       ]
     ],
-    "engagementNote": "Il est consultant immobilier et facilitateur d’investissement. Il n’est ni conseiller financier ni gestionnaire de patrimoine. Il ne promet aucun rendement.",
+    "engagementNote": "Je suis consultant immobilier et facilitateur d’investissement. Je ne suis ni conseiller financier ni gestionnaire de patrimoine. Je ne promets aucun rendement.",
     "engagementAlt": "Anthony Nkumbe expliquant un point devant un ordinateur portable pendant une séance de travail",
     "operatorKicker": "Parcours",
-    "operatorTitle": "Il a commencé par la terre, pas par les tableaux.",
+    "operatorTitle": "J’ai commencé par la terre, pas par les tableaux.",
     "operatorStory": [
-      "Il s’est formé comme agronome à la FASA de Dschang. C’est là qu’est née l’habitude : regarder la terre réelle, le rendement réel, les gens réels, avant de décider quoi que ce soit.",
+      "Je me suis formé comme agronome à la FASA de Dschang. C’est là qu’est née l’habitude : regarder la terre réelle, le rendement réel, les gens réels, avant de décider quoi que ce soit.",
       "L’immobilier, la négociation, la construction, les coopératives et l’investissement sont venus ensuite. Le métier n’a pas vraiment changé : établir ce qui existe, lire le contexte, trouver le bon interlocuteur."
     ],
-    "credentialsLabel": "Où il s’est formé",
+    "credentialsLabel": "Où je me suis formé",
     "credentials": [
       "Agronomie — FASA, Université de Dschang",
       "Consultant, négociateur et facilitateur immobilier certifié",
@@ -289,9 +289,9 @@ const content = {
     "operatorLink": "Lire le profil complet",
     "operatorAlt": "Anthony Nkumbe debout à un bureau, un porte-documents à la main",
     "institutionsKicker": "Leadership & ministère",
-    "institutionsTitle": "Il crée les lieux où d’autres dirigeants grandissent.",
-    "institutionsBody": "Papa Tony a fondé et dirige une école, et anime les sommets où se forment entrepreneurs, ministres et responsables.",
-    "institutionsLink": "Voir ce qu’il dirige",
+    "institutionsTitle": "Je crée les lieux où d’autres dirigeants grandissent.",
+    "institutionsBody": "J’ai fondé et je dirige une école, et j’anime les sommets où se forment entrepreneurs, ministres et responsables.",
+    "institutionsLink": "Voir ce que je dirige",
     "platforms": [
       [
         "ESMEL",
@@ -306,14 +306,14 @@ const content = {
         "La réflexion économique pour les ministres"
       ]
     ],
-    "ministryLine": "Sa foi n’est pas un compartiment à part. À travers Eagles’ Family Assembly, il travaille sur les mêmes choses : des personnes qui savent qui elles sont, qui gèrent bien l’argent, et qui n’oublient pas les campagnes d’où elles viennent.",
+    "ministryLine": "Ma foi n’est pas un compartiment à part. À travers Eagles’ Family Assembly, je travaille sur les mêmes choses : des personnes qui savent qui elles sont, qui gèrent bien l’argent, et qui n’oublient pas les campagnes d’où elles viennent.",
     "ministryLink": "Visiter Eagles’ Family Assembly",
     "ministrySecondary": "En savoir plus sur le ministère",
     "legacyKicker": "Famille & transmission",
     "legacyQuote": "Former des personnes capables de bâtir au-delà de vous.",
-    "legacyBody": "Papa Tony et la Révérende Carine Nkumbe ont quatre enfants, et une famille bien plus large d’enfants adoptés ainsi que de fils et filles spirituels. Il mesure son travail à ceux qui peuvent le porter sans lui.",
-    "ctaKicker": "Avant de le contacter",
-    "ctaTitle": "Dites-lui ce que vous avez en vue.",
+    "legacyBody": "Mon épouse, la Révérende Carine Nkumbe, et moi avons quatre enfants, et une famille bien plus large d’enfants adoptés ainsi que de fils et filles spirituels. Je mesure mon travail à ceux qui peuvent le porter sans moi.",
+    "ctaKicker": "Avant de me contacter",
+    "ctaTitle": "Dites-moi ce que vous avez en vue.",
     "ctaBody": "Un bien, une entreprise, une invitation à intervenir, un programme de leadership, ou quelque chose lié au ministère. Dites de quoi il s’agit et ce que vous souhaitez obtenir.",
     "cta": "Entamer l’échange",
     "ctaStatus": "Le formulaire ne peut pas encore envoyer — aucune adresse e-mail ni numéro WhatsApp n’est publié sur le site. Tant que ce ne sera pas le cas, il vous le dira au lieu de faire semblant."

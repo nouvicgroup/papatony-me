@@ -1925,7 +1925,12 @@ h3 {
 }
 
 .inquiry-form select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8' fill='none'%3E%3Cpath d='M1 1.5 6 6.5l5-5' stroke='%23ffffff' stroke-opacity='.6' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-position: right 2px center;
+  background-repeat: no-repeat;
   color-scheme: dark;
+  padding-right: 26px;
 }
 
 .inquiry-form textarea {
@@ -1951,6 +1956,100 @@ h3 {
   gap: 0 var(--gutter);
   grid-template-columns: 1fr 1fr;
 }
+
+/* Custom listbox — the native select popup is browser-drawn and unstyleable. */
+.field-select {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  margin-bottom: 26px;
+  position: relative;
+}
+
+.field-label {
+  color: rgba(255, 255, 255, 0.68);
+  font-family: var(--mono);
+  font-size: 12px;
+  font-weight: 650;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.select-button {
+  align-items: center;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 0;
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+  font-size: 16px;
+  justify-content: space-between;
+  padding: 11px 0 14px;
+  text-align: left;
+  transition: border-color 160ms ease;
+  width: 100%;
+}
+
+.select-button .placeholder {
+  color: rgba(255, 255, 255, 0.45);
+}
+
+.select-button i {
+  border-bottom: 1.8px solid rgba(255, 255, 255, 0.6);
+  border-right: 1.8px solid rgba(255, 255, 255, 0.6);
+  flex: none;
+  height: 8px;
+  margin-left: 12px;
+  transform: rotate(45deg) translate(-2px, -2px);
+  transition: transform 200ms ease;
+  width: 8px;
+}
+
+.select-button.open {
+  border-color: var(--aqua);
+}
+
+.select-button.open i {
+  transform: rotate(-135deg) translate(-3px, -3px);
+}
+
+.select-list {
+  background: var(--midnight-2);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: var(--radius-md);
+  box-shadow: 0 24px 50px -20px rgba(0, 0, 0, 0.8);
+  left: 0;
+  list-style: none;
+  margin: 6px 0 0;
+  max-height: 260px;
+  overflow-y: auto;
+  padding: 6px;
+  position: absolute;
+  right: 0;
+  top: 100%;
+  z-index: 40;
+}
+
+.select-list li {
+  border-radius: var(--radius-sm);
+  color: rgba(255, 255, 255, 0.86);
+  cursor: pointer;
+  font-size: 15px;
+  line-height: 1.4;
+  padding: 11px 12px;
+}
+
+.select-list li.active {
+  background: rgba(255, 255, 255, 0.09);
+}
+
+.select-list li[aria-selected="true"] {
+  background: var(--cobalt);
+  color: #fff;
+}
+
 
 .form-status {
   background: rgba(22, 184, 166, 0.1);
@@ -2825,8 +2924,8 @@ h3 {
     gap: 40px;
   }
 
-  /* Native-feeling form: filled fields with real tap targets rather than
-     hairline underlines, and a full-width action. */
+  /* Compact native-style form: paired fields on one row, small labels, and
+     real tap targets without the wasted vertical space of a stacked stack. */
   .inquiry-form {
     background: transparent;
     border: 0;
@@ -2835,13 +2934,13 @@ h3 {
   }
 
   .inquiry-form label {
-    gap: 8px;
-    margin-bottom: 16px;
+    gap: 5px;
+    margin-bottom: 12px;
   }
 
   .inquiry-form label > span {
     font-family: var(--sans);
-    font-size: 13px;
+    font-size: 12.5px;
     font-weight: 600;
     letter-spacing: 0;
     text-transform: none;
@@ -2850,52 +2949,89 @@ h3 {
   .inquiry-form input,
   .inquiry-form select,
   .inquiry-form textarea {
-    background: rgba(255, 255, 255, 0.06);
-    border: 1px solid rgba(255, 255, 255, 0.16);
-    border-radius: 12px;
-    min-height: 50px;
-    padding: 13px 14px;
+    background: rgba(255, 255, 255, 0.07);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 11px;
+    font-size: 16px;
+    min-height: 44px;
+    padding: 10px 12px;
+  }
+
+  .field-select {
+    gap: 5px;
+    margin-bottom: 12px;
+  }
+
+  .field-label {
+    font-family: var(--sans);
+    font-size: 12.5px;
+    font-weight: 600;
+    letter-spacing: 0;
+    text-transform: none;
+  }
+
+  .select-button {
+    background: rgba(255, 255, 255, 0.07);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 11px;
+    min-height: 44px;
+    padding: 10px 12px;
+  }
+
+  .select-list li {
+    font-size: 14.5px;
+    padding: 12px;
   }
 
   .inquiry-form textarea {
-    min-height: 120px;
+    min-height: 84px;
+    padding-top: 11px;
   }
 
   .inquiry-form input:focus,
   .inquiry-form select:focus,
   .inquiry-form textarea:focus {
-    background: rgba(255, 255, 255, 0.09);
+    background: rgba(255, 255, 255, 0.1);
     border-color: var(--aqua);
   }
 
+  /* Name and email share a row. */
   .form-grid {
-    grid-template-columns: 1fr;
+    gap: 0 10px;
+    grid-template-columns: 1fr 1fr;
   }
 
   .form-status {
-    border-radius: 12px;
+    border-radius: 11px;
     border-left-width: 3px;
+    margin-bottom: 12px;
+    padding: 12px 14px;
+  }
+
+  .form-status p {
+    font-size: 13px;
   }
 
   .form-submit {
     align-items: stretch;
     flex-direction: column-reverse;
-    gap: 14px;
+    gap: 10px;
   }
 
   .form-submit button {
-    border-radius: 14px;
+    border-radius: 13px;
     justify-content: center;
-    min-height: 52px;
+    min-height: 48px;
     width: 100%;
   }
 
   .form-submit small {
+    font-size: 12px;
     text-align: center;
   }
 
   .copy-inquiry {
-    min-height: 46px;
+    min-height: 42px;
     width: 100%;
   }
 
@@ -3214,39 +3350,61 @@ h3 {
   }
 
   .inquiry-sheet-head {
-    align-items: flex-start;
+    align-items: center;
     border-bottom: 1px solid var(--hairline-dark);
     display: flex;
-    gap: 16px;
+    gap: 12px;
     justify-content: space-between;
-    padding: 14px 20px 18px;
+    padding: 8px 16px 14px;
   }
 
   .inquiry-sheet-head h2 {
-    font-size: 21px;
-    font-weight: 600;
-    letter-spacing: -0.026em;
-    margin: 0 0 6px;
+    font-size: 18px;
+    font-weight: 620;
+    letter-spacing: -0.024em;
+    margin: 0 0 3px;
   }
 
   .inquiry-sheet-head p {
-    color: rgba(255, 255, 255, 0.6);
-    font-size: 14px;
-    line-height: 1.5;
+    color: rgba(255, 255, 255, 0.55);
+    font-size: 13px;
+    line-height: 1.4;
     margin: 0;
   }
 
+  /* Icon close: a text button pushed the title onto two lines. */
   .inquiry-sheet-head button {
+    align-items: center;
     background: rgba(255, 255, 255, 0.1);
     border: 0;
-    border-radius: var(--radius-sm);
+    border-radius: 999px;
     color: #fff;
     cursor: pointer;
+    display: inline-flex;
     flex: none;
-    font-size: 14px;
-    font-weight: 600;
-    min-height: 40px;
-    padding: 0 16px;
+    font-size: 0;
+    height: 34px;
+    justify-content: center;
+    padding: 0;
+    width: 34px;
+  }
+
+  .inquiry-sheet-head button::before {
+    content: "\00d7";
+    font-size: 22px;
+    line-height: 1;
+  }
+
+  .inquiry-sheet-body .form-submit {
+    background: linear-gradient(
+      180deg,
+      rgba(11, 16, 32, 0) 0%,
+      var(--midnight) 30%
+    );
+    bottom: 0;
+    margin: 0 -16px -18px;
+    padding: 14px 16px calc(14px + env(safe-area-inset-bottom, 0px));
+    position: sticky;
   }
 
   .inquiry-sheet-body {
@@ -3256,7 +3414,7 @@ h3 {
     flex: 1 1 auto;
     min-height: 0;
     overflow-y: auto;
-    padding: 18px 20px 26px;
+    padding: 16px 16px 18px;
   }
 
   .inquiry-sheet-body .inquiry-form {

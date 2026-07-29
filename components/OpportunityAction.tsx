@@ -13,14 +13,14 @@ interface OpportunityActionProps {
 
 const copy = {
   en: {
-    title: "Tell him what you are looking at",
-    lead: "Enough detail for him to say whether he is the right person.",
+    title: "Get in touch",
+    lead: "Enough for me to say if I'm the right person.",
     close: "Close",
     dialog: "Opportunity brief",
   },
   fr: {
-    title: "Dites-lui ce que vous avez en vue",
-    lead: "Assez de détails pour qu'il dise s'il est la bonne personne.",
+    title: "Me contacter",
+    lead: "De quoi juger si je suis la bonne personne.",
     close: "Fermer",
     dialog: "Présentation d'opportunité",
   },
@@ -103,9 +103,12 @@ export function OpportunityAction({
                   <h2>{text.title}</h2>
                   <p>{text.lead}</p>
                 </div>
-                <button onClick={close} ref={closeRef} type="button">
-                  {text.close}
-                </button>
+                <button
+                  aria-label={text.close}
+                  onClick={close}
+                  ref={closeRef}
+                  type="button"
+                />
               </div>
               <div className="inquiry-sheet-body">
                 <InquiryForm locale={locale} />

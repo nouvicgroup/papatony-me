@@ -19,7 +19,7 @@ const enterprise = {
     kicker: "Property & enterprise",
     title: "Opportunity needs more than capital. It needs context.",
     lead:
-      "Papa Tony works at the intersection of property, enterprise, local relationships, and cross-border partnership—helping serious parties understand the terrain before deciding how to proceed.",
+      "I work where property, enterprise, local relationships and cross-border partnership meet — helping serious people understand the terrain before they decide how to proceed.",
     imageAlt:
       "Anthony Nkumbe seated at a bright office desk",
     domainsTitle: "Areas of engagement",
@@ -62,7 +62,7 @@ const enterprise = {
       ],
     ],
     note:
-      "Papa Tony is presented as a real estate consultant and investment facilitator—not as a financial adviser or wealth manager. Every opportunity requires independent due diligence.",
+      "I am a real estate consultant and investment facilitator, not a financial adviser or wealth manager. Every opportunity needs independent due diligence.",
     ctaTitle: "Have a property or enterprise conversation in mind?",
     cta: "Share the context",
   },
@@ -71,7 +71,7 @@ const enterprise = {
     title:
       "Une opportunité exige plus que du capital. Elle exige une lecture du terrain.",
     lead:
-      "Papa Tony intervient au croisement de l'immobilier, de l'entreprise, des relations locales et des partenariats transfrontaliers afin d'aider les parties sérieuses à comprendre le contexte avant de décider.",
+      "J’interviens là où se croisent l’immobilier, l’entreprise, les relations locales et les partenariats transfrontaliers, pour aider des interlocuteurs sérieux à comprendre le terrain avant de décider.",
     imageAlt: "Anthony Nkumbe assis à un bureau lumineux",
     domainsTitle: "Domaines d'intervention",
     domains: [
@@ -113,7 +113,7 @@ const enterprise = {
       ],
     ],
     note:
-      "Papa Tony est présenté comme consultant immobilier et facilitateur d'investissement, et non comme conseiller financier ou gestionnaire de patrimoine. Toute opportunité exige une diligence indépendante.",
+      "Je suis consultant immobilier et facilitateur d’investissement, et non conseiller financier ou gestionnaire de patrimoine. Toute opportunité exige une diligence indépendante.",
     ctaTitle: "Vous souhaitez parler d'un projet immobilier ou d'entreprise ?",
     cta: "Présenter le contexte",
   },
@@ -124,7 +124,7 @@ const leadership = {
     kicker: "Leadership & institutions",
     title: "Convening people around formation, enterprise, and service.",
     lead:
-      "Papa Tony's leadership record spans institutions and platforms created to strengthen people, organize shared purpose, and turn conviction into durable structures.",
+      "I have founded and led institutions built to strengthen people, organise shared purpose, and turn conviction into something that lasts.",
     imageAlt:
       "Anthony Nkumbe in a formal portrait at a leadership conference",
     recordTitle: "An institutional record",
@@ -158,7 +158,7 @@ const leadership = {
       ],
     ],
     principle:
-      "Leadership is treated here as stewardship: the work of creating conditions in which others can become capable, responsible, and useful.",
+      "I treat leadership as stewardship: creating the conditions in which other people become capable, responsible and useful.",
     ctaTitle: "Planning an institutional or leadership engagement?",
     cta: "Start a conversation",
   },
@@ -167,7 +167,7 @@ const leadership = {
     title:
       "Rassembler les personnes autour de la formation, de l'entreprise et du service.",
     lead:
-      "Le parcours de Papa Tony couvre des institutions et plateformes créées pour fortifier les personnes, organiser une mission commune et transformer les convictions en structures durables.",
+      "J’ai fondé et dirigé des institutions destinées à fortifier les personnes, organiser une mission commune et transformer les convictions en structures durables.",
     imageAlt:
       "Portrait officiel d'Anthony Nkumbe lors d'une rencontre de leadership",
     recordTitle: "Un parcours institutionnel",
@@ -201,7 +201,7 @@ const leadership = {
       ],
     ],
     principle:
-      "Le leadership est ici compris comme une intendance : créer les conditions permettant aux autres de devenir capables, responsables et utiles.",
+      "Je comprends le leadership comme une intendance : créer les conditions où d’autres deviennent capables, responsables et utiles.",
     ctaTitle:
       "Vous préparez une rencontre institutionnelle ou de leadership ?",
     cta: "Engager la conversation",
@@ -213,13 +213,13 @@ const about = {
     kicker: "Official profile",
     title: "A builder shaped by land, faith, enterprise, and people.",
     lead:
-      "Apostle Dr. Anthony Nkumbe — known as Papa Tony — is a Cameroon-based entrepreneur, certified real estate consultant, institutional leader, and ministry founder.",
+      "I am Apostle Dr. Anthony Nkumbe — most people call me Papa Tony. I work from Cameroon as an entrepreneur, certified real estate consultant, institutional leader and ministry founder.",
     imageAlt: "Official headshot of Anthony Nkumbe in a black suit",
     storyTitle: "One integrated life",
     story: [
-      "Trained as an agronomist at FASA, University of Dschang, Papa Tony's professional formation began with land, production, systems, and the realities of local development.",
-      "His work later expanded into real estate consulting, negotiation, building facilitation, enterprise advisory, cooperatives, and investment conversations. Across these fields, his role is that of a connector and facilitator: helping people define opportunities, understand context, and reach suitable counterparts.",
-      "Faith is the foundation rather than a separate public identity. As founder of Eagles' Family Assembly and a convener of leadership platforms, he has spent decades forming people around identity, stewardship, enterprise, responsibility, and service.",
+      "I trained as an agronomist at FASA, University of Dschang. My professional formation began with land, production, systems and the realities of local development.",
+      "The work later widened into real estate consulting, negotiation, building facilitation, enterprise advice, cooperatives and investment conversations. Across all of it my role is the same: a connector and facilitator, helping people define an opportunity, understand the context, and reach the right counterpart.",
+      "Faith is the foundation, not a separate public identity. As founder of Eagles’ Family Assembly and convener of several leadership platforms, I have spent decades forming people around identity, stewardship, enterprise, responsibility and service.",
     ],
     formationTitle: "Formation & professional grounding",
     formation: [
@@ -231,7 +231,7 @@ const about = {
     ],
     familyTitle: "Family & generational responsibility",
     family:
-      "Papa Tony is married to Rev. Carine Nkumbe. They are parents to four biological children and serve as parental and spiritual figures to a wider family of adopted children, sons, and daughters. Family portraits will be added only after specific approval.",
+      "I am married to Rev. Carine Nkumbe. We are parents to four biological children, and parental and spiritual figures to a wider family of adopted children, sons and daughters. Family portraits will only be added with specific approval.",
     cta: "Discuss an opportunity",
   },
   fr: {
@@ -239,13 +239,13 @@ const about = {
     title:
       "Un bâtisseur façonné par la terre, la foi, l'entreprise et les personnes.",
     lead:
-      "L'Apôtre Dr Anthony Nkumbe, connu sous le nom de Papa Tony, est un entrepreneur camerounais, consultant immobilier certifié, dirigeant institutionnel et fondateur de ministère.",
+      "Je suis l’Apôtre Dr Anthony Nkumbe — on m’appelle Papa Tony. Je travaille depuis le Cameroun comme entrepreneur, consultant immobilier certifié, dirigeant institutionnel et fondateur de ministère.",
     imageAlt: "Portrait officiel d'Anthony Nkumbe en costume noir",
     storyTitle: "Une vie cohérente",
     story: [
-      "Formé comme agronome à la FASA de l'Université de Dschang, Papa Tony a commencé son parcours professionnel au contact de la terre, de la production, des systèmes et des réalités du développement local.",
+      "Je me suis formé comme agronome à la FASA de l’Université de Dschang. Mon parcours a commencé au contact de la terre, de la production, des systèmes et des réalités du développement local.",
       "Son activité s'est ensuite étendue au conseil immobilier, à la négociation, à la facilitation de construction, au conseil aux entreprises, aux coopératives et aux échanges d'investissement. Son rôle reste celui d'un connecteur et d'un facilitateur.",
-      "La foi est le fondement de cette vie, non une identité publique séparée. Fondateur d'Eagles' Family Assembly et convocateur de plateformes de leadership, il forme depuis plusieurs décennies des personnes autour de l'identité, l'intendance, l'entreprise, la responsabilité et le service.",
+      "La foi est le fondement, non une identité publique séparée. Fondateur d’Eagles’ Family Assembly et convocateur de plateformes de leadership, je forme depuis des décennies des personnes autour de l’identité, l’intendance, l’entreprise, la responsabilité et le service.",
     ],
     formationTitle: "Formation & ancrage professionnel",
     formation: [
@@ -257,7 +257,7 @@ const about = {
     ],
     familyTitle: "Famille & responsabilité générationnelle",
     family:
-      "Papa Tony est marié à la Révérende Carine Nkumbe. Ils sont parents de quatre enfants biologiques et accompagnent une famille élargie d'enfants adoptés ainsi que de fils et filles spirituels. Les portraits familiaux ne seront ajoutés qu'après validation spécifique.",
+      "Je suis marié à la Révérende Carine Nkumbe. Nous sommes parents de quatre enfants biologiques et accompagnons une famille élargie d’enfants adoptés ainsi que de fils et filles spirituels. Les portraits familiaux ne seront ajoutés qu’après validation.",
     cta: "Échanger sur une opportunité",
   },
 };
@@ -267,7 +267,7 @@ const ministry = {
     kicker: "Ministry foundation",
     title: "Faith that forms people for responsibility.",
     lead:
-      "Papa Tony founded Eagles' Family Assembly around the mandate “Recovering the world with the Word.” On this site, that ministry is presented through the leadership principles most relevant to his wider public work.",
+      "I founded Eagles’ Family Assembly around one mandate: recovering the world with the Word. Here I set out the parts of it that shape the rest of my work.",
     imageAlt:
       "Anthony Nkumbe speaking into a microphone at a ministry gathering",
     mandateTitle: "A fourfold emphasis",
@@ -290,7 +290,7 @@ const ministry = {
       ],
     ],
     boundary:
-      "PapaTony.me does not duplicate the Eagles' Family Assembly website. Church-specific information, media, services, and the full ministry story remain on the ministry's own site.",
+      "This site does not duplicate the Eagles’ Family Assembly website. Church information, media, services and the full ministry story stay on the ministry’s own site.",
     external: "Explore Eagles’ Family Assembly",
     leadership: "See leadership platforms",
   },
@@ -298,7 +298,7 @@ const ministry = {
     kicker: "Fondement ministériel",
     title: "Une foi qui forme des personnes responsables.",
     lead:
-      "Papa Tony a fondé Eagles' Family Assembly autour du mandat « Recovering the world with the Word ». Ici, ce ministère est présenté à travers les principes de leadership qui éclairent son action publique.",
+      "J’ai fondé Eagles’ Family Assembly autour d’un mandat : récupérer le monde par la Parole. J’en présente ici ce qui éclaire le reste de mon travail.",
     imageAlt:
       "Anthony Nkumbe prenant la parole lors d'un rassemblement ministériel",
     mandateTitle: "Quatre axes essentiels",
@@ -321,7 +321,7 @@ const ministry = {
       ],
     ],
     boundary:
-      "PapaTony.me ne reproduit pas le site d'Eagles' Family Assembly. Les informations propres à l'Église, ses médias, ses rencontres et son histoire complète restent sur le site du ministère.",
+      "Ce site ne reproduit pas celui d’Eagles’ Family Assembly. Les informations propres à l’Église, ses médias, ses rencontres et son histoire complète restent sur le site du ministère.",
     external: "Découvrir Eagles’ Family Assembly",
     leadership: "Voir les plateformes de leadership",
   },
@@ -330,8 +330,8 @@ const ministry = {
 const contact = {
   en: {
     kicker: "Get in touch",
-    title: "Tell him what you are looking at.",
-    lead: "Enough detail for him to say whether he is the right person to help. Property, business, an invitation to speak, leadership or ministry \u2014 all fine.",
+    title: "Tell me what you're looking at.",
+    lead: "Enough detail for me to say whether I'm the right person to help. Property, business, an invitation to speak, leadership or ministry \u2014 all fine.",
     sidebarTitle: "What to include",
     sidebar: [
       "What it is, in one sentence",
@@ -344,7 +344,7 @@ const contact = {
   },
   fr: {
     kicker: "Le contacter",
-    title: "Dites-lui ce que vous avez en vue.",
+    title: "Dites-moi ce que vous avez en vue.",
     lead: "Assez de d\u00e9tails pour qu\u2019il dise s\u2019il est la bonne personne. Un bien, une entreprise, une invitation \u00e0 intervenir, le leadership ou le minist\u00e8re \u2014 tout convient.",
     sidebarTitle: "\u00c0 pr\u00e9ciser",
     sidebar: [

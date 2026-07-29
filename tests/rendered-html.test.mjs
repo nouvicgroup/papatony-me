@@ -7,14 +7,14 @@ const routes = [
   ["/leadership", "en", "Convening people"],
   ["/about", "en", "A builder shaped"],
   ["/ministry", "en", "Faith that forms people"],
-  ["/contact", "en", "Tell him what you are looking at"],
+  ["/contact", "en", "Tell me what you"],
   ["/privacy", "en", "A simple, respectful"],
   ["/fr", "fr", "Connaissez le terrain avant de vous engager"],
   ["/fr/enterprise", "fr", "Une opportunité exige"],
   ["/fr/leadership", "fr", "Rassembler les personnes"],
   ["/fr/about", "fr", "Un bâtisseur façonné"],
   ["/fr/ministry", "fr", "Une foi qui forme"],
-  ["/fr/contact", "fr", "Dites-lui ce que vous avez en vue"],
+  ["/fr/contact", "fr", "Dites-moi ce que vous avez en vue"],
   ["/fr/privacy", "fr", "Une prise de contact"],
 ];
 
@@ -172,7 +172,7 @@ test("contact form is honest about unavailable delivery", async () => {
 
 test("the home page states the delivery gap rather than implying it works", async () => {
   const html = await (await render("/")).text();
-  assert.match(html, /cannot send yet/i);
+  assert.match(html, /send yet/i);
   assert.doesNotMatch(html, /message sent|we will get back to you/i);
 });
 

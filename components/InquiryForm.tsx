@@ -1,6 +1,7 @@
 "use client";
 
 import { FormEvent, useRef, useState, useSyncExternalStore } from "react";
+import { SelectField } from "@/components/SelectField";
 import type { Locale } from "@/lib/site";
 
 interface InquiryFormProps {
@@ -17,10 +18,9 @@ const copy = {
   en: {
     name: "Your name",
     email: "Email",
-    organisation: "Company or organisation",
+    organisation: "Company (optional)",
     intention: "What is this about",
     message: "What are you looking at?",
-    choose: "Pick one",
     options: [
       "Property or land",
       "A business or investment partnership",
@@ -28,14 +28,15 @@ const copy = {
       "Leadership or training",
       "Ministry",
     ],
+    choose: "Choose one",
     submit: "Review my message",
     note: "Only used to reply to you.",
     invalid: "Please fill in the required fields, and check the email address.",
     unavailable:
-      "Your message is ready, but there is nowhere to send it yet \u2014 no email or WhatsApp number has been published. Nothing has been sent. Copy it and send it however you normally reach him.",
+      "Your message is ready, but I have nowhere to receive it yet \u2014 no email or WhatsApp number is published. Nothing has been sent. Copy it and send it however you normally reach me.",
     copyAction: "Copy my message",
     copied:
-      "Copied. Nothing was sent from this page \u2014 paste it wherever you are reaching him.",
+      "Copied. Nothing was sent from this page \u2014 paste it wherever you're reaching me.",
     copyFailed:
       "Your browser blocked the copy. Select the text in the fields above and copy it by hand. Nothing has been sent.",
     labels: {
@@ -49,10 +50,9 @@ const copy = {
   fr: {
     name: "Votre nom",
     email: "E-mail",
-    organisation: "Entreprise ou organisation",
+    organisation: "Entreprise (facultatif)",
     intention: "De quoi s\u2019agit-il",
     message: "Qu\u2019avez-vous en vue ?",
-    choose: "Choisissez",
     options: [
       "Un bien ou un terrain",
       "Une entreprise ou un partenariat d\u2019investissement",
@@ -60,6 +60,7 @@ const copy = {
       "Leadership ou formation",
       "Minist\u00e8re",
     ],
+    choose: "Choisissez",
     submit: "Relire mon message",
     note: "Sert uniquement \u00e0 vous r\u00e9pondre.",
     invalid:
@@ -83,6 +84,7 @@ const copy = {
 
 export function InquiryForm({ locale }: InquiryFormProps) {
   const [status, setStatus] = useState<FormStatus>("idle");
+  const [intention, setIntention] = useState("");
   const formRef = useRef<HTMLFormElement>(null);
   const hydrated = useSyncExternalStore(
     subscribeToHydration,
@@ -96,7 +98,7 @@ export function InquiryForm({ locale }: InquiryFormProps) {
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const form = event.currentTarget;
-    if (!form.checkValidity()) {
+    if (!form.checkValidity() || !intention) {
       setStatus("invalid");
       form.reportValidity();
       return;
@@ -157,19 +159,14 @@ export function InquiryForm({ locale }: InquiryFormProps) {
         <span>{text.organisation}</span>
         <input name="organisation" autoComplete="organization" />
       </label>
-      <label>
-        <span>{text.intention} *</span>
-        <select name="intention" required defaultValue="">
-          <option value="" disabled>
-            {text.choose}
-          </option>
-          {text.options.map((option) => (
-            <option key={option} value={option}>
-              {option}
-            </option>
-          ))}
-        </select>
-      </label>
+      <SelectField
+        label={`${text.intention} *`}
+        name="intention"
+        onChange={setIntention}
+        options={text.options}
+        placeholder={text.choose}
+        value={intention}
+      />
       <label>
         <span>{text.message} *</span>
         <textarea name="message" rows={6} required minLength={20} />
