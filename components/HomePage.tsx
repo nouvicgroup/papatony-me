@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { HeroPortrait } from "@/components/HeroPortrait";
 import { MediaImage } from "@/components/MediaImage";
 import {
   LEGACY_IMAGE_SRC,
@@ -13,51 +14,51 @@ interface HomePageProps {
 
 const content = {
   en: {
-    eyebrow: "Cameroon · Africa · Global diaspora",
+    eyebrow: "Cameroon market access · Property · Enterprise",
     name: "Anthony Nkumbe",
     known: "Known as Papa Tony",
-    headline: "Building trusted pathways between diaspora ambition and African opportunity.",
+    headline: "Navigate opportunity in Cameroon with trusted local judgment.",
     lead:
-      "Apostle Dr. Anthony Nkumbe is a faith-led entrepreneur, certified real estate consultant, investment facilitator, institution builder, and ministry founder based in Cameroon.",
-    primary: "Discuss an opportunity",
-    secondary: "Explore his work",
+      "Anthony Nkumbe helps diaspora founders, property owners, investors, and institutions qualify opportunities, connect with suitable local counterparts, and move toward informed next steps.",
+    primary: "Start an opportunity brief",
+    secondary: "See how he works",
     heroAlt:
       "Anthony Nkumbe seated at an executive desk in a black suit",
-    rolesLabel: "Working across",
+    rolesLabel: "Designed for",
     roles: [
-      "Property facilitation",
-      "Enterprise partnerships",
-      "Institution building",
-      "Leadership formation",
+      "Diaspora founders & investors",
+      "Property owners & buyers",
+      "Enterprise operators",
+      "Institutions & municipalities",
     ],
-    pillarsKicker: "A connected body of work",
-    pillarsTitle: "People, property, enterprise, and purpose.",
+    pillarsKicker: "Ways to engage",
+    pillarsTitle: "Move from interest to an informed next step.",
     pillarsLead:
-      "Papa Tony's work sits where relationships, local knowledge, leadership, and practical opportunity meet.",
+      "Each engagement begins by defining the opportunity, testing the context, and identifying the people and diligence required to proceed responsibly.",
     pillars: [
       {
         number: "01",
-        title: "Property",
-        text: "Real estate consulting and facilitation shaped by local context, responsible process, and clear expectations.",
+        title: "Qualify a property opportunity",
+        text: "Clarify property interests, local process, decision makers, negotiation needs, and the independent diligence still required.",
       },
       {
         number: "02",
-        title: "Enterprise",
-        text: "Conversations that connect ideas, operators, cooperatives, institutions, and suitable partners.",
+        title: "Structure an enterprise partnership",
+        text: "Frame the commercial need before connecting operators, cooperatives, institutions, and suitable prospective partners.",
       },
       {
         number: "03",
-        title: "Leadership",
-        text: "Platforms that convene and equip leaders across business, ministry, and public life.",
+        title: "Navigate local context",
+        text: "Bring grounded Cameroon perspective to cross-border conversations involving municipalities, institutions, and enterprise leaders.",
       },
       {
         number: "04",
-        title: "Purpose",
-        text: "A faith-led commitment to stewardship, service, human development, and generational value.",
+        title: "Develop leadership capacity",
+        text: "Convene and equip leaders through platforms connecting enterprise, institution building, responsible service, and purpose.",
       },
     ],
     enterpriseKicker: "Property & enterprise",
-    enterpriseTitle: "Local intelligence. Cross-border perspective.",
+    enterpriseTitle: "Clarity for property and enterprise decisions.",
     enterpriseBody:
       "From real estate consulting to enterprise and investment facilitation, the work begins with understanding the opportunity, the people around it, and the conditions required for responsible progress.",
     enterprisePoints: [
@@ -70,7 +71,7 @@ const content = {
     enterpriseAlt:
       "Anthony Nkumbe reviewing plans at an active construction site",
     leadershipKicker: "Leadership platforms",
-    leadershipTitle: "Institutions designed to multiply capacity.",
+    leadershipTitle: "Platforms that turn conviction into capacity.",
     leadershipBody:
       "Papa Tony has founded, led, and convened platforms where entrepreneurship, ministry formation, business leadership, and regional collaboration can develop.",
     leadershipLink: "See the leadership record",
@@ -102,52 +103,52 @@ const content = {
     cta: "Discuss an opportunity",
   },
   fr: {
-    eyebrow: "Cameroun · Afrique · Diaspora mondiale",
+    eyebrow: "Accès au marché camerounais · Immobilier · Entreprise",
     name: "Anthony Nkumbe",
     known: "Connu sous le nom de Papa Tony",
     headline:
-      "Créer des passerelles de confiance entre l'ambition de la diaspora et les opportunités africaines.",
+      "Aborder les opportunités au Cameroun avec un jugement local fiable.",
     lead:
-      "L'Apôtre Dr Anthony Nkumbe est un entrepreneur guidé par la foi, consultant immobilier certifié, facilitateur d'investissement, bâtisseur d'institutions et fondateur de ministère basé au Cameroun.",
-    primary: "Échanger sur une opportunité",
-    secondary: "Découvrir son action",
+      "Anthony Nkumbe aide les entrepreneurs de la diaspora, propriétaires, investisseurs et institutions à qualifier les opportunités, identifier les interlocuteurs locaux pertinents et avancer de manière éclairée.",
+    primary: "Présenter une opportunité",
+    secondary: "Découvrir sa méthode",
     heroAlt:
       "Anthony Nkumbe assis à un bureau de direction, vêtu d'un costume noir",
-    rolesLabel: "Domaines d'action",
+    rolesLabel: "Pour qui",
     roles: [
-      "Facilitation immobilière",
-      "Partenariats d'entreprise",
-      "Construction institutionnelle",
-      "Formation des leaders",
+      "Entrepreneurs & investisseurs de la diaspora",
+      "Propriétaires & acquéreurs",
+      "Opérateurs économiques",
+      "Institutions & municipalités",
     ],
-    pillarsKicker: "Un même écosystème d'action",
-    pillarsTitle: "Les personnes, le foncier, l'entreprise et la mission.",
+    pillarsKicker: "Modes d'engagement",
+    pillarsTitle: "Passer de l'intérêt à une prochaine étape éclairée.",
     pillarsLead:
-      "L'action de Papa Tony se situe au croisement des relations, de la connaissance du terrain, du leadership et des opportunités concrètes.",
+      "Chaque échange commence par une définition précise de l'opportunité, une lecture du contexte et l'identification des acteurs et diligences nécessaires.",
     pillars: [
       {
         number: "01",
-        title: "Immobilier",
-        text: "Conseil et facilitation immobilière fondés sur le contexte local, une démarche responsable et des attentes claires.",
+        title: "Qualifier une opportunité immobilière",
+        text: "Clarifier le bien, les procédures locales, les décideurs, la négociation et les diligences indépendantes encore nécessaires.",
       },
       {
         number: "02",
-        title: "Entreprise",
-        text: "Des échanges qui rapprochent idées, opérateurs, coopératives, institutions et partenaires pertinents.",
+        title: "Structurer un partenariat d'entreprise",
+        text: "Définir le besoin commercial avant de rapprocher opérateurs, coopératives, institutions et partenaires potentiels pertinents.",
       },
       {
         number: "03",
-        title: "Leadership",
-        text: "Des plateformes qui rassemblent et forment les leaders dans les affaires, le ministère et la vie publique.",
+        title: "Lire le contexte local",
+        text: "Apporter une perspective camerounaise concrète aux échanges transfrontaliers avec municipalités, institutions et dirigeants.",
       },
       {
         number: "04",
-        title: "Mission",
-        text: "Un engagement guidé par la foi en faveur de l'intendance, du service, du développement humain et de la transmission.",
+        title: "Développer les capacités de leadership",
+        text: "Rassembler et former des leaders autour de l'entreprise, de la construction institutionnelle, du service responsable et de la mission.",
       },
     ],
     enterpriseKicker: "Immobilier & entreprise",
-    enterpriseTitle: "Ancrage local. Perspective transfrontalière.",
+    enterpriseTitle: "De la clarté pour décider dans l'immobilier et l'entreprise.",
     enterpriseBody:
       "Du conseil immobilier à la facilitation d'entreprises et d'investissements, le travail commence par une lecture juste de l'opportunité, des acteurs concernés et des conditions nécessaires à une avancée responsable.",
     enterprisePoints: [
@@ -160,7 +161,7 @@ const content = {
     enterpriseAlt:
       "Anthony Nkumbe consultant des plans sur un chantier en activité",
     leadershipKicker: "Plateformes de leadership",
-    leadershipTitle: "Des institutions qui développent les capacités.",
+    leadershipTitle: "Des plateformes qui transforment la conviction en capacité.",
     leadershipBody:
       "Papa Tony a fondé, dirigé et convoqué des plateformes où peuvent progresser l'entrepreneuriat, la formation au ministère, le leadership d'affaires et la collaboration régionale.",
     leadershipLink: "Voir le parcours institutionnel",
@@ -232,22 +233,7 @@ export function HomePage({ locale }: HomePageProps) {
           </div>
         </div>
         <div className="hero-portrait">
-          <MediaImage
-            className="hero-image hero-image-desktop"
-            src="/media/hero-desktop.webp"
-            alt={text.heroAlt}
-            fill
-            priority
-            sizes="(max-width: 760px) 0px, 52vw"
-          />
-          <MediaImage
-            className="hero-image hero-image-mobile"
-            src="/media/hero-mobile.webp"
-            alt={text.heroAlt}
-            fill
-            priority
-            sizes="(max-width: 760px) 100vw, 0px"
-          />
+          <HeroPortrait alt={text.heroAlt} />
           <div className="hero-image-shade" aria-hidden="true" />
           <div className="portrait-caption">
             <span>Anthony Nkumbe</span>

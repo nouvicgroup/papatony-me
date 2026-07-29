@@ -67,6 +67,27 @@ test.describe("desktop experience", () => {
     );
   });
 
+  test("tablet navigation remains reachable through the menu", async ({
+    page,
+  }) => {
+    await page.setViewportSize({ width: 900, height: 1000 });
+    await page.goto("/");
+    const menu = page.getByRole("button", { name: "Open menu" });
+    await expect(menu).toBeVisible();
+    await menu.click();
+    const navigation = page.getByRole("navigation", {
+      name: "Primary navigation",
+    });
+    await expect(navigation).toBeVisible();
+    await navigation
+      .getByRole("link", { name: "Leadership", exact: true })
+      .click();
+    await expect(page).toHaveURL(/\/leadership$/);
+    await expect(
+      page.getByRole("button", { name: "Open menu" }),
+    ).toBeVisible();
+  });
+
   test("form validates and reports an honest delivery failure", async ({
     page,
   }) => {
@@ -115,69 +136,69 @@ test.describe("desktop experience", () => {
   });
 });
 
-test.describe("mobile application shell", () => {
+test.describe("mobile experience", () => {
   test.skip(({ isMobile }) => !isMobile, "Mobile-only behavior");
 
-  test("first visit offers Skip and does not replay after dismissal", async ({
+  test("value proposition and primary action lead the first viewport", async ({
     page,
   }) => {
     await page.goto("/");
-    const intro = page.getByRole("dialog", { name: "Papa Tony introduction" });
-    await expect(intro).toBeVisible();
-    await page.getByRole("button", { name: "Skip", exact: true }).click();
-    await expect(intro).toBeHidden();
-    await page.reload();
-    await expect(intro).toHaveCount(0);
+    const heading = page.getByRole("heading", {
+      name: /Navigate opportunity in Cameroon/,
+      level: 1,
+    });
+    await expect(heading).toBeVisible();
+    await expect(
+      page.getByRole("link", {
+        name: /Start an opportunity brief/,
+        exact: true,
+      }),
+    ).toBeVisible();
+    const positions = await page.evaluate(() => {
+      const headingBox = document.querySelector("h1")?.getBoundingClientRect();
+      const portraitBox = document
+        .querySelector(".hero-portrait")
+        ?.getBoundingClientRect();
+      return {
+        headingTop: headingBox?.top ?? Number.POSITIVE_INFINITY,
+        portraitTop: portraitBox?.top ?? 0,
+      };
+    });
+    expect(positions.headingTop).toBeLessThan(positions.portraitTop);
   });
 
-  test("bottom navigation is fixed, active, and clears page content", async ({
+  test("mobile menu is accessible, active, and reaches every primary area", async ({
     page,
   }) => {
     await page.goto("/");
-    const intro = page.getByRole("dialog", { name: "Papa Tony introduction" });
-    if (await intro.isVisible()) {
-      await page.getByRole("button", { name: "Skip", exact: true }).click();
-    }
-    const nav = page.getByRole("navigation", { name: "Mobile navigation" });
+    const menu = page.getByRole("button", { name: "Open menu" });
+    await expect(menu).toHaveAttribute("aria-expanded", "false");
+    await menu.click();
+    await expect(
+      page.getByRole("button", { name: "Close menu" }),
+    ).toHaveAttribute("aria-expanded", "true");
+    const nav = page.getByRole("navigation", { name: "Primary navigation" });
     await expect(nav).toBeVisible();
-    await expect(nav.getByRole("link", { name: "Home", exact: true })).toHaveAttribute(
-      "aria-current",
-      "page",
-    );
+    await page.keyboard.press("Escape");
+    await expect(nav).toBeHidden();
+    await menu.click();
     await nav.getByRole("link", { name: "Enterprise", exact: true }).click();
     await expect(page).toHaveURL(/\/enterprise$/);
+    await menu.click();
     await expect(
       nav.getByRole("link", { name: "Enterprise", exact: true }),
     ).toHaveAttribute("aria-current", "page");
-    const clearance = await page.evaluate(() => {
-      const footer = document.querySelector("footer")?.getBoundingClientRect();
-      const bottomNav = document
-        .querySelector(".bottom-nav")
-        ?.getBoundingClientRect();
-      return {
-        bodyPaddingBottom: parseFloat(getComputedStyle(document.body).paddingBottom),
-        navHeight: bottomNav?.height ?? 0,
-        footerExists: Boolean(footer),
-      };
-    });
-    expect(clearance.footerExists).toBe(true);
-    expect(clearance.bodyPaddingBottom).toBeGreaterThanOrEqual(
-      Math.floor(clearance.navHeight),
-    );
   });
 
-  test("reduced motion suppresses the introduction", async ({ browser }) => {
+  test("reduced motion suppresses menu transitions", async ({ browser }) => {
     const context = await browser.newContext({
       viewport: { width: 390, height: 844 },
       reducedMotion: "reduce",
     });
     const reducedPage = await context.newPage();
     await reducedPage.goto("http://localhost:4173/");
-    await expect(
-      reducedPage.getByRole("dialog", { name: "Papa Tony introduction" }),
-    ).toHaveCount(0);
     const motion = await reducedPage.evaluate(() => {
-      const probe = document.querySelector(".bottom-nav-item");
+      const probe = document.querySelector(".menu-toggle span");
       if (!(probe instanceof HTMLElement)) return null;
       const style = getComputedStyle(probe);
       return {

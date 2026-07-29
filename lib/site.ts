@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 export const SITE_URL = "https://papatony.me";
 export const SITE_NAME = "Papa Tony";
 export const SITE_DESCRIPTION =
-  "The official profile of Apostle Dr. Anthony Nkumbe—faith-led entrepreneur, certified real estate consultant, investment facilitator, institution builder, and ministry founder in Cameroon.";
+  "Anthony Nkumbe helps diaspora founders, property owners, investors, and institutions qualify opportunities and navigate informed next steps in Cameroon.";
 export const LEGACY_IMAGE_SRC: string | null = null;
 
 export const rootMetadata: Metadata = {
@@ -79,7 +79,7 @@ const seo: Record<Locale, Record<PageKey, PageSeo>> = {
     home: {
       title: "Anthony Nkumbe | Papa Tony",
       description:
-        "Anthony Nkumbe connects diaspora ambition with African opportunity across property, enterprise, leadership, institution building, and purpose.",
+        "Navigate property and enterprise opportunities in Cameroon with Anthony Nkumbe's local judgment, cross-border perspective, and institutional experience.",
     },
     enterprise: {
       title: "Property & Enterprise",
@@ -116,7 +116,7 @@ const seo: Record<Locale, Record<PageKey, PageSeo>> = {
     home: {
       title: "Anthony Nkumbe | Papa Tony",
       description:
-        "Anthony Nkumbe relie les ambitions de la diaspora aux opportunités africaines dans l'immobilier, l'entreprise, le leadership et la construction institutionnelle.",
+        "Abordez les opportunités immobilières et entrepreneuriales au Cameroun avec le jugement local, la perspective transfrontalière et l'expérience institutionnelle d'Anthony Nkumbe.",
     },
     enterprise: {
       title: "Immobilier & Entreprise",
@@ -201,9 +201,9 @@ export function createPageMetadata(
       siteName: SITE_NAME,
       images: [
         {
-          url: "/og.png",
-          width: 1734,
-          height: 907,
+          url: "/og-v2.jpg",
+          width: 1200,
+          height: 630,
           alt: `${SITE_NAME} — ${current.title}`,
         },
       ],
@@ -212,7 +212,7 @@ export function createPageMetadata(
       card: "summary_large_image",
       title: current.title,
       description: current.description,
-      images: ["/og.png"],
+      images: ["/og-v2.jpg"],
     },
   };
 }

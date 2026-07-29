@@ -2,14 +2,14 @@ import assert from "node:assert/strict";
 import test from "node:test";
 
 const routes = [
-  ["/", "en", "Building trusted pathways"],
+  ["/", "en", "Navigate opportunity in Cameroon"],
   ["/enterprise", "en", "Opportunity needs more than capital"],
   ["/leadership", "en", "Convening people"],
   ["/about", "en", "A builder shaped"],
   ["/ministry", "en", "Faith that forms people"],
   ["/contact", "en", "Start with the opportunity"],
   ["/privacy", "en", "A simple, respectful"],
-  ["/fr", "fr", "Créer des passerelles"],
+  ["/fr", "fr", "Aborder les opportunités au Cameroun"],
   ["/fr/enterprise", "fr", "Une opportunité exige"],
   ["/fr/leadership", "fr", "Rassembler les personnes"],
   ["/fr/about", "fr", "Un bâtisseur façonné"],
