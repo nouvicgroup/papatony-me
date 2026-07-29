@@ -43,7 +43,7 @@ const copy = {
     checking: "Checking you are human\u2026",
     sent: "Sent. I\u2019ll reply to the address you gave.",
     blocked: "That check did not pass, so nothing was sent. Please try again.",
-    note: "Only used to reply to you.",
+    note: "Your details are used only to reply to you.",
     invalid: "Please fill in the required fields, and check the email address.",
     unavailable:
       "Your message is ready, but delivery from this page is temporarily unavailable. Nothing has been sent. Copy it below and send it through the channel you normally use to reach me.",
@@ -78,7 +78,7 @@ const copy = {
     checking: "V\u00e9rification en cours\u2026",
     sent: "Envoy\u00e9. Je r\u00e9pondrai \u00e0 l\u2019adresse indiqu\u00e9e.",
     blocked: "La v\u00e9rification n\u2019a pas abouti, rien n\u2019a \u00e9t\u00e9 envoy\u00e9. R\u00e9essayez.",
-    note: "Sert uniquement \u00e0 vous r\u00e9pondre.",
+    note: "Vos coordonn\u00e9es ne servent qu\u2019\u00e0 vous r\u00e9pondre.",
     invalid:
       "Merci de remplir les champs obligatoires et de v\u00e9rifier l\u2019adresse e-mail.",
     unavailable:
