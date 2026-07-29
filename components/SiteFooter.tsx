@@ -11,7 +11,7 @@ export function SiteFooter({ locale }: SiteFooterProps) {
     <footer className="site-footer">
       <div>
         <Link className="footer-brand logotype" href={localizedPath(locale, "home")}>
-          Papa<span>T</span>
+          Papa<span>T</span>ony
         </Link>
         <p>
           {french

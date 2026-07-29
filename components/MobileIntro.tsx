@@ -179,7 +179,15 @@ export function MobileIntro({ locale }: MobileIntroProps) {
                 </span>
               )}
               <p>{index === 0 ? item.name : item.eyebrow}</p>
-              <strong>{item.title}</strong>
+              <strong>
+                {index === 0 ? (
+                  <span className="logotype">
+                    Papa<span>T</span>ony
+                  </span>
+                ) : (
+                  item.title
+                )}
+              </strong>
               <small>{item.body}</small>
               {index === total - 1 && (
                 <button

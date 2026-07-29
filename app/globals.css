@@ -388,9 +388,10 @@ h3 {
   line-height: 1.1;
 }
 
-/* PapaT logotype: the terminal T is the hook, and it echoes the mark. */
+/* PapaTony logotype: the medial T is the hook, and it echoes the T mark. */
 .logotype {
   letter-spacing: -0.035em;
+  white-space: nowrap;
 }
 
 .logotype span {
@@ -2947,6 +2948,10 @@ h3 {
     text-transform: uppercase;
   }
 
+  .intro-identity strong .logotype span {
+    color: var(--cobalt-lift);
+  }
+
   .intro-identity strong {
     font-size: clamp(34px, 10vw, 46px);
     font-weight: 570;
@@ -2962,12 +2967,15 @@ h3 {
     margin-top: 16px;
   }
 
+  /* Tracking is tightened so the four-part tagline sets on one line at 390px
+     rather than orphaning its last word. */
   .intro-track > section:first-child .intro-identity small {
     color: rgba(255, 255, 255, 0.56);
     font-family: var(--mono);
     font-size: 12px;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.02em;
     text-transform: uppercase;
+    white-space: nowrap;
   }
 
   .intro-enter {
@@ -3182,6 +3190,19 @@ h3 {
     background: transparent;
     border: 0;
     padding: 0;
+  }
+}
+
+/* On the narrowest phones the tagline cannot hold one line at a readable
+   size, so it wraps instead of being clipped. */
+@media (max-width: 379px) {
+  .intro-track > section:first-child .intro-identity small {
+    white-space: normal;
+  }
+
+  .intro-track > section {
+    padding-left: 24px;
+    padding-right: 24px;
   }
 }
 
