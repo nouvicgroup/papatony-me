@@ -11,7 +11,7 @@ export default defineConfig({
     trace: "retain-on-failure",
   },
   webServer: {
-    command: "npx vinext dev --port 4173",
+    command: "npx next dev --port 4173",
     // Cloudflare's published always-passes testing pair, so the suite
     // exercises the real verify path. Not credentials.
     // https://developers.cloudflare.com/turnstile/troubleshooting/testing/

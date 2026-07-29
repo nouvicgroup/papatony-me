@@ -1,5 +1,16 @@
 import { expect, test, type Locator, type Page } from "@playwright/test";
 
+/**
+ * Next.js mounts a route announcer with role="alert" on every page, so the
+ * form's status alert must be selected around it — same role assertion,
+ * narrowed to the application's own alert.
+ */
+function statusAlert(page: Page) {
+  return page
+    .getByRole("alert")
+    .and(page.locator(":not(#__next-route-announcer__)"));
+}
+
 /** Turnstile injects a hidden input once it has solved; wait for the token. */
 async function waitForTurnstile(scope: Page | Locator) {
   await expect
@@ -139,7 +150,7 @@ test.describe("desktop experience", () => {
   }) => {
     await page.goto("/contact");
     await page.getByRole("button", { name: "Review my message" }).click();
-    await expect(page.getByRole("alert")).toContainText(
+    await expect(statusAlert(page)).toContainText(
       "Please fill in the required fields",
     );
     await page.getByLabel("Your name *").fill("Test Partner");
@@ -156,7 +167,7 @@ test.describe("desktop experience", () => {
     await waitForTurnstile(page);
     await page.getByRole("button", { name: "Review my message" }).click();
     // Whatever the outcome, the form must never claim it sent anything.
-    const alert = page.getByRole("alert");
+    const alert = statusAlert(page);
     await expect(alert).toContainText(/nothing (has been|was) sent/i);
     await expect(alert).not.toContainText(
       /message sent|successfully sent|thank you|we.ll be in touch/i,
@@ -335,7 +346,7 @@ test.describe("mobile experience", () => {
     await waitForTurnstile(sheet);
     await sheet.getByRole("button", { name: "Review my message" }).click();
 
-    const alert = page.getByRole("alert");
+    const alert = statusAlert(page);
     await expect(alert).toContainText(/nothing (has been|was) sent/i);
 
     await page.keyboard.press("Escape");

@@ -1,4 +1,5 @@
 import assert from "node:assert/strict";
+import { spawn } from "node:child_process";
 import test from "node:test";
 
 const routes = [
@@ -18,29 +19,48 @@ const routes = [
   ["/fr/privacy", "fr", "Une prise de contact"],
 ];
 
-let worker;
+// The production server under test. `npm test` builds first, so `.next` is
+// fresh; the suite exercises the same `next start` process Vercel runs.
+const PORT = 4174;
+const BASE = `http://localhost:${PORT}`;
+
+let server;
 
 test.before(async () => {
-  const workerUrl = new URL("../dist/server/index.js", import.meta.url);
-  workerUrl.searchParams.set("test", `${process.pid}-${Date.now()}`);
-  ({ default: worker } = await import(workerUrl.href));
+  server = spawn("npx", ["next", "start", "-p", String(PORT)], {
+    stdio: ["ignore", "pipe", "pipe"],
+  });
+  const exited = new Promise((_, reject) => {
+    server.once("exit", (code) => {
+      reject(new Error(`next start exited early with code ${code}`));
+    });
+  });
+  const deadline = Date.now() + 60_000;
+  // Poll until the server answers; next start prints "Ready" quickly but the
+  // socket is the only signal that matters.
+  for (;;) {
+    try {
+      await Promise.race([fetch(`${BASE}/`, { method: "HEAD" }), exited]);
+      break;
+    } catch (error) {
+      if (error.message?.startsWith("next start exited")) throw error;
+      if (Date.now() > deadline) {
+        throw new Error("next start did not become ready within 60s");
+      }
+      await new Promise((resolve) => setTimeout(resolve, 250));
+    }
+  }
+});
+
+test.after(() => {
+  server?.kill("SIGTERM");
 });
 
 async function render(path) {
-  return worker.fetch(
-    new Request(`http://localhost${path}`, {
-      headers: { accept: "text/html" },
-    }),
-    {
-      ASSETS: {
-        fetch: async () => new Response("Not found", { status: 404 }),
-      },
-    },
-    {
-      waitUntil() {},
-      passThroughOnException() {},
-    },
-  );
+  return fetch(`${BASE}${path}`, {
+    headers: { accept: "text/html" },
+    redirect: "manual",
+  });
 }
 
 for (const [path, language, heading] of routes) {
