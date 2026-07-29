@@ -2,7 +2,9 @@
 
 import { FormEvent, useRef, useState, useSyncExternalStore } from "react";
 import { SelectField } from "@/components/SelectField";
+import { TurnstileWidget } from "@/components/TurnstileWidget";
 import type { Locale } from "@/lib/site";
+import { turnstileConfigured } from "@/lib/turnstile";
 
 interface InquiryFormProps {
   locale: Locale;
@@ -85,6 +87,7 @@ const copy = {
 export function InquiryForm({ locale }: InquiryFormProps) {
   const [status, setStatus] = useState<FormStatus>("idle");
   const [intention, setIntention] = useState("");
+  const [turnstileToken, setTurnstileToken] = useState("");
   const formRef = useRef<HTMLFormElement>(null);
   const hydrated = useSyncExternalStore(
     subscribeToHydration,
@@ -101,6 +104,11 @@ export function InquiryForm({ locale }: InquiryFormProps) {
     if (!form.checkValidity() || !intention) {
       setStatus("invalid");
       form.reportValidity();
+      return;
+    }
+    // Only gates when Turnstile is actually configured; see lib/turnstile.ts.
+    if (turnstileConfigured && !turnstileToken) {
+      setStatus("invalid");
       return;
     }
     setStatus("not-configured");
@@ -184,6 +192,7 @@ export function InquiryForm({ locale }: InquiryFormProps) {
           )}
         </div>
       )}
+      <TurnstileWidget locale={locale} onToken={setTurnstileToken} />
       <div className="form-submit">
         <small>{text.note}</small>
         <button type="submit" disabled={!hydrated}>

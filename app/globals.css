@@ -2096,6 +2096,16 @@ h3 {
   border-color: rgba(255, 255, 255, 0.5);
 }
 
+.turnstile {
+  margin: 0 0 22px;
+  min-height: 0;
+}
+
+.turnstile:empty {
+  display: none;
+  margin: 0;
+}
+
 .form-submit {
   align-items: center;
   display: flex;
