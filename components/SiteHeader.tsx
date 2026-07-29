@@ -3,8 +3,14 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
+import { BrandMark } from "@/components/Icons";
 import { LanguageSwitch } from "@/components/LanguageSwitch";
-import { localizedPath, type Locale, type PageKey } from "@/lib/site";
+import {
+  localizedPath,
+  pageFromPathname,
+  type Locale,
+  type PageKey,
+} from "@/lib/site";
 
 interface SiteHeaderProps {
   locale: Locale;
@@ -29,6 +35,26 @@ const labels = {
   },
 };
 
+/** Short titles for the mobile screen bar; the home screen shows none. */
+const screenTitles: Record<Locale, Partial<Record<PageKey, string>>> = {
+  en: {
+    enterprise: "Property & enterprise",
+    leadership: "Leadership",
+    about: "Official profile",
+    ministry: "Ministry",
+    contact: "Start an inquiry",
+    privacy: "Privacy",
+  },
+  fr: {
+    enterprise: "Immobilier & entreprise",
+    leadership: "Leadership",
+    about: "Profil officiel",
+    ministry: "Ministère",
+    contact: "Nouvelle demande",
+    privacy: "Confidentialité",
+  },
+};
+
 export function SiteHeader({ locale }: SiteHeaderProps) {
   const copy = labels[locale];
   const pathname = usePathname();
@@ -39,6 +65,9 @@ export function SiteHeader({ locale }: SiteHeaderProps) {
     ["about", copy.about],
     ["ministry", copy.ministry],
   ];
+
+  const currentPage = pageFromPathname(locale, pathname);
+  const screenTitle = currentPage ? screenTitles[locale][currentPage] : undefined;
 
   useEffect(() => {
     if (!menuOpen) return;
@@ -64,14 +93,19 @@ export function SiteHeader({ locale }: SiteHeaderProps) {
         aria-label={copy.home}
         onClick={() => setMenuOpen(false)}
       >
-        <span className="wordmark-mark" aria-hidden="true">
-          PT
+        <span className="wordmark-mark">
+          <BrandMark />
         </span>
         <span className="wordmark-copy">
           <strong>Papa Tony</strong>
-          <small>Anthony Nkumbe</small>
+          <small>Dr. Anthony Nkumbe</small>
         </span>
       </Link>
+      {screenTitle && (
+        <p className="screen-title" aria-hidden="true">
+          {screenTitle}
+        </p>
+      )}
       <nav
         className="desktop-nav"
         id="primary-navigation"

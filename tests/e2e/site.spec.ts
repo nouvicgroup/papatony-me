@@ -72,9 +72,15 @@ test.describe("desktop experience", () => {
   }) => {
     await page.setViewportSize({ width: 900, height: 1000 });
     await page.goto("/");
-    const menu = page.getByRole("button", { name: "Open menu" });
+    // Located by class, not by name: the label flips to "Close menu" once open.
+    const menu = page.locator("button.menu-toggle");
     await expect(menu).toBeVisible();
-    await menu.click();
+    await expect(menu).toHaveAccessibleName("Open menu");
+    // The toggle only responds once React has hydrated the header.
+    await expect(async () => {
+      await menu.click();
+      await expect(menu).toHaveAttribute("aria-expanded", "true");
+    }).toPass({ timeout: 15_000 });
     const navigation = page.getByRole("navigation", {
       name: "Primary navigation",
     });
@@ -183,7 +189,7 @@ test.describe("mobile experience", () => {
     await page.goto("/");
     await page.getByRole("button", { name: "Skip", exact: true }).click();
     const heading = page.getByRole("heading", {
-      name: /Navigate opportunity in Cameroon/,
+      name: /Cameroon opportunity, assessed on the ground/,
       level: 1,
     });
     await expect(heading).toBeVisible();
@@ -193,17 +199,37 @@ test.describe("mobile experience", () => {
         exact: true,
       }),
     ).toBeVisible();
-    const positions = await page.evaluate(() => {
-      const headingBox = document.querySelector("h1")?.getBoundingClientRect();
-      const portraitBox = document
-        .querySelector(".hero-portrait")
-        ?.getBoundingClientRect();
+    // Layered composition: the portrait leads, the copy panel overlaps its
+    // lower half, and the proposition plus primary action still land inside
+    // the first screen without scrolling.
+    const layout = await page.evaluate(() => {
+      const box = (selector: string) =>
+        document.querySelector(selector)?.getBoundingClientRect() ?? null;
+      const portrait = box(".hero-portrait");
+      const copy = box(".hero-copy");
+      const heading = box("h1");
+      const cta = box(".hero-actions .button");
       return {
-        headingTop: headingBox?.top ?? Number.POSITIVE_INFINITY,
-        portraitTop: portraitBox?.top ?? 0,
+        portraitTop: portrait?.top ?? 0,
+        portraitBottom: portrait?.bottom ?? 0,
+        copyTop: copy?.top ?? 0,
+        headingTop: heading?.top ?? 0,
+        ctaBottom: cta?.bottom ?? Number.POSITIVE_INFINITY,
+        viewport: window.innerHeight,
+        navTop:
+          document.querySelector(".bottom-nav")?.getBoundingClientRect().top ??
+          window.innerHeight,
       };
     });
-    expect(positions.headingTop).toBeLessThan(positions.portraitTop);
+
+    expect(layout.portraitTop).toBeLessThan(layout.copyTop);
+    // The panel starts inside the portrait, not below it.
+    expect(layout.copyTop).toBeLessThan(layout.portraitBottom);
+    expect(layout.headingTop).toBeGreaterThan(layout.portraitTop);
+    // Proposition and action are reachable without scrolling or hiding
+    // behind the bottom navigation.
+    expect(layout.headingTop).toBeLessThan(layout.viewport);
+    expect(layout.ctaBottom).toBeLessThan(layout.navTop);
   });
 
   test("bottom navigation is fixed, active, and clears page content", async ({
@@ -235,6 +261,117 @@ test.describe("mobile experience", () => {
     expect(clearance.bodyPaddingBottom).toBeGreaterThanOrEqual(
       clearance.navigationHeight,
     );
+  });
+
+  test("the primary action opens a focused inquiry sheet without faking delivery", async ({
+    page,
+  }) => {
+    await page.goto("/");
+    await page.getByRole("button", { name: "Skip", exact: true }).click();
+    await page
+      .getByRole("link", { name: /Start an opportunity brief/ })
+      .click();
+
+    const sheet = page.getByRole("dialog", { name: "Opportunity brief" });
+    await expect(sheet).toBeVisible();
+    await expect(page).toHaveURL(/localhost:4173\/$/);
+
+    // Once the slide-up settles the overlay must be anchored to the viewport,
+    // not stretched to the document by a transformed ancestor.
+    await expect(async () => {
+      const overlay = await page.evaluate(() => {
+        const scrim = document
+          .querySelector(".inquiry-sheet-scrim")
+          ?.getBoundingClientRect();
+        const panel = document
+          .querySelector(".inquiry-sheet")
+          ?.getBoundingClientRect();
+        if (!scrim || !panel) return null;
+        return {
+          scrimTop: Math.round(scrim.top),
+          scrimHeight: Math.round(scrim.height),
+          panelBottom: Math.round(panel.bottom),
+          panelTop: Math.round(panel.top),
+          viewport: window.innerHeight,
+        };
+      });
+      expect(overlay?.scrimTop).toBe(0);
+      expect(overlay?.scrimHeight).toBe(overlay?.viewport);
+      expect(overlay?.panelTop).toBeGreaterThanOrEqual(0);
+      expect(overlay?.panelBottom).toBe(overlay?.viewport);
+    }).toPass({ timeout: 5_000 });
+    await expect(
+      page.getByRole("button", { name: "Close", exact: true }),
+    ).toBeFocused();
+
+    await sheet.getByLabel("Full name *").fill("Test Partner");
+    await sheet.getByLabel("Email address *").fill("partner@example.com");
+    await sheet
+      .getByLabel("Nature of inquiry *")
+      .selectOption("Property and real estate");
+    await sheet
+      .getByLabel("Briefly describe the opportunity *")
+      .fill("A clearly scoped property question we would like to discuss.");
+    await sheet.getByRole("button", { name: "Prepare inquiry" }).click();
+
+    const alert = page.getByRole("alert");
+    await expect(alert).toContainText("online delivery is not yet connected");
+    await expect(alert).toContainText("Nothing has been sent");
+
+    await page.keyboard.press("Escape");
+    await expect(sheet).toBeHidden();
+  });
+
+  test("the engagement pager is swipeable and tracks position", async ({
+    page,
+  }) => {
+    await page.goto("/");
+    await page.getByRole("button", { name: "Skip", exact: true }).click();
+
+    const geometry = await page.evaluate(() => {
+      const track = document.querySelector<HTMLElement>(".pager-track");
+      if (!track) return null;
+      return {
+        scrollable: track.scrollWidth > track.clientWidth + 8,
+        dots: document.querySelectorAll(".pager-dots button").length,
+        cards: track.querySelectorAll("article").length,
+      };
+    });
+    expect(geometry?.scrollable).toBe(true);
+    expect(geometry?.cards).toBe(4);
+    expect(geometry?.dots).toBe(4);
+
+    const dots = page.locator(".pager-dots button");
+    await dots.nth(2).scrollIntoViewIfNeeded();
+    // Clear the sticky header before clicking a dot.
+    await page.evaluate(() => window.scrollBy(0, -110));
+    await dots.nth(2).click();
+    await page.waitForTimeout(600);
+    const moved = await page.evaluate(
+      () => document.querySelector<HTMLElement>(".pager-track")?.scrollLeft ?? 0,
+    );
+    expect(moved).toBeGreaterThan(0);
+  });
+
+  test("bottom navigation uses drawn icons and never covers content", async ({
+    page,
+  }) => {
+    await page.goto("/contact");
+    const nav = page.getByRole("navigation", { name: "Mobile navigation" });
+    await expect(nav.locator("svg")).toHaveCount(5);
+
+    await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight));
+    await page.waitForTimeout(200);
+    const clear = await page.evaluate(() => {
+      const navBox = document
+        .querySelector(".bottom-nav")
+        ?.getBoundingClientRect();
+      const last = document.querySelector(".site-footer > small");
+      const lastBox = last?.getBoundingClientRect();
+      if (!navBox || !lastBox) return null;
+      return lastBox.bottom <= navBox.top;
+    });
+    expect(clear).toBe(true);
   });
 
   test("reduced motion keeps the splash static and preserves dismissal", async ({

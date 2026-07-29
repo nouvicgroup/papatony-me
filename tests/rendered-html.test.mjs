@@ -2,14 +2,14 @@ import assert from "node:assert/strict";
 import test from "node:test";
 
 const routes = [
-  ["/", "en", "Navigate opportunity in Cameroon"],
+  ["/", "en", "Cameroon opportunity, assessed on the ground"],
   ["/enterprise", "en", "Opportunity needs more than capital"],
   ["/leadership", "en", "Convening people"],
   ["/about", "en", "A builder shaped"],
   ["/ministry", "en", "Faith that forms people"],
   ["/contact", "en", "Start with the opportunity"],
   ["/privacy", "en", "A simple, respectful"],
-  ["/fr", "fr", "Aborder les opportunités au Cameroun"],
+  ["/fr", "fr", "Les opportunités camerounaises"],
   ["/fr/enterprise", "fr", "Une opportunité exige"],
   ["/fr/leadership", "fr", "Rassembler les personnes"],
   ["/fr/about", "fr", "Un bâtisseur façonné"],
@@ -61,13 +61,58 @@ for (const [path, language, heading] of routes) {
 test("home page exposes direct optimized media and structured data", async () => {
   const response = await render("/");
   const html = await response.text();
-  assert.match(html, /\/media\/hero-desktop\.webp/);
-  assert.match(html, /\/media\/hero-mobile\.webp/);
+  assert.match(html, /\/media\/hero-desktop-v4\.webp/);
+  assert.match(html, /\/media\/hero-mobile-v4\.webp/);
   assert.match(html, /"@type":"ProfilePage"/);
   assert.match(html, /"@type":"Person"/);
   assert.match(html, /"@type":"WebSite"/);
   assert.doesNotMatch(html, /_vinext\/image/);
   assert.doesNotMatch(html, /review-v[1-4]/i);
+});
+
+test("page titles carry the brand exactly once", async () => {
+  const home = await (await render("/")).text();
+  const title = home.match(/<title>([^<]*)<\/title>/i)?.[1] ?? "";
+  assert.match(title, /Papa Tony/);
+  assert.equal(title.match(/Papa Tony/g)?.length, 1, title);
+
+  const inner = await (await render("/enterprise")).text();
+  const innerTitle = inner.match(/<title>([^<]*)<\/title>/i)?.[1] ?? "";
+  assert.equal(innerTitle.match(/Papa Tony/g)?.length, 1, innerTitle);
+});
+
+test("all five approved portraits ship across the site", async () => {
+  const pages = await Promise.all(
+    ["/", "/leadership", "/about"].map(async (path) =>
+      (await render(path)).text(),
+    ),
+  );
+  const combined = pages.join("\n");
+  for (const asset of [
+    "hero-desktop-v4.webp",
+    "hero-mobile-v4.webp",
+    "leadership-v4.webp",
+    "headshot-v4.webp",
+    "engagement-v4.webp",
+  ]) {
+    assert.match(combined, new RegExp(asset.replace(".", "\\.")), asset);
+  }
+});
+
+test("legacy stays text-only until an approved portrait exists", async () => {
+  const html = await (await render("/")).text();
+  assert.match(html, /Build people who can build beyond you/i);
+  const legacy = html.split("legacy-note")[1]?.slice(0, 1200) ?? "";
+  assert.doesNotMatch(legacy, /<img/i);
+  assert.doesNotMatch(html, /carine[^<"]*\.(png|webp|jpe?g)/i);
+});
+
+test("navigation uses drawn icons rather than placeholder glyphs", async () => {
+  const html = await (await render("/")).text();
+  const nav = html.split('class="bottom-nav"')[1]?.split("</nav>")[0] ?? "";
+  assert.notEqual(nav, "");
+  assert.match(nav, /<svg/);
+  assert.doesNotMatch(nav, /[⌂◫◎✦]/u);
 });
 
 test("contact form is honest about unavailable delivery", async () => {
@@ -76,6 +121,12 @@ test("contact form is honest about unavailable delivery", async () => {
   assert.match(html, /Online delivery is intentionally not active/i);
   assert.match(html, /Prepare inquiry/i);
   assert.doesNotMatch(html, /message sent|thank you for your submission/i);
+});
+
+test("the home page states the delivery gap rather than implying it works", async () => {
+  const html = await (await render("/")).text();
+  assert.match(html, /not connected yet/i);
+  assert.doesNotMatch(html, /message sent|we will get back to you/i);
 });
 
 test("unknown routes return a useful 404", async () => {

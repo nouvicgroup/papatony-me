@@ -1,12 +1,9 @@
 import Link from "next/link";
+import { EngagementPager } from "@/components/EngagementPager";
 import { HeroPortrait } from "@/components/HeroPortrait";
 import { MediaImage } from "@/components/MediaImage";
-import {
-  LEGACY_IMAGE_SRC,
-  localizedPath,
-  SITE_URL,
-  type Locale,
-} from "@/lib/site";
+import { OpportunityAction } from "@/components/OpportunityAction";
+import { localizedPath, MEDIA, SITE_URL, type Locale } from "@/lib/site";
 
 interface HomePageProps {
   locale: Locale;
@@ -14,27 +11,52 @@ interface HomePageProps {
 
 const content = {
   en: {
-    eyebrow: "Cameroon market access · Property · Enterprise",
-    name: "Anthony Nkumbe",
+    eyebrow: "Cameroon · Property · Enterprise",
+    name: "Dr. Anthony Nkumbe",
     known: "Known as Papa Tony",
-    headline: "Navigate opportunity in Cameroon with trusted local judgment.",
-    lead:
-      "Anthony Nkumbe helps diaspora founders, property owners, investors, and institutions qualify opportunities, connect with suitable local counterparts, and move toward informed next steps.",
+    headline: "Cameroon opportunity, assessed on the ground.",
+    leadFull:
+      "Founders, property owners, investors, and institutions arrive with an interest in Cameroon. Anthony Nkumbe helps them qualify it, meet the right local counterparts, and reach an informed next step.",
+    leadShort:
+      "Qualify an opportunity in Cameroon, meet the right counterparts, reach an informed next step.",
     primary: "Start an opportunity brief",
-    secondary: "See how he works",
+    secondary: "How engagement works",
     heroAlt:
-      "Anthony Nkumbe seated at an executive desk in a black suit",
-    rolesLabel: "Designed for",
+      "Anthony Nkumbe seated at a wood-panelled executive desk in a dark suit",
+    heroCaption: "Dr. Anthony Nkumbe",
+    heroCaptionMeta: "Cameroon",
+
+    recordKicker: "The record",
+    recordTitle: "Roles held, not results claimed.",
+    recordLead:
+      "Standing here comes from positions currently held across enterprise, property, cooperatives, and institutions. Outcomes belong to the parties involved and are not advertised on this page.",
     roles: [
-      "Diaspora founders & investors",
-      "Property owners & buyers",
-      "Enterprise operators",
-      "Institutions & municipalities",
+      ["Chief Executive", "Rainbow Group of Companies"],
+      ["Certified consultant, negotiator & facilitator", "Real estate"],
+      ["Low-cost building facilitator", "Multiple municipalities"],
+      ["Vice President", "CHEDE Union of Cooperatives"],
+      ["Executive member", "Africa Arise Business Consortium"],
+      ["Technical adviser", "Processing companies"],
+      ["Founder", "Eagles’ Family Assembly"],
+      [
+        "Regional coordinator, West Africa",
+        "Kingdom World for Jesus Int’l Church Fellowship",
+      ],
     ],
-    pillarsKicker: "Ways to engage",
-    pillarsTitle: "Move from interest to an informed next step.",
-    pillarsLead:
-      "Each engagement begins by defining the opportunity, testing the context, and identifying the people and diligence required to proceed responsibly.",
+    provenance:
+      "Roles as stated by Dr. Anthony Nkumbe. Dates, scale, and independent references are being documented and will be published here as each one is confirmed.",
+    pendingLabel: "Still to be published",
+    pending: [
+      "Named engagements with dates, role, and geography",
+      "Measurable results confirmed by the parties involved",
+      "Attributed references, published with permission",
+    ],
+
+    mandateKicker: "Where he is useful",
+    mandateTitle: "Four ways an engagement usually starts.",
+    mandateLead:
+      "Each one begins by defining the opportunity, testing the context, and identifying the people and diligence required to proceed responsibly.",
+    pagerLabel: "Ways to engage",
     pillars: [
       {
         number: "01",
@@ -57,74 +79,131 @@ const content = {
         text: "Convene and equip leaders through platforms connecting enterprise, institution building, responsible service, and purpose.",
       },
     ],
-    enterpriseKicker: "Property & enterprise",
-    enterpriseTitle: "Clarity for property and enterprise decisions.",
+    enterpriseTitle: "Property, Land and Building Site. At the Center of the Project",
     enterpriseBody:
-      "From real estate consulting to enterprise and investment facilitation, the work begins with understanding the opportunity, the people around it, and the conditions required for responsible progress.",
-    enterprisePoints: [
-      "Certified real estate consulting, negotiation, and facilitation",
-      "Low-cost building facilitation for municipal contexts",
-      "Enterprise, cooperative, and processing-sector advisory",
-      "Investment introductions and cross-border partnership conversations",
-    ],
+      "Certified real estate consulting, negotiation and facilitation, low-cost building work in municipal contexts, and enterprise advisory across cooperatives and processing.",
     enterpriseLink: "Explore enterprise work",
-    enterpriseAlt:
-      "Anthony Nkumbe reviewing plans at an active construction site",
-    leadershipKicker: "Leadership platforms",
-    leadershipTitle: "Platforms that turn conviction into capacity.",
-    leadershipBody:
-      "Papa Tony has founded, led, and convened platforms where entrepreneurship, ministry formation, business leadership, and regional collaboration can develop.",
-    leadershipLink: "See the leadership record",
+    enterpriseAlt: "Construction site with reinforcement work in progress",
+
+    engagementKicker: "How engagement works",
+    engagementTitle: "Clarity before commitment.",
+    steps: [
+      [
+        "Define",
+        "Clarify the asset, enterprise, geography, decision makers, timeline, and intended outcome.",
+      ],
+      [
+        "Examine",
+        "Separate what is known from what still requires verification, and name where local professional advice is needed.",
+      ],
+      [
+        "Connect",
+        "Bring the relevant parties into a bounded conversation with clear roles and expectations.",
+      ],
+      [
+        "Advance",
+        "Agree practical next steps while independent legal, technical, and financial diligence stays with you.",
+      ],
+    ],
+    engagementNote:
+      "Papa Tony works as a real estate consultant and investment facilitator — not as a financial adviser or wealth manager. No investment outcome is promised.",
+    engagementAlt:
+      "Anthony Nkumbe at a bright office desk during a working session",
+
+    operatorKicker: "The operator",
+    operatorTitle: "Trained on land. Built through institutions.",
+    operatorStory: [
+      "Papa Tony trained as an agronomist at FASA, University of Dschang — a formation that began with land, production, and the practical realities of local development.",
+      "The work widened into real estate consulting, negotiation, building facilitation, cooperatives, and investment conversations. The role stayed the same throughout: define the opportunity, read the context, reach the right counterpart.",
+    ],
+    credentialsLabel: "Formation",
+    credentials: [
+      "Agronomy — FASA, University of Dschang",
+      "Certified real estate consultant, negotiator, and facilitator",
+      "Full Gospel Bible Institute",
+      "Cornerstone University and Seminary",
+      "Evangel Theological Seminary",
+    ],
+    operatorLink: "Read the official profile",
+    operatorAlt: "Studio headshot of Anthony Nkumbe in a black suit",
+
+    institutionsKicker: "Leadership & ministry",
+    institutionsTitle: "Platforms that turn conviction into capacity.",
+    institutionsBody:
+      "Papa Tony founds, leads, and convenes platforms where entrepreneurship, leadership formation, and regional collaboration can develop.",
+    institutionsLink: "See the leadership record",
     platforms: [
       ["ESMEL", "Ministry, entrepreneurship, and leadership formation"],
       ["ELES", "Leadership empowerment and convening"],
       ["MBS", "Business dialogue for ministers and leaders"],
     ],
-    ministryKicker: "Ministry foundation",
-    ministryTitle: "Faith expressed through identity, stewardship, and service.",
-    ministryBody:
-      "Through Eagles' Family Assembly, Papa Tony carries a mandate to recover the world with the Word—raising people whose faith is expressed through responsible leadership, economic maturity, rural impact, and purposeful service.",
+    ministryLine:
+      "Faith is the foundation rather than a separate identity. Through Eagles’ Family Assembly he carries a mandate to recover the world with the Word, expressed as identity, stewardship, rural impact, and service.",
     ministryLink: "Visit Eagles’ Family Assembly",
     ministrySecondary: "Read the ministry foundation",
-    ministryAlt:
-      "Anthony Nkumbe speaking during a ministry gathering",
+    institutionsAlt:
+      "Anthony Nkumbe in a navy suit, arms crossed, in a conference building",
+
     legacyKicker: "Family & legacy",
-    legacyTitle: "The work is personal before it becomes public.",
+    legacyQuote: "Build people who can build beyond you.",
     legacyBody:
-      "Papa Tony and Rev. Carine Nkumbe are parents to four biological children and a wider family of adopted and spiritual sons and daughters. Their shared legacy is measured not only in institutions, but in people strengthened to carry responsibility.",
-    legacyQuote:
-      "Build people who can build beyond you.",
-    legacyAlt:
-      "Papa Tony and Rev. Carine Nkumbe with their family",
+      "Papa Tony and Rev. Carine Nkumbe are parents to four biological children and to a wider family of adopted and spiritual sons and daughters. The measure they use is people strengthened to carry responsibility.",
+
     ctaKicker: "A serious conversation begins with context",
     ctaTitle: "Bring the opportunity. Clarify the fit.",
     ctaBody:
       "For property, enterprise, institutional leadership, speaking, or ministry inquiries, share the context and the outcome you are working toward.",
     cta: "Discuss an opportunity",
+    ctaStatus:
+      "Online delivery of the inquiry form is not connected yet. The official destination channel will be published here once it is confirmed.",
   },
   fr: {
-    eyebrow: "Accès au marché camerounais · Immobilier · Entreprise",
-    name: "Anthony Nkumbe",
+    eyebrow: "Cameroun · Immobilier · Entreprise",
+    name: "Dr Anthony Nkumbe",
     known: "Connu sous le nom de Papa Tony",
-    headline:
-      "Aborder les opportunités au Cameroun avec un jugement local fiable.",
-    lead:
-      "Anthony Nkumbe aide les entrepreneurs de la diaspora, propriétaires, investisseurs et institutions à qualifier les opportunités, identifier les interlocuteurs locaux pertinents et avancer de manière éclairée.",
+    headline: "Les opportunités camerounaises, évaluées sur le terrain.",
+    leadFull:
+      "Entrepreneurs, propriétaires, investisseurs et institutions arrivent avec un intérêt pour le Cameroun. Anthony Nkumbe les aide à le qualifier, à rencontrer les bons interlocuteurs locaux et à définir une prochaine étape éclairée.",
+    leadShort:
+      "Qualifier une opportunité au Cameroun, rencontrer les bons interlocuteurs, avancer de façon éclairée.",
     primary: "Présenter une opportunité",
-    secondary: "Découvrir sa méthode",
+    secondary: "Le déroulement d'un échange",
     heroAlt:
-      "Anthony Nkumbe assis à un bureau de direction, vêtu d'un costume noir",
-    rolesLabel: "Pour qui",
+      "Anthony Nkumbe assis à un bureau de direction lambrissé, en costume sombre",
+    heroCaption: "Dr Anthony Nkumbe",
+    heroCaptionMeta: "Cameroun",
+
+    recordKicker: "Le parcours",
+    recordTitle: "Des fonctions exercées, pas des résultats revendiqués.",
+    recordLead:
+      "L'autorité vient ici des fonctions actuellement exercées dans l'entreprise, l'immobilier, les coopératives et les institutions. Les résultats appartiennent aux parties concernées et ne sont pas affichés sur cette page.",
     roles: [
-      "Entrepreneurs & investisseurs de la diaspora",
-      "Propriétaires & acquéreurs",
-      "Opérateurs économiques",
-      "Institutions & municipalités",
+      ["Directeur général", "Rainbow Group of Companies"],
+      ["Consultant, négociateur & facilitateur certifié", "Immobilier"],
+      ["Facilitateur de logements à coût maîtrisé", "Plusieurs municipalités"],
+      ["Vice-président", "CHEDE Union of Cooperatives"],
+      ["Membre exécutif", "Africa Arise Business Consortium"],
+      ["Conseiller technique", "Unités de transformation"],
+      ["Fondateur", "Eagles’ Family Assembly"],
+      [
+        "Coordonnateur régional, Afrique de l'Ouest",
+        "Kingdom World for Jesus Int’l Church Fellowship",
+      ],
     ],
-    pillarsKicker: "Modes d'engagement",
-    pillarsTitle: "Passer de l'intérêt à une prochaine étape éclairée.",
-    pillarsLead:
-      "Chaque échange commence par une définition précise de l'opportunité, une lecture du contexte et l'identification des acteurs et diligences nécessaires.",
+    provenance:
+      "Fonctions telles que déclarées par le Dr Anthony Nkumbe. Les dates, l'ampleur et les références indépendantes sont en cours de documentation et seront publiées ici au fur et à mesure de leur confirmation.",
+    pendingLabel: "Reste à publier",
+    pending: [
+      "Des missions nommées, avec dates, rôle et zone géographique",
+      "Des résultats mesurables confirmés par les parties concernées",
+      "Des références attribuées, publiées avec autorisation",
+    ],
+
+    mandateKicker: "Là où il est utile",
+    mandateTitle: "Quatre façons d'entamer un échange.",
+    mandateLead:
+      "Chacune commence par définir l'opportunité, lire le contexte et identifier les acteurs et les diligences nécessaires pour avancer sérieusement.",
+    pagerLabel: "Modes d'engagement",
     pillars: [
       {
         number: "01",
@@ -147,50 +226,83 @@ const content = {
         text: "Rassembler et former des leaders autour de l'entreprise, de la construction institutionnelle, du service responsable et de la mission.",
       },
     ],
-    enterpriseKicker: "Immobilier & entreprise",
-    enterpriseTitle: "De la clarté pour décider dans l'immobilier et l'entreprise.",
+    enterpriseTitle: "Immobilier, foncier et chantier. Au centre du projet",
     enterpriseBody:
-      "Du conseil immobilier à la facilitation d'entreprises et d'investissements, le travail commence par une lecture juste de l'opportunité, des acteurs concernés et des conditions nécessaires à une avancée responsable.",
-    enterprisePoints: [
-      "Conseil, négociation et facilitation immobilière certifiés",
-      "Facilitation de logements à coût maîtrisé en contexte municipal",
-      "Conseil auprès d'entreprises, de coopératives et d'unités de transformation",
-      "Mises en relation et échanges sur des partenariats transfrontaliers",
-    ],
+      "Conseil, négociation et facilitation immobilière certifiés, logements à coût maîtrisé en contexte municipal, et conseil aux entreprises, coopératives et unités de transformation.",
     enterpriseLink: "Explorer l'activité entrepreneuriale",
-    enterpriseAlt:
-      "Anthony Nkumbe consultant des plans sur un chantier en activité",
-    leadershipKicker: "Plateformes de leadership",
-    leadershipTitle: "Des plateformes qui transforment la conviction en capacité.",
-    leadershipBody:
-      "Papa Tony a fondé, dirigé et convoqué des plateformes où peuvent progresser l'entrepreneuriat, la formation au ministère, le leadership d'affaires et la collaboration régionale.",
-    leadershipLink: "Voir le parcours institutionnel",
+    enterpriseAlt: "Chantier de construction avec travaux de ferraillage en cours",
+
+    engagementKicker: "Le déroulement d'un échange",
+    engagementTitle: "Clarifier avant de s'engager.",
+    steps: [
+      [
+        "Définir",
+        "Préciser l'actif, l'entreprise, la zone, les décideurs, le calendrier et le résultat attendu.",
+      ],
+      [
+        "Examiner",
+        "Distinguer ce qui est établi de ce qui reste à vérifier, et nommer les domaines nécessitant un avis professionnel local.",
+      ],
+      [
+        "Relier",
+        "Réunir les parties pertinentes dans un échange délimité, avec des rôles et des attentes clairs.",
+      ],
+      [
+        "Avancer",
+        "Convenir des prochaines étapes, les diligences juridiques, techniques et financières indépendantes restant à votre charge.",
+      ],
+    ],
+    engagementNote:
+      "Papa Tony intervient comme consultant immobilier et facilitateur d'investissement, et non comme conseiller financier ou gestionnaire de patrimoine. Aucun résultat d'investissement n'est promis.",
+    engagementAlt:
+      "Anthony Nkumbe à un bureau lumineux pendant une séance de travail",
+
+    operatorKicker: "L'homme de terrain",
+    operatorTitle: "Formé par la terre. Bâti par les institutions.",
+    operatorStory: [
+      "Papa Tony s'est formé comme agronome à la FASA de l'Université de Dschang — une formation partie de la terre, de la production et des réalités concrètes du développement local.",
+      "L'activité s'est ensuite étendue au conseil immobilier, à la négociation, à la facilitation de construction, aux coopératives et aux échanges d'investissement. Le rôle est resté le même : définir l'opportunité, lire le contexte, trouver le bon interlocuteur.",
+    ],
+    credentialsLabel: "Formation",
+    credentials: [
+      "Agronomie — FASA, Université de Dschang",
+      "Consultant, négociateur et facilitateur immobilier certifié",
+      "Full Gospel Bible Institute",
+      "Cornerstone University and Seminary",
+      "Evangel Theological Seminary",
+    ],
+    operatorLink: "Lire le profil officiel",
+    operatorAlt: "Portrait studio d'Anthony Nkumbe en costume noir",
+
+    institutionsKicker: "Leadership & ministère",
+    institutionsTitle: "Des plateformes qui transforment la conviction en capacité.",
+    institutionsBody:
+      "Papa Tony fonde, dirige et convoque des plateformes où progressent l'entrepreneuriat, la formation au leadership et la collaboration régionale.",
+    institutionsLink: "Voir le parcours institutionnel",
     platforms: [
       ["ESMEL", "Formation au ministère, à l'entrepreneuriat et au leadership"],
       ["ELES", "Renforcement et rassemblement des leaders"],
       ["MBS", "Dialogue économique pour ministres et responsables"],
     ],
-    ministryKicker: "Fondement ministériel",
-    ministryTitle: "Une foi vécue par l'identité, l'intendance et le service.",
-    ministryBody:
-      "À travers Eagles' Family Assembly, Papa Tony porte le mandat de « récupérer le monde par la Parole » et de former des personnes dont la foi s'exprime dans le leadership responsable, la maturité économique, l'impact rural et le service.",
+    ministryLine:
+      "La foi est le fondement, non une identité séparée. À travers Eagles' Family Assembly, il porte le mandat de « récupérer le monde par la Parole », vécu comme identité, intendance, impact rural et service.",
     ministryLink: "Visiter Eagles’ Family Assembly",
     ministrySecondary: "Découvrir le fondement ministériel",
-    ministryAlt:
-      "Anthony Nkumbe prenant la parole lors d'un rassemblement ministériel",
+    institutionsAlt:
+      "Anthony Nkumbe en costume bleu marine, bras croisés, dans un bâtiment de conférence",
+
     legacyKicker: "Famille & transmission",
-    legacyTitle: "L'œuvre est personnelle avant d'être publique.",
+    legacyQuote: "Former des personnes capables de bâtir au-delà de vous.",
     legacyBody:
-      "Papa Tony et la Révérende Carine Nkumbe sont parents de quatre enfants biologiques et accompagnent une famille élargie d'enfants adoptés ainsi que de fils et filles spirituels. Leur héritage se lit autant dans les personnes fortifiées que dans les institutions.",
-    legacyQuote:
-      "Former des personnes capables de bâtir au-delà de vous.",
-    legacyAlt:
-      "Papa Tony et la Révérende Carine Nkumbe avec leur famille",
+      "Papa Tony et la Révérende Carine Nkumbe sont parents de quatre enfants biologiques et d'une famille élargie d'enfants adoptés ainsi que de fils et filles spirituels. Leur mesure : des personnes fortifiées pour porter des responsabilités.",
+
     ctaKicker: "Une conversation sérieuse commence par le contexte",
     ctaTitle: "Présentez l'opportunité. Vérifions l'adéquation.",
     ctaBody:
       "Pour toute demande liée à l'immobilier, l'entreprise, le leadership institutionnel, une intervention ou le ministère, partagez le contexte et le résultat recherché.",
     cta: "Échanger sur une opportunité",
+    ctaStatus:
+      "L'envoi en ligne du formulaire n'est pas encore connecté. Le canal de contact officiel sera publié ici dès sa confirmation.",
   },
 };
 
@@ -211,22 +323,25 @@ export function HomePage({ locale }: HomePageProps) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(profileSchema) }}
       />
+
+      {/* 1 — Proposition */}
       <section className="home-hero">
         <div className="hero-copy">
           <p className="eyebrow">{text.eyebrow}</p>
           <p className="hero-name">{text.name}</p>
           <p className="hero-known">{text.known}</p>
           <h1>{text.headline}</h1>
-          <p className="hero-lead">{text.lead}</p>
+          <p className="hero-lead">
+            <span className="lead-full">{text.leadFull}</span>
+            <span className="lead-short">{text.leadShort}</span>
+          </p>
           <div className="hero-actions">
-            <Link
+            <OpportunityAction
               className="button button-primary"
-              href={localizedPath(locale, "contact")}
-            >
-              {text.primary}
-              <span aria-hidden="true">↗</span>
-            </Link>
-            <a className="text-link" href="#work">
+              label={text.primary}
+              locale={locale}
+            />
+            <a className="text-link" href="#engagement">
               {text.secondary}
               <span aria-hidden="true">↓</span>
             </a>
@@ -236,87 +351,152 @@ export function HomePage({ locale }: HomePageProps) {
           <HeroPortrait alt={text.heroAlt} />
           <div className="hero-image-shade" aria-hidden="true" />
           <div className="portrait-caption">
-            <span>Anthony Nkumbe</span>
-            <small>Cameroon</small>
+            <span>{text.heroCaption}</span>
+            <small>{text.heroCaptionMeta}</small>
           </div>
         </div>
       </section>
 
-      <section className="roles-rail" aria-label={text.rolesLabel}>
-        <p>{text.rolesLabel}</p>
-        {text.roles.map((role, index) => (
-          <span key={role}>
-            <b>{String(index + 1).padStart(2, "0")}</b>
-            {role}
-          </span>
-        ))}
+      {/* 2 — Verified role rail */}
+      <section className="record-band" id="record">
+        <div className="record-head">
+          <div>
+            <p className="kicker">{text.recordKicker}</p>
+            <h2>{text.recordTitle}</h2>
+          </div>
+          <p>{text.recordLead}</p>
+        </div>
+        <ul className="role-rail">
+          {text.roles.map(([role, org]) => (
+            <li key={`${role}-${org}`}>
+              <b>{role}</b>
+              <span>{org}</span>
+            </li>
+          ))}
+        </ul>
+        <div className="record-provenance">
+          <p>{text.provenance}</p>
+          <div>
+            <p className="micro-label">{text.pendingLabel}</p>
+            <ul>
+              {text.pending.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+          </div>
+        </div>
       </section>
 
-      <section className="editorial-section pillars-section" id="work">
+      {/* 3 — Responsibilities */}
+      <section className="editorial-section mandate-section">
         <div className="section-heading split-heading">
           <div>
-            <p className="kicker">{text.pillarsKicker}</p>
-            <h2>{text.pillarsTitle}</h2>
+            <p className="kicker">{text.mandateKicker}</p>
+            <h2>{text.mandateTitle}</h2>
           </div>
-          <p>{text.pillarsLead}</p>
+          <p>{text.mandateLead}</p>
         </div>
-        <div className="pillar-grid">
-          {text.pillars.map((pillar) => (
-            <article key={pillar.number}>
-              <span>{pillar.number}</span>
-              <h3>{pillar.title}</h3>
-              <p>{pillar.text}</p>
-            </article>
-          ))}
-        </div>
+        <EngagementPager
+          items={text.pillars}
+          label={text.pagerLabel}
+          locale={locale}
+        />
       </section>
 
-      <section className="feature-band enterprise-feature">
-        <div className="feature-image">
+      <section className="wide-band">
+        <div className="wide-band-media">
           <MediaImage
-            src="/media/enterprise-construction.webp"
+            src={MEDIA.enterprise}
             alt={text.enterpriseAlt}
-            fill
-            sizes="(max-width: 900px) 100vw, 50vw"
+            sizes="(max-width: 900px) 100vw, 55vw"
           />
-          <small>
-            {locale === "fr"
-              ? "Image éditoriale — ne représente pas un projet précis"
-              : "Editorial image — not a documented project"}
-          </small>
         </div>
-        <div className="feature-copy">
-          <p className="kicker">{text.enterpriseKicker}</p>
+        <div className="wide-band-copy">
           <h2>{text.enterpriseTitle}</h2>
           <p>{text.enterpriseBody}</p>
-          <ul className="proof-list">
-            {text.enterprisePoints.map((point) => (
-              <li key={point}>{point}</li>
-            ))}
-          </ul>
-          <Link
-            className="text-link"
-            href={localizedPath(locale, "enterprise")}
-          >
+          <Link className="text-link" href={localizedPath(locale, "enterprise")}>
             {text.enterpriseLink}
             <span aria-hidden="true">→</span>
           </Link>
         </div>
       </section>
 
-      <section className="editorial-section leadership-preview">
-        <div className="leadership-intro">
-          <p className="kicker">{text.leadershipKicker}</p>
-          <h2>{text.leadershipTitle}</h2>
+      {/* 4 — How engagement works */}
+      <section className="engagement-section" id="engagement">
+        <div className="engagement-copy">
+          <p className="kicker">{text.engagementKicker}</p>
+          <h2>{text.engagementTitle}</h2>
+          <ol className="step-list">
+            {text.steps.map(([title, body], index) => (
+              <li key={title}>
+                <b>{String(index + 1).padStart(2, "0")}</b>
+                <div>
+                  <h3>{title}</h3>
+                  <p>{body}</p>
+                </div>
+              </li>
+            ))}
+          </ol>
+          <p className="disclaimer">{text.engagementNote}</p>
+        </div>
+        <div className="engagement-media">
+          <MediaImage
+            src={MEDIA.engagement}
+            alt={text.engagementAlt}
+            sizes="(max-width: 900px) 100vw, 38vw"
+          />
+        </div>
+      </section>
+
+      {/* 5 — Operator story & credentials */}
+      <section className="operator-section">
+        <div className="operator-media">
+          <MediaImage
+            src={MEDIA.headshot}
+            alt={text.operatorAlt}
+            sizes="(max-width: 900px) 60vw, 26vw"
+          />
+        </div>
+        <div className="operator-copy">
+          <p className="kicker">{text.operatorKicker}</p>
+          <h2>{text.operatorTitle}</h2>
+          {text.operatorStory.map((paragraph) => (
+            <p key={paragraph}>{paragraph}</p>
+          ))}
+          <p className="micro-label">{text.credentialsLabel}</p>
+          <ul className="credential-list">
+            {text.credentials.map((item) => (
+              <li key={item}>{item}</li>
+            ))}
+          </ul>
+          <Link className="text-link" href={localizedPath(locale, "about")}>
+            {text.operatorLink}
+            <span aria-hidden="true">→</span>
+          </Link>
+        </div>
+      </section>
+
+      {/* 6 — Leadership & ministry, compact */}
+      <section className="institutions-section">
+        <div className="institutions-head">
           <div>
-            <p>{text.leadershipBody}</p>
+            <p className="kicker">{text.institutionsKicker}</p>
+            <h2>{text.institutionsTitle}</h2>
+            <p>{text.institutionsBody}</p>
             <Link
               className="text-link"
               href={localizedPath(locale, "leadership")}
             >
-              {text.leadershipLink}
+              {text.institutionsLink}
               <span aria-hidden="true">→</span>
             </Link>
+          </div>
+          <div className="institutions-media">
+            <MediaImage
+              src={MEDIA.leadership}
+              alt={text.institutionsAlt}
+              sizes="(max-width: 900px) 100vw, 34vw"
+            />
           </div>
         </div>
         <div className="platform-grid">
@@ -332,7 +512,6 @@ export function HomePage({ locale }: HomePageProps) {
                         : "/media/mbs.jpeg"
                   }
                   alt={`${name} institutional mark`}
-                  fill
                   sizes="(max-width: 760px) 30vw, 14vw"
                 />
               </div>
@@ -341,16 +520,11 @@ export function HomePage({ locale }: HomePageProps) {
             </article>
           ))}
         </div>
-      </section>
-
-      <section className="feature-band ministry-feature">
-        <div className="feature-copy">
-          <p className="kicker">{text.ministryKicker}</p>
-          <h2>{text.ministryTitle}</h2>
-          <p>{text.ministryBody}</p>
+        <div className="ministry-line">
+          <p>{text.ministryLine}</p>
           <div className="link-row">
             <a
-              className="button button-light"
+              className="text-link"
               href="https://eaglesfamily.org"
               target="_blank"
               rel="noreferrer"
@@ -358,60 +532,31 @@ export function HomePage({ locale }: HomePageProps) {
               {text.ministryLink}
               <span aria-hidden="true">↗</span>
             </a>
-            <Link
-              className="text-link"
-              href={localizedPath(locale, "ministry")}
-            >
+            <Link className="text-link" href={localizedPath(locale, "ministry")}>
               {text.ministrySecondary}
             </Link>
           </div>
         </div>
-        <div className="feature-image">
-          <MediaImage
-            src="/media/ministry-photo.webp"
-            alt={text.ministryAlt}
-            fill
-            sizes="(max-width: 900px) 100vw, 50vw"
-          />
-        </div>
       </section>
 
-      <section className="legacy-section">
-        <div className="legacy-visual">
-          {LEGACY_IMAGE_SRC ? (
-            <MediaImage
-              src={LEGACY_IMAGE_SRC}
-              alt={text.legacyAlt}
-              fill
-              sizes="(max-width: 900px) 100vw, 42vw"
-            />
-          ) : (
-            <div className="legacy-fallback" aria-hidden="true">
-              <span>PT</span>
-              <i />
-              <span>CN</span>
-            </div>
-          )}
-        </div>
-        <div className="legacy-copy">
-          <p className="kicker">{text.legacyKicker}</p>
-          <h2>{text.legacyTitle}</h2>
-          <p>{text.legacyBody}</p>
-          <blockquote>“{text.legacyQuote}”</blockquote>
-        </div>
+      {/* 7a — Legacy, text only: no approved Rev. Carine portrait exists */}
+      <section className="legacy-note">
+        <p className="kicker">{text.legacyKicker}</p>
+        <blockquote>“{text.legacyQuote}”</blockquote>
+        <p>{text.legacyBody}</p>
       </section>
 
+      {/* 7b — Action */}
       <section className="closing-cta">
         <p className="kicker">{text.ctaKicker}</p>
         <h2>{text.ctaTitle}</h2>
         <p>{text.ctaBody}</p>
-        <Link
+        <OpportunityAction
           className="button button-light"
-          href={localizedPath(locale, "contact")}
-        >
-          {text.cta}
-          <span aria-hidden="true">↗</span>
-        </Link>
+          label={text.cta}
+          locale={locale}
+        />
+        <small className="cta-status">{text.ctaStatus}</small>
       </section>
     </main>
   );

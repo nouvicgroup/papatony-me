@@ -3,6 +3,7 @@ import { InquiryForm } from "@/components/InquiryForm";
 import { MediaImage } from "@/components/MediaImage";
 import {
   localizedPath,
+  MEDIA,
   SITE_URL,
   type Locale,
   type PageKey,
@@ -213,7 +214,7 @@ const about = {
     kicker: "Official profile",
     title: "A builder shaped by land, faith, enterprise, and people.",
     lead:
-      "Anthony Nkumbe—known as Papa Tony—is a Cameroon-based entrepreneur, certified real estate consultant, institutional leader, and ministry founder.",
+      "Apostle Dr. Anthony Nkumbe — known as Papa Tony — is a Cameroon-based entrepreneur, certified real estate consultant, institutional leader, and ministry founder.",
     imageAlt: "Official headshot of Anthony Nkumbe in a black suit",
     storyTitle: "One integrated life",
     story: [
@@ -239,7 +240,7 @@ const about = {
     title:
       "Un bâtisseur façonné par la terre, la foi, l'entreprise et les personnes.",
     lead:
-      "Anthony Nkumbe, connu sous le nom de Papa Tony, est un entrepreneur camerounais, consultant immobilier certifié, dirigeant institutionnel et fondateur de ministère.",
+      "L'Apôtre Dr Anthony Nkumbe, connu sous le nom de Papa Tony, est un entrepreneur camerounais, consultant immobilier certifié, dirigeant institutionnel et fondateur de ministère.",
     imageAlt: "Portrait officiel d'Anthony Nkumbe en costume noir",
     storyTitle: "Une vie cohérente",
     story: [
@@ -422,21 +423,16 @@ export function StandardPage({ locale, page }: StandardPageProps) {
           </div>
           <div className="page-hero-media">
             <MediaImage
-              src="/media/enterprise-construction.webp"
+              src={MEDIA.enterprise}
               alt={text.imageAlt}
               fill
               priority
               sizes="(max-width: 900px) 100vw, 48vw"
             />
-            <small>
-              {locale === "fr"
-                ? "Image éditoriale — ne représente pas un projet précis"
-                : "Editorial image — not a documented project"}
-            </small>
           </div>
         </section>
         <section className="editorial-section">
-          <p className="kicker">01 / {text.domainsTitle}</p>
+          <p className="kicker">01</p>
           <h2 className="section-title">{text.domainsTitle}</h2>
           <div className="domain-grid">
             {text.domains.map(([title, description], index) => (
@@ -487,7 +483,7 @@ export function StandardPage({ locale, page }: StandardPageProps) {
           </div>
           <div className="page-hero-media portrait-media">
             <MediaImage
-              src="/media/leadership-conference.webp"
+              src={MEDIA.leadership}
               alt={text.imageAlt}
               fill
               priority
@@ -496,7 +492,7 @@ export function StandardPage({ locale, page }: StandardPageProps) {
           </div>
         </section>
         <section className="editorial-section record-section">
-          <p className="kicker">01 / {text.recordTitle}</p>
+          <p className="kicker">01</p>
           <h2 className="section-title">{text.recordTitle}</h2>
           <div className="record-list">
             {text.roles.map(([role, institution], index) => (
@@ -509,7 +505,7 @@ export function StandardPage({ locale, page }: StandardPageProps) {
           </div>
         </section>
         <section className="platform-section">
-          <p className="kicker">02 / {text.platformsTitle}</p>
+          <p className="kicker">02</p>
           <h2>{text.platformsTitle}</h2>
           <div className="platform-detail-grid">
             {text.platforms.map(([name, description, image]) => (
@@ -567,7 +563,7 @@ export function StandardPage({ locale, page }: StandardPageProps) {
           </div>
           <div className="page-hero-media portrait-media">
             <MediaImage
-              src="/media/official-headshot.webp"
+              src={MEDIA.headshot}
               alt={text.imageAlt}
               fill
               priority
@@ -582,7 +578,6 @@ export function StandardPage({ locale, page }: StandardPageProps) {
             <small>Papa Tony</small>
           </aside>
           <article>
-            <p className="kicker">{text.storyTitle}</p>
             <h2>{text.storyTitle}</h2>
             {text.story.map((paragraph) => (
               <p key={paragraph}>{paragraph}</p>
@@ -591,7 +586,6 @@ export function StandardPage({ locale, page }: StandardPageProps) {
         </section>
         <section className="formation-section">
           <div>
-            <p className="kicker">{text.formationTitle}</p>
             <h2>{text.formationTitle}</h2>
           </div>
           <ul>
@@ -604,7 +598,6 @@ export function StandardPage({ locale, page }: StandardPageProps) {
           </ul>
         </section>
         <section className="family-note">
-          <p className="kicker">{text.familyTitle}</p>
           <h2>{text.familyTitle}</h2>
           <p>{text.family}</p>
           <Link
@@ -640,7 +633,7 @@ export function StandardPage({ locale, page }: StandardPageProps) {
           </div>
           <div className="page-hero-media">
             <MediaImage
-              src="/media/ministry-photo.webp"
+              src={MEDIA.ministry}
               alt={text.imageAlt}
               fill
               priority
@@ -649,7 +642,7 @@ export function StandardPage({ locale, page }: StandardPageProps) {
           </div>
         </section>
         <section className="editorial-section">
-          <p className="kicker">01 / {text.mandateTitle}</p>
+          <p className="kicker">01</p>
           <h2 className="section-title">{text.mandateTitle}</h2>
           <div className="mandate-grid">
             {text.mandates.map(([title, description], index) => (
@@ -706,7 +699,6 @@ export function StandardPage({ locale, page }: StandardPageProps) {
         </section>
         <section className="contact-layout">
           <aside>
-            <p className="kicker">{text.sidebarTitle}</p>
             <h2>{text.sidebarTitle}</h2>
             <ul>
               {text.sidebar.map((item) => (

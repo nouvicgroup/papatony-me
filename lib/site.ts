@@ -3,8 +3,24 @@ import type { Metadata } from "next";
 export const SITE_URL = "https://papatony.me";
 export const SITE_NAME = "Papa Tony";
 export const SITE_DESCRIPTION =
-  "Anthony Nkumbe helps diaspora founders, property owners, investors, and institutions qualify opportunities and navigate informed next steps in Cameroon.";
+  "Anthony Nkumbe helps founders, property owners, investors, and institutions qualify opportunities and reach informed next steps in Cameroon.";
+
+/**
+ * No approved Rev. Carine Nkumbe portrait exists, and the generated legacy
+ * variants were rejected because facial traits were altered. The Legacy section
+ * therefore stays text-only rather than implying a portrait is pending.
+ */
 export const LEGACY_IMAGE_SRC: string | null = null;
+
+export const MEDIA = {
+  heroDesktop: "/media/hero-desktop-v4.webp",
+  heroMobile: "/media/hero-mobile-v4.webp",
+  leadership: "/media/leadership-v4.webp",
+  headshot: "/media/headshot-v4.webp",
+  engagement: "/media/engagement-v4.webp",
+  enterprise: "/media/enterprise-construction.webp",
+  ministry: "/media/ministry-photo.webp",
+} as const;
 
 export const rootMetadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -36,7 +52,7 @@ export const personSchema = {
   alternateName: "Papa Tony",
   honorificPrefix: "Apostle Dr.",
   url: SITE_URL,
-  image: `${SITE_URL}/media/official-headshot.webp`,
+  image: `${SITE_URL}/media/headshot-v4.webp`,
   jobTitle: [
     "Entrepreneur",
     "Certified Real Estate Consultant",
@@ -72,14 +88,21 @@ export type PageKey =
 interface PageSeo {
   title: string;
   description: string;
+  /**
+   * Set when the title already carries the brand. Without this the root
+   * `%s | Papa Tony` template appends the brand a second time, which is how the
+   * home page previously resolved to "Anthony Nkumbe | Papa Tony | Papa Tony".
+   */
+  absoluteTitle?: boolean;
 }
 
 const seo: Record<Locale, Record<PageKey, PageSeo>> = {
   en: {
     home: {
-      title: "Anthony Nkumbe | Papa Tony",
+      title: "Anthony Nkumbe — Papa Tony",
+      absoluteTitle: true,
       description:
-        "Navigate property and enterprise opportunities in Cameroon with Anthony Nkumbe's local judgment, cross-border perspective, and institutional experience.",
+        "Anthony Nkumbe, known as Papa Tony: Cameroon property consultant, enterprise facilitator, and institution builder. Qualify an opportunity and reach an informed next step.",
     },
     enterprise: {
       title: "Property & Enterprise",
@@ -114,9 +137,10 @@ const seo: Record<Locale, Record<PageKey, PageSeo>> = {
   },
   fr: {
     home: {
-      title: "Anthony Nkumbe | Papa Tony",
+      title: "Anthony Nkumbe — Papa Tony",
+      absoluteTitle: true,
       description:
-        "Abordez les opportunités immobilières et entrepreneuriales au Cameroun avec le jugement local, la perspective transfrontalière et l'expérience institutionnelle d'Anthony Nkumbe.",
+        "Anthony Nkumbe, dit Papa Tony : consultant immobilier, facilitateur d'entreprise et bâtisseur d'institutions au Cameroun. Qualifiez une opportunité et avancez de façon éclairée.",
     },
     enterprise: {
       title: "Immobilier & Entreprise",
@@ -167,6 +191,18 @@ export function localizedPath(locale: Locale, key: PageKey): string {
   return suffix ? `/${suffix}` : "/";
 }
 
+/** Reverse of {@link localizedPath}, used by the mobile screen-title bar. */
+export function pageFromPathname(
+  locale: Locale,
+  pathname: string,
+): PageKey | null {
+  const clean = pathname.length > 1 ? pathname.replace(/\/$/, "") : pathname;
+  const match = (Object.keys(pagePath) as PageKey[]).find(
+    (key) => localizedPath(locale, key) === clean,
+  );
+  return match ?? null;
+}
+
 export function resolvePage(slug?: string[]): PageKey | null {
   if (!slug || slug.length === 0) return "home";
   if (slug.length !== 1) return null;
@@ -181,7 +217,7 @@ export function createPageMetadata(
   const current = seo[locale][key];
   const canonical = localizedPath(locale, key);
   return {
-    title: current.title,
+    title: current.absoluteTitle ? { absolute: current.title } : current.title,
     description: current.description,
     alternates: {
       canonical,

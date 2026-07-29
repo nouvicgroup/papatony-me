@@ -1,17 +1,74 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
-import type { Locale } from "@/lib/site";
+import { BrandMark } from "@/components/Icons";
+import { MediaImage } from "@/components/MediaImage";
+import { MEDIA, type Locale } from "@/lib/site";
 
 interface MobileIntroProps {
   locale: Locale;
 }
 
 const INTRO_KEY = "papatony-mobile-intro-v4-seen";
+const SLIDE_MS = 2300;
+
+const copy = {
+  en: {
+    label: "Papa Tony introduction",
+    skip: "Skip",
+    enter: "Enter",
+    slides: [
+      {
+        eyebrow: "Cameroon · Property · Enterprise",
+        title: "Papa Tony",
+        name: "Dr. Anthony Nkumbe",
+        body: "Enterprise · Leadership · Purpose",
+      },
+      {
+        eyebrow: "What he does",
+        title: "Property, enterprise, institutions.",
+        body: "Certified real estate consulting and negotiation, low-cost building facilitation, cooperatives, and enterprise advisory.",
+      },
+      {
+        eyebrow: "How it starts",
+        title: "Bring the opportunity.",
+        body: "Qualify it, meet the right local counterparts, and reach an informed next step.",
+      },
+    ],
+  },
+  fr: {
+    label: "Présentation de Papa Tony",
+    skip: "Passer",
+    enter: "Entrer",
+    slides: [
+      {
+        eyebrow: "Cameroun · Immobilier · Entreprise",
+        title: "Papa Tony",
+        name: "Dr Anthony Nkumbe",
+        body: "Entreprise · Leadership · Mission",
+      },
+      {
+        eyebrow: "Son activité",
+        title: "Immobilier, entreprise, institutions.",
+        body: "Conseil et négociation immobilière certifiés, logements à coût maîtrisé, coopératives et conseil aux entreprises.",
+      },
+      {
+        eyebrow: "Le point de départ",
+        title: "Présentez l'opportunité.",
+        body: "La qualifier, rencontrer les bons interlocuteurs locaux et définir une prochaine étape éclairée.",
+      },
+    ],
+  },
+};
 
 export function MobileIntro({ locale }: MobileIntroProps) {
   const [visible, setVisible] = useState(false);
+  const [slide, setSlide] = useState(0);
   const skipButtonRef = useRef<HTMLButtonElement>(null);
+  const trackRef = useRef<HTMLDivElement>(null);
+  const manualRef = useRef(false);
+  const text = copy[locale];
+  const total = text.slides.length;
 
   const dismiss = useCallback(() => {
     try {
@@ -34,18 +91,33 @@ export function MobileIntro({ locale }: MobileIntroProps) {
     }
     if (seen) return;
 
-    const reducedMotion = window.matchMedia(
-      "(prefers-reduced-motion: reduce)",
-    ).matches;
     const showTimer = window.setTimeout(() => setVisible(true), 0);
-    const dismissTimer = reducedMotion
-      ? undefined
-      : window.setTimeout(dismiss, 2400);
-    return () => {
-      window.clearTimeout(showTimer);
-      if (dismissTimer) window.clearTimeout(dismissTimer);
-    };
-  }, [dismiss]);
+    return () => window.clearTimeout(showTimer);
+  }, []);
+
+  // Auto-advance through the slides, then leave. Reduced motion holds on the
+  // first slide so the sequence never moves on its own.
+  useEffect(() => {
+    if (!visible) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    if (manualRef.current) return;
+
+    const timer = window.setTimeout(() => {
+      if (slide + 1 >= total) {
+        dismiss();
+        return;
+      }
+      const next = slide + 1;
+      const track = trackRef.current;
+      const card = track?.children[next];
+      if (track && card instanceof HTMLElement) {
+        track.scrollTo({ left: card.offsetLeft, behavior: "smooth" });
+      }
+      setSlide(next);
+    }, SLIDE_MS);
+
+    return () => window.clearTimeout(timer);
+  }, [dismiss, slide, total, visible]);
 
   useEffect(() => {
     if (!visible) return;
@@ -65,36 +137,74 @@ export function MobileIntro({ locale }: MobileIntroProps) {
     };
   }, [dismiss, visible]);
 
-  if (!visible) return null;
+  function handleScroll() {
+    const track = trackRef.current;
+    if (!track) return;
+    const index = Math.round(track.scrollLeft / Math.max(track.clientWidth, 1));
+    setSlide(Math.min(Math.max(index, 0), total - 1));
+  }
 
-  const french = locale === "fr";
+  if (!visible) return null;
 
   return (
     <div
       className="mobile-intro"
       role="dialog"
       aria-modal="true"
-      aria-label={french ? "Présentation de Papa Tony" : "Papa Tony introduction"}
+      aria-label={text.label}
     >
+      <div className="intro-media" aria-hidden="true">
+        <MediaImage alt="" priority src={MEDIA.heroMobile} />
+        <i />
+      </div>
+
       <button ref={skipButtonRef} type="button" onClick={dismiss}>
-        {french ? "Passer" : "Skip"}
+        {text.skip}
       </button>
-      <div className="intro-geometry" aria-hidden="true">
-        <i />
-        <i />
+
+      <div
+        className="intro-track"
+        onPointerDown={() => {
+          manualRef.current = true;
+        }}
+        onScroll={handleScroll}
+        ref={trackRef}
+      >
+        {text.slides.map((item, index) => (
+          <section key={item.title}>
+            <div className="intro-identity">
+              {index === 0 && (
+                <span className="intro-mark">
+                  <BrandMark />
+                </span>
+              )}
+              <p>{index === 0 ? item.name : item.eyebrow}</p>
+              <strong>{item.title}</strong>
+              <small>{item.body}</small>
+              {index === total - 1 && (
+                <button
+                  className="intro-enter"
+                  onClick={dismiss}
+                  type="button"
+                >
+                  {text.enter}
+                  <span aria-hidden="true">↗</span>
+                </button>
+              )}
+            </div>
+          </section>
+        ))}
       </div>
-      <div className="intro-identity">
-        <span aria-hidden="true">PT</span>
-        <p>Anthony Nkumbe</p>
-        <strong>Papa Tony</strong>
-        <small>
-          {french
-            ? "Cameroun · Entreprise · Leadership · Mission"
-            : "Cameroon · Enterprise · Leadership · Purpose"}
-        </small>
-      </div>
+
       <div className="intro-progress" aria-hidden="true">
-        <span />
+        {text.slides.map((item, index) => (
+          <span
+            className={
+              index === slide ? "running" : index < slide ? "done" : undefined
+            }
+            key={item.title}
+          />
+        ))}
       </div>
     </div>
   );
