@@ -88,6 +88,30 @@ test.describe("desktop experience", () => {
     ).toBeVisible();
   });
 
+  test("leadership platforms use a compact single-layer desktop layout", async ({
+    page,
+  }) => {
+    await page.goto("/");
+    const layout = await page.evaluate(() => {
+      const articles = Array.from(
+        document.querySelectorAll<HTMLElement>(".platform-grid article"),
+      );
+      const logo = document.querySelector<HTMLElement>(".platform-logo");
+      return {
+        articleCount: articles.length,
+        maxHeight: Math.max(...articles.map((article) => article.offsetHeight)),
+        articleRadius: articles[0]
+          ? getComputedStyle(articles[0]).borderRadius
+          : null,
+        logoBorder: logo ? getComputedStyle(logo).borderTopWidth : null,
+      };
+    });
+    expect(layout.articleCount).toBe(3);
+    expect(layout.maxHeight).toBeLessThanOrEqual(180);
+    expect(layout.articleRadius).toBe("0px");
+    expect(layout.logoBorder).toBe("0px");
+  });
+
   test("form validates and reports an honest delivery failure", async ({
     page,
   }) => {
@@ -139,10 +163,25 @@ test.describe("desktop experience", () => {
 test.describe("mobile experience", () => {
   test.skip(({ isMobile }) => !isMobile, "Mobile-only behavior");
 
+  test("first visit presents an accessible splash and does not replay", async ({
+    page,
+  }) => {
+    await page.goto("/");
+    const intro = page.getByRole("dialog", { name: "Papa Tony introduction" });
+    const skip = page.getByRole("button", { name: "Skip", exact: true });
+    await expect(intro).toBeVisible();
+    await expect(skip).toBeFocused();
+    await skip.click();
+    await expect(intro).toBeHidden();
+    await page.reload();
+    await expect(intro).toHaveCount(0);
+  });
+
   test("value proposition and primary action lead the first viewport", async ({
     page,
   }) => {
     await page.goto("/");
+    await page.getByRole("button", { name: "Skip", exact: true }).click();
     const heading = page.getByRole("heading", {
       name: /Navigate opportunity in Cameroon/,
       level: 1,
@@ -167,38 +206,52 @@ test.describe("mobile experience", () => {
     expect(positions.headingTop).toBeLessThan(positions.portraitTop);
   });
 
-  test("mobile menu is accessible, active, and reaches every primary area", async ({
+  test("bottom navigation is fixed, active, and clears page content", async ({
     page,
   }) => {
     await page.goto("/");
-    const menu = page.getByRole("button", { name: "Open menu" });
-    await expect(menu).toHaveAttribute("aria-expanded", "false");
-    await menu.click();
-    await expect(
-      page.getByRole("button", { name: "Close menu" }),
-    ).toHaveAttribute("aria-expanded", "true");
-    const nav = page.getByRole("navigation", { name: "Primary navigation" });
+    await page.getByRole("button", { name: "Skip", exact: true }).click();
+    const nav = page.getByRole("navigation", { name: "Mobile navigation" });
     await expect(nav).toBeVisible();
-    await page.keyboard.press("Escape");
-    await expect(nav).toBeHidden();
-    await menu.click();
+    await expect(
+      nav.getByRole("link", { name: "Home", exact: true }),
+    ).toHaveAttribute("aria-current", "page");
     await nav.getByRole("link", { name: "Enterprise", exact: true }).click();
     await expect(page).toHaveURL(/\/enterprise$/);
-    await menu.click();
     await expect(
       nav.getByRole("link", { name: "Enterprise", exact: true }),
     ).toHaveAttribute("aria-current", "page");
+    const clearance = await page.evaluate(() => {
+      const navigation = document
+        .querySelector(".bottom-nav")
+        ?.getBoundingClientRect();
+      return {
+        bodyPaddingBottom: Number.parseFloat(
+          getComputedStyle(document.body).paddingBottom,
+        ),
+        navigationHeight: navigation?.height ?? 0,
+      };
+    });
+    expect(clearance.bodyPaddingBottom).toBeGreaterThanOrEqual(
+      clearance.navigationHeight,
+    );
   });
 
-  test("reduced motion suppresses menu transitions", async ({ browser }) => {
+  test("reduced motion keeps the splash static and preserves dismissal", async ({
+    browser,
+  }) => {
     const context = await browser.newContext({
       viewport: { width: 390, height: 844 },
       reducedMotion: "reduce",
     });
     const reducedPage = await context.newPage();
     await reducedPage.goto("http://localhost:4173/");
+    const intro = reducedPage.getByRole("dialog", {
+      name: "Papa Tony introduction",
+    });
+    await expect(intro).toBeVisible();
     const motion = await reducedPage.evaluate(() => {
-      const probe = document.querySelector(".menu-toggle span");
+      const probe = document.querySelector(".intro-progress span");
       if (!(probe instanceof HTMLElement)) return null;
       const style = getComputedStyle(probe);
       return {
@@ -212,6 +265,11 @@ test.describe("mobile experience", () => {
     expect(
       Number.parseFloat(motion?.transitionDuration ?? "1"),
     ).toBeLessThanOrEqual(0.00001);
+    await reducedPage.getByRole("button", { name: "Skip", exact: true }).click();
+    await expect(intro).toBeHidden();
+    await expect(
+      reducedPage.getByRole("navigation", { name: "Mobile navigation" }),
+    ).toBeVisible();
     await context.close();
   });
 });
