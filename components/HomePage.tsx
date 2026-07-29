@@ -108,7 +108,7 @@ const content = {
     engagementNote:
       "Papa Tony works as a real estate consultant and investment facilitator — not as a financial adviser or wealth manager. No investment outcome is promised.",
     engagementAlt:
-      "Anthony Nkumbe at a bright office desk during a working session",
+      "Anthony Nkumbe explaining a point at a laptop during a working session",
 
     operatorKicker: "The operator",
     operatorTitle: "Trained on land. Built through institutions.",
@@ -125,7 +125,8 @@ const content = {
       "Evangel Theological Seminary",
     ],
     operatorLink: "Read the official profile",
-    operatorAlt: "Studio headshot of Anthony Nkumbe in a black suit",
+    operatorAlt:
+      "Anthony Nkumbe standing at an office desk holding a portfolio",
 
     institutionsKicker: "Leadership & ministry",
     institutionsTitle: "Platforms that turn conviction into capacity.",
@@ -141,8 +142,6 @@ const content = {
       "Faith is the foundation rather than a separate identity. Through Eagles’ Family Assembly he carries a mandate to recover the world with the Word, expressed as identity, stewardship, rural impact, and service.",
     ministryLink: "Visit Eagles’ Family Assembly",
     ministrySecondary: "Read the ministry foundation",
-    institutionsAlt:
-      "Anthony Nkumbe in a navy suit, arms crossed, in a conference building",
 
     legacyKicker: "Family & legacy",
     legacyQuote: "Build people who can build beyond you.",
@@ -255,7 +254,7 @@ const content = {
     engagementNote:
       "Papa Tony intervient comme consultant immobilier et facilitateur d'investissement, et non comme conseiller financier ou gestionnaire de patrimoine. Aucun résultat d'investissement n'est promis.",
     engagementAlt:
-      "Anthony Nkumbe à un bureau lumineux pendant une séance de travail",
+      "Anthony Nkumbe expliquant un point devant un ordinateur portable pendant une séance de travail",
 
     operatorKicker: "L'homme de terrain",
     operatorTitle: "Formé par la terre. Bâti par les institutions.",
@@ -272,7 +271,8 @@ const content = {
       "Evangel Theological Seminary",
     ],
     operatorLink: "Lire le profil officiel",
-    operatorAlt: "Portrait studio d'Anthony Nkumbe en costume noir",
+    operatorAlt:
+      "Anthony Nkumbe debout à un bureau, un porte-documents à la main",
 
     institutionsKicker: "Leadership & ministère",
     institutionsTitle: "Des plateformes qui transforment la conviction en capacité.",
@@ -288,8 +288,6 @@ const content = {
       "La foi est le fondement, non une identité séparée. À travers Eagles' Family Assembly, il porte le mandat de « récupérer le monde par la Parole », vécu comme identité, intendance, impact rural et service.",
     ministryLink: "Visiter Eagles’ Family Assembly",
     ministrySecondary: "Découvrir le fondement ministériel",
-    institutionsAlt:
-      "Anthony Nkumbe en costume bleu marine, bras croisés, dans un bâtiment de conférence",
 
     legacyKicker: "Famille & transmission",
     legacyQuote: "Former des personnes capables de bâtir au-delà de vous.",
@@ -441,7 +439,7 @@ export function HomePage({ locale }: HomePageProps) {
         </div>
         <div className="engagement-media">
           <MediaImage
-            src={MEDIA.engagement}
+            src={MEDIA.workingSession}
             alt={text.engagementAlt}
             sizes="(max-width: 900px) 100vw, 38vw"
           />
@@ -452,7 +450,7 @@ export function HomePage({ locale }: HomePageProps) {
       <section className="operator-section">
         <div className="operator-media">
           <MediaImage
-            src={MEDIA.headshot}
+            src={MEDIA.operatorStanding}
             alt={text.operatorAlt}
             sizes="(max-width: 900px) 60vw, 26vw"
           />
@@ -490,13 +488,6 @@ export function HomePage({ locale }: HomePageProps) {
               {text.institutionsLink}
               <span aria-hidden="true">→</span>
             </Link>
-          </div>
-          <div className="institutions-media">
-            <MediaImage
-              src={MEDIA.leadership}
-              alt={text.institutionsAlt}
-              sizes="(max-width: 900px) 100vw, 34vw"
-            />
           </div>
         </div>
         <div className="platform-grid">

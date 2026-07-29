@@ -21,7 +21,7 @@ const enterprise = {
     lead:
       "Papa Tony works at the intersection of property, enterprise, local relationships, and cross-border partnership—helping serious parties understand the terrain before deciding how to proceed.",
     imageAlt:
-      "Anthony Nkumbe at a construction site reviewing project plans",
+      "Anthony Nkumbe seated at a bright office desk",
     domainsTitle: "Areas of engagement",
     domains: [
       [
@@ -72,8 +72,7 @@ const enterprise = {
       "Une opportunité exige plus que du capital. Elle exige une lecture du terrain.",
     lead:
       "Papa Tony intervient au croisement de l'immobilier, de l'entreprise, des relations locales et des partenariats transfrontaliers afin d'aider les parties sérieuses à comprendre le contexte avant de décider.",
-    imageAlt:
-      "Anthony Nkumbe sur un chantier, consultant des plans de projet",
+    imageAlt: "Anthony Nkumbe assis à un bureau lumineux",
     domainsTitle: "Domaines d'intervention",
     domains: [
       [
@@ -421,13 +420,13 @@ export function StandardPage({ locale, page }: StandardPageProps) {
             <h1>{text.title}</h1>
             <p>{text.lead}</p>
           </div>
-          <div className="page-hero-media">
+          <div className="page-hero-media portrait-media">
             <MediaImage
-              src={MEDIA.enterprise}
+              src={MEDIA.enterprisePortrait}
               alt={text.imageAlt}
               fill
               priority
-              sizes="(max-width: 900px) 100vw, 48vw"
+              sizes="(max-width: 900px) 100vw, 42vw"
             />
           </div>
         </section>

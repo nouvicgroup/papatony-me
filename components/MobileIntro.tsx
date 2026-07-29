@@ -22,7 +22,7 @@ const copy = {
         eyebrow: "Cameroon · Property · Enterprise",
         title: "Papa Tony",
         name: "Dr. Anthony Nkumbe",
-        body: "Enterprise · Leadership · Purpose",
+        body: "Purpose · Leadership · Property · Business",
       },
       {
         eyebrow: "What he does",
@@ -45,7 +45,7 @@ const copy = {
         eyebrow: "Cameroun · Immobilier · Entreprise",
         title: "Papa Tony",
         name: "Dr Anthony Nkumbe",
-        body: "Entreprise · Leadership · Mission",
+        body: "Mission · Leadership · Immobilier · Affaires",
       },
       {
         eyebrow: "Son activité",

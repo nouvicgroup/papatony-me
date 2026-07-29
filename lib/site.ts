@@ -12,13 +12,31 @@ export const SITE_DESCRIPTION =
  */
 export const LEGACY_IMAGE_SRC: string | null = null;
 
+/**
+ * One image per slot — no portrait is used twice, so no page echoes another.
+ * The single intentional exception is the marble portrait, which backs the
+ * mobile splash and then the mobile hero: a launch screen settling into the
+ * page it launched. Desktop never sees the splash, and phones never download
+ * the desktop hero, so neither device sees a repeat.
+ */
 export const MEDIA = {
+  /** Seated, wood-panelled office — desktop hero and mobile splash. */
   heroDesktop: "/media/hero-desktop-v4.webp",
+  /** Standing marble-wall portrait — mobile hero. */
   heroMobile: "/media/hero-mobile-v4.webp",
+  /** Conference lobby, arms crossed — leadership page only. */
   leadership: "/media/leadership-v4.webp",
+  /** Studio headshot on white — official profile only. */
   headshot: "/media/headshot-v4.webp",
-  engagement: "/media/engagement-v4.webp",
+  /** Seated at a bright desk — enterprise page only. */
+  enterprisePortrait: "/media/engagement-v4.webp",
+  /** Real photograph of a working session — "how engagement works". */
+  workingSession: "/media/working-session-v4.webp",
+  /** Standing at the desk with a portfolio — operator story. */
+  operatorStanding: "/media/operator-standing-v4.webp",
+  /** Construction site, editorial — property band only. */
   enterprise: "/media/enterprise-construction.webp",
+  /** Real ministry photograph — ministry page only. */
   ministry: "/media/ministry-photo.webp",
 } as const;
 

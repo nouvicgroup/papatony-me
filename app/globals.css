@@ -1003,7 +1003,7 @@ h3 {
 }
 
 .engagement-media img {
-  object-position: 56% 26%;
+  object-position: 62% 28%;
 }
 
 /* ==========================================================================
@@ -1038,7 +1038,7 @@ h3 {
 }
 
 .operator-media img {
-  object-position: center 12%;
+  object-position: center 18%;
 }
 
 .operator-copy h2 {
@@ -1087,10 +1087,11 @@ h3 {
 }
 
 .institutions-head {
-  align-items: center;
+  align-items: end;
   display: grid;
   gap: var(--gutter);
-  grid-template-columns: 1.1fr 0.9fr;
+  grid-template-columns: 1fr;
+  max-width: 78ch;
 }
 
 .institutions-head > div:first-child > p:not(.kicker) {
@@ -1103,26 +1104,6 @@ h3 {
 
 .institutions-head h2 {
   max-width: 16ch;
-}
-
-.institutions-media {
-  aspect-ratio: 5 / 4;
-  border-radius: var(--radius-lg);
-  overflow: hidden;
-  position: relative;
-}
-
-.institutions-media::after {
-  border-radius: var(--radius-lg);
-  box-shadow: inset 0 0 0 1px rgba(11, 16, 32, 0.12);
-  content: "";
-  inset: 0;
-  pointer-events: none;
-  position: absolute;
-}
-
-.institutions-media img {
-  object-position: center 16%;
 }
 
 .platform-grid {
@@ -2160,7 +2141,6 @@ h3 {
   .record-head,
   .record-provenance,
   .split-heading,
-  .institutions-head,
   .ministry-line,
   .contact-intro {
     grid-template-columns: 1fr;
@@ -2640,14 +2620,12 @@ h3 {
     border-radius: 18px;
   }
 
-  .engagement-media,
-  .institutions-media {
+  .engagement-media {
     aspect-ratio: 4 / 3;
     border-radius: 18px;
   }
 
-  .engagement-media::after,
-  .institutions-media::after {
+  .engagement-media::after {
     border-radius: 18px;
   }
 

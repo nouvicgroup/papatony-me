@@ -81,22 +81,69 @@ test("page titles carry the brand exactly once", async () => {
   assert.equal(innerTitle.match(/Papa Tony/g)?.length, 1, innerTitle);
 });
 
-test("all five approved portraits ship across the site", async () => {
-  const pages = await Promise.all(
-    ["/", "/leadership", "/about"].map(async (path) =>
-      (await render(path)).text(),
-    ),
-  );
-  const combined = pages.join("\n");
+const IMAGE_ROUTES = [
+  "/",
+  "/enterprise",
+  "/leadership",
+  "/about",
+  "/ministry",
+];
+
+async function collectImages() {
+  const byRoute = new Map();
+  for (const path of IMAGE_ROUTES) {
+    const html = await (await render(path)).text();
+    // Only rendered image sources. The Person schema also references the
+    // headshot on every page, which is correct and is not a visual repeat.
+    const found = [
+      ...html.matchAll(/(?:src|srcSet|srcset)="\/media\/([\w.-]+\.(?:webp|jpe?g|png))"/g),
+    ]
+      .map((match) => match[1])
+      .filter((name) => !/esmel|eles|mbs|eagles-family/i.test(name));
+    byRoute.set(path, new Set(found));
+  }
+  return byRoute;
+}
+
+test("every approved portrait ships somewhere on the site", async () => {
+  const byRoute = await collectImages();
+  const all = new Set([...byRoute.values()].flatMap((set) => [...set]));
   for (const asset of [
     "hero-desktop-v4.webp",
     "hero-mobile-v4.webp",
     "leadership-v4.webp",
     "headshot-v4.webp",
     "engagement-v4.webp",
+    "working-session-v4.webp",
+    "operator-standing-v4.webp",
+    "enterprise-construction.webp",
   ]) {
-    assert.match(combined, new RegExp(asset.replace(".", "\\.")), asset);
+    assert.ok(all.has(asset), `${asset} is not used anywhere`);
   }
+});
+
+test("no portrait is reused across pages", async () => {
+  const byRoute = await collectImages();
+  const seen = new Map();
+  for (const [path, images] of byRoute) {
+    for (const image of images) {
+      // The marble portrait deliberately backs the mobile splash and the
+      // mobile hero on the same route; that is launch continuity, not reuse.
+      const routes = seen.get(image) ?? [];
+      routes.push(path);
+      seen.set(image, routes);
+    }
+  }
+  const duplicated = [...seen.entries()].filter(
+    ([, routes]) => routes.length > 1,
+  );
+  assert.deepEqual(
+    duplicated,
+    [],
+    `reused across pages: ${duplicated
+      .map(([image, routes]) => `${image} on ${routes.join(", ")}`)
+      .join(" | ")}`,
+  );
 });
 
 test("legacy stays text-only until an approved portrait exists", async () => {

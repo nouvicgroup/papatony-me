@@ -15,8 +15,8 @@ export function SiteFooter({ locale }: SiteFooterProps) {
         </Link>
         <p>
           {french
-            ? "Immobilier · Entreprise · Leadership · Mission"
-            : "Property · Enterprise · Leadership · Purpose"}
+            ? "Mission · Leadership · Immobilier · Affaires"
+            : "Purpose · Leadership · Property · Business"}
         </p>
       </div>
       <div className="footer-links">
