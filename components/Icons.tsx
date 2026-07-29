@@ -74,11 +74,11 @@ export function IconConnect({ className }: IconProps) {
 }
 
 /**
- * Brand glyph: a gateway — a solid arch pierced by an opening, standing on a
- * ground bar. It reads as structure, access and institution rather than as
- * initials, which makes it more ownable than the previous generic "PT"
- * monogram while inventing no imagery. Solid shapes rather than strokes, so the
- * silhouette survives at 20px in the tab bar and the header lockup.
+ * Brand glyph for the PapaT logotype: the "T" standing clear of a plinth.
+ * It reads at once as the letter and as a marker set on a base — carrying the
+ * structure/institution idea of the wordmark without illustrating anything.
+ * Solid shapes rather than strokes, so the silhouette survives at 16px as a
+ * favicon and at 20px in the header lockup.
  */
 export function BrandMark({ className }: IconProps) {
   return (
@@ -92,12 +92,9 @@ export function BrandMark({ className }: IconProps) {
       width="24"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <path
-        clipRule="evenodd"
-        d="M4.6 18.4v-7a7.4 7.4 0 0 1 14.8 0v7ZM9.6 18.4v-6.6a2.4 2.4 0 0 1 4.8 0v6.6Z"
-        fillRule="evenodd"
-      />
-      <rect height="2.4" rx="1.2" width="19.2" x="2.4" y="19.6" />
+      <rect height="3.4" rx="1.7" width="17.6" x="3.2" y="5.6" />
+      <rect height="12" rx="1.7" width="3.4" x="10.3" y="5.6" />
+      <rect height="2.8" rx="1.4" width="11.6" x="6.2" y="19.2" />
     </svg>
   );
 }

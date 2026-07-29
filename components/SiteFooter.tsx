@@ -10,8 +10,8 @@ export function SiteFooter({ locale }: SiteFooterProps) {
   return (
     <footer className="site-footer">
       <div>
-        <Link className="footer-brand" href={localizedPath(locale, "home")}>
-          Papa Tony
+        <Link className="footer-brand logotype" href={localizedPath(locale, "home")}>
+          Papa<span>T</span>
         </Link>
         <p>
           {french

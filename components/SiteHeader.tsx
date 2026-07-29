@@ -97,7 +97,9 @@ export function SiteHeader({ locale }: SiteHeaderProps) {
           <BrandMark />
         </span>
         <span className="wordmark-copy">
-          <strong>Papa Tony</strong>
+          <strong className="logotype">
+            Papa<span>T</span>
+          </strong>
           <small>Dr. Anthony Nkumbe</small>
         </span>
       </Link>

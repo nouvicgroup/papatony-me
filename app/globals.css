@@ -370,17 +370,6 @@ h3 {
   width: 44px;
 }
 
-.wordmark-mark::after {
-  background: var(--signature);
-  border-radius: 0 0 var(--radius-md) var(--radius-md);
-  bottom: 0;
-  content: "";
-  height: 3px;
-  left: 9px;
-  position: absolute;
-  right: 9px;
-}
-
 .wordmark-mark svg {
   height: 22px;
   width: 22px;
@@ -397,6 +386,16 @@ h3 {
   font-weight: 620;
   letter-spacing: -0.03em;
   line-height: 1.1;
+}
+
+/* PapaT logotype: the terminal T is the hook, and it echoes the mark. */
+.logotype {
+  letter-spacing: -0.035em;
+}
+
+.logotype span {
+  color: var(--cobalt);
+  font-weight: 700;
 }
 
 .wordmark-copy small {
@@ -1299,6 +1298,10 @@ h3 {
   font-weight: 600;
   letter-spacing: -0.03em;
   text-decoration: none;
+}
+
+.footer-brand span {
+  color: var(--cobalt-lift);
 }
 
 .site-footer p,
