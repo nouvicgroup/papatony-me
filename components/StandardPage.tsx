@@ -329,34 +329,32 @@ const ministry = {
 
 const contact = {
   en: {
-    kicker: "Professional inquiries",
-    title: "Start with the opportunity, not the pitch.",
-    lead:
-      "Share enough context to determine whether a useful conversation is possible. Property, enterprise, institutional, leadership, speaking, and ministry inquiries are welcome.",
-    sidebarTitle: "What helps",
+    kicker: "Get in touch",
+    title: "Tell him what you are looking at.",
+    lead: "Enough detail for him to say whether he is the right person to help. Property, business, an invitation to speak, leadership or ministry \u2014 all fine.",
+    sidebarTitle: "What to include",
     sidebar: [
-      "The opportunity or invitation in one clear sentence",
-      "Location, organisation, and people involved",
-      "The decision or outcome you are working toward",
-      "Relevant timing and any fixed constraints",
+      "What it is, in one sentence",
+      "Where it is, and who is involved",
+      "What you want to happen",
+      "Any dates you are working to",
     ],
     status:
-      "Online delivery is intentionally not active until an official destination email or WhatsApp channel is supplied.",
+      "Nothing can be sent from this page yet \u2014 no email address or WhatsApp number has been published. The form will say so rather than pretend.",
   },
   fr: {
-    kicker: "Demandes professionnelles",
-    title: "Commencez par l'opportunité, pas par le discours.",
-    lead:
-      "Partagez suffisamment de contexte pour évaluer l'utilité d'un échange. Les demandes immobilières, entrepreneuriales, institutionnelles, de leadership, d'intervention et de ministère sont les bienvenues.",
-    sidebarTitle: "Éléments utiles",
+    kicker: "Le contacter",
+    title: "Dites-lui ce que vous avez en vue.",
+    lead: "Assez de d\u00e9tails pour qu\u2019il dise s\u2019il est la bonne personne. Un bien, une entreprise, une invitation \u00e0 intervenir, le leadership ou le minist\u00e8re \u2014 tout convient.",
+    sidebarTitle: "\u00c0 pr\u00e9ciser",
     sidebar: [
-      "L'opportunité ou l'invitation en une phrase claire",
-      "Le lieu, l'organisation et les personnes concernées",
-      "La décision ou le résultat recherché",
-      "Le calendrier et les contraintes déjà connues",
+      "De quoi il s\u2019agit, en une phrase",
+      "O\u00f9 cela se passe, et qui est concern\u00e9",
+      "Ce que vous souhaitez obtenir",
+      "Les \u00e9ch\u00e9ances \u00e9ventuelles",
     ],
     status:
-      "L'envoi en ligne reste volontairement inactif jusqu'à la communication d'une adresse e-mail ou d'un numéro WhatsApp officiel.",
+      "Rien ne peut encore \u00eatre envoy\u00e9 depuis cette page \u2014 aucune adresse e-mail ni num\u00e9ro WhatsApp n\u2019est publi\u00e9. Le formulaire vous le dira au lieu de faire semblant.",
   },
 };
 

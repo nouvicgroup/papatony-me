@@ -13,14 +13,14 @@ interface OpportunityActionProps {
 
 const copy = {
   en: {
-    title: "Start an opportunity brief",
-    lead: "Enough context to judge whether a useful conversation is possible.",
+    title: "Tell him what you are looking at",
+    lead: "Enough detail for him to say whether he is the right person.",
     close: "Close",
     dialog: "Opportunity brief",
   },
   fr: {
-    title: "Présenter une opportunité",
-    lead: "Assez de contexte pour évaluer l'utilité d'un échange.",
+    title: "Dites-lui ce que vous avez en vue",
+    lead: "Assez de détails pour qu'il dise s'il est la bonne personne.",
     close: "Fermer",
     dialog: "Présentation d'opportunité",
   },

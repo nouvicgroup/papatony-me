@@ -30,10 +30,7 @@ export function SiteFooter({ locale }: SiteFooterProps) {
           Eagles’ Family Assembly
         </a>
       </div>
-      <small>
-        © {new Date().getFullYear()} Anthony Nkumbe.{" "}
-        {french ? "Tous droits réservés." : "All rights reserved."}
-      </small>
+      <small>© {new Date().getFullYear()} Dr. Anthony Nkumbe</small>
     </footer>
   );
 }

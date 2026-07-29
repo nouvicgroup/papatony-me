@@ -42,7 +42,7 @@ const screenTitles: Record<Locale, Partial<Record<PageKey, string>>> = {
     leadership: "Leadership",
     about: "Official profile",
     ministry: "Ministry",
-    contact: "Start an inquiry",
+    contact: "Get in touch",
     privacy: "Privacy",
   },
   fr: {
@@ -50,7 +50,7 @@ const screenTitles: Record<Locale, Partial<Record<PageKey, string>>> = {
     leadership: "Leadership",
     about: "Profil officiel",
     ministry: "Ministère",
-    contact: "Nouvelle demande",
+    contact: "Le contacter",
     privacy: "Confidentialité",
   },
 };

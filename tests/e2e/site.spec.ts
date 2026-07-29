@@ -122,23 +122,23 @@ test.describe("desktop experience", () => {
     page,
   }) => {
     await page.goto("/contact");
-    await page.getByRole("button", { name: "Prepare inquiry" }).click();
+    await page.getByRole("button", { name: "Review my message" }).click();
     await expect(page.getByRole("alert")).toContainText(
-      "Please complete the required fields",
+      "Please fill in the required fields",
     );
-    await page.getByLabel("Full name *").fill("Test Partner");
-    await page.getByLabel("Email address *").fill("partner@example.com");
+    await page.getByLabel("Your name *").fill("Test Partner");
+    await page.getByLabel("Email *").fill("partner@example.com");
     await page
-      .getByLabel("Nature of inquiry *")
-      .selectOption("Enterprise or investment partnership");
+      .getByLabel("What is this about *")
+      .selectOption("A business or investment partnership");
     await page
-      .getByLabel("Briefly describe the opportunity *")
+      .getByLabel("What are you looking at? *")
       .fill(
         "We would like to discuss a clearly scoped enterprise partnership in Cameroon.",
       );
-    await page.getByRole("button", { name: "Prepare inquiry" }).click();
+    await page.getByRole("button", { name: "Review my message" }).click();
     await expect(page.getByRole("alert")).toContainText(
-      "online delivery is not yet connected",
+      "nowhere to send it yet",
     );
   });
 
@@ -189,14 +189,13 @@ test.describe("mobile experience", () => {
     await page.goto("/");
     await page.getByRole("button", { name: "Skip", exact: true }).click();
     const heading = page.getByRole("heading", {
-      name: /Cameroon opportunity, assessed on the ground/,
+      name: /Know the ground before you commit in Cameroon/,
       level: 1,
     });
     await expect(heading).toBeVisible();
     await expect(
-      page.getByRole("link", {
-        name: /Start an opportunity brief/,
-        exact: true,
+      page.locator(".hero-actions").getByRole("link", {
+        name: /Start a conversation/,
       }),
     ).toBeVisible();
     // Layered composition: the portrait leads, the copy panel overlaps its
@@ -269,7 +268,8 @@ test.describe("mobile experience", () => {
     await page.goto("/");
     await page.getByRole("button", { name: "Skip", exact: true }).click();
     await page
-      .getByRole("link", { name: /Start an opportunity brief/ })
+      .locator(".hero-actions")
+      .getByRole("link", { name: /Start a conversation/ })
       .click();
 
     const sheet = page.getByRole("dialog", { name: "Opportunity brief" });
@@ -304,53 +304,71 @@ test.describe("mobile experience", () => {
       page.getByRole("button", { name: "Close", exact: true }),
     ).toBeFocused();
 
-    await sheet.getByLabel("Full name *").fill("Test Partner");
-    await sheet.getByLabel("Email address *").fill("partner@example.com");
+    await sheet.getByLabel("Your name *").fill("Test Partner");
+    await sheet.getByLabel("Email *").fill("partner@example.com");
     await sheet
-      .getByLabel("Nature of inquiry *")
-      .selectOption("Property and real estate");
+      .getByLabel("What is this about *")
+      .selectOption("Property or land");
     await sheet
-      .getByLabel("Briefly describe the opportunity *")
+      .getByLabel("What are you looking at? *")
       .fill("A clearly scoped property question we would like to discuss.");
-    await sheet.getByRole("button", { name: "Prepare inquiry" }).click();
+    await sheet.getByRole("button", { name: "Review my message" }).click();
 
     const alert = page.getByRole("alert");
-    await expect(alert).toContainText("online delivery is not yet connected");
+    await expect(alert).toContainText("nowhere to send it yet");
     await expect(alert).toContainText("Nothing has been sent");
 
     await page.keyboard.press("Escape");
     await expect(sheet).toBeHidden();
   });
 
-  test("the engagement pager is swipeable and tracks position", async ({
+  test("what he can help with reads as a compact two-up card grid", async ({
     page,
   }) => {
     await page.goto("/");
     await page.getByRole("button", { name: "Skip", exact: true }).click();
 
-    const geometry = await page.evaluate(() => {
+    const grid = await page.evaluate(() => {
       const track = document.querySelector<HTMLElement>(".pager-track");
       if (!track) return null;
+      const cards = Array.from(track.querySelectorAll<HTMLElement>("article"));
+      const style = getComputedStyle(track);
+      const tops = new Set(cards.map((c) => Math.round(c.offsetTop)));
       return {
-        scrollable: track.scrollWidth > track.clientWidth + 8,
-        dots: document.querySelectorAll(".pager-dots button").length,
-        cards: track.querySelectorAll("article").length,
+        cards: cards.length,
+        columns: style.gridTemplateColumns.split(" ").length,
+        rows: tops.size,
+        scrolls: track.scrollWidth > track.clientWidth + 8,
+        dotsVisible:
+          getComputedStyle(document.querySelector(".pager-dots")!).display !==
+          "none",
       };
     });
-    expect(geometry?.scrollable).toBe(true);
-    expect(geometry?.cards).toBe(4);
-    expect(geometry?.dots).toBe(4);
 
-    const dots = page.locator(".pager-dots button");
-    await dots.nth(2).scrollIntoViewIfNeeded();
-    // Clear the sticky header before clicking a dot.
-    await page.evaluate(() => window.scrollBy(0, -110));
-    await dots.nth(2).click();
-    await page.waitForTimeout(600);
-    const moved = await page.evaluate(
-      () => document.querySelector<HTMLElement>(".pager-track")?.scrollLeft ?? 0,
-    );
-    expect(moved).toBeGreaterThan(0);
+    expect(grid?.cards).toBe(4);
+    expect(grid?.columns).toBe(2);
+    expect(grid?.rows).toBe(2);
+    // No longer a horizontal swipe deck.
+    expect(grid?.scrolls).toBe(false);
+    expect(grid?.dotsVisible).toBe(false);
+  });
+
+  test("page heroes keep a visible image on phones", async ({ page }) => {
+    for (const route of ["/enterprise", "/leadership", "/about", "/ministry"]) {
+      await page.goto(route);
+      await page.waitForTimeout(200);
+      const frame = await page.evaluate(() => {
+        const el = document.querySelector(".page-hero-media");
+        const img = el?.querySelector("img");
+        if (!el || !img) return null;
+        const r = el.getBoundingClientRect();
+        return { w: Math.round(r.width), h: Math.round(r.height), loaded: img.naturalWidth > 0 };
+      });
+      expect(frame, route).not.toBeNull();
+      expect(frame!.w, route).toBeGreaterThan(200);
+      expect(frame!.h, route).toBeGreaterThan(150);
+      expect(frame!.loaded, route).toBe(true);
+    }
   });
 
   test("bottom navigation uses drawn icons and never covers content", async ({

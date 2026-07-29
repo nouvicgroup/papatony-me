@@ -2,19 +2,19 @@ import assert from "node:assert/strict";
 import test from "node:test";
 
 const routes = [
-  ["/", "en", "Cameroon opportunity, assessed on the ground"],
+  ["/", "en", "Know the ground before you commit in Cameroon"],
   ["/enterprise", "en", "Opportunity needs more than capital"],
   ["/leadership", "en", "Convening people"],
   ["/about", "en", "A builder shaped"],
   ["/ministry", "en", "Faith that forms people"],
-  ["/contact", "en", "Start with the opportunity"],
+  ["/contact", "en", "Tell him what you are looking at"],
   ["/privacy", "en", "A simple, respectful"],
-  ["/fr", "fr", "Les opportunités camerounaises"],
+  ["/fr", "fr", "Connaissez le terrain avant de vous engager"],
   ["/fr/enterprise", "fr", "Une opportunité exige"],
   ["/fr/leadership", "fr", "Rassembler les personnes"],
   ["/fr/about", "fr", "Un bâtisseur façonné"],
   ["/fr/ministry", "fr", "Une foi qui forme"],
-  ["/fr/contact", "fr", "Commencez par l'opportunité"],
+  ["/fr/contact", "fr", "Dites-lui ce que vous avez en vue"],
   ["/fr/privacy", "fr", "Une prise de contact"],
 ];
 
@@ -165,14 +165,14 @@ test("navigation uses drawn icons rather than placeholder glyphs", async () => {
 test("contact form is honest about unavailable delivery", async () => {
   const response = await render("/contact");
   const html = await response.text();
-  assert.match(html, /Online delivery is intentionally not active/i);
-  assert.match(html, /Prepare inquiry/i);
+  assert.match(html, /no email address or WhatsApp number has been published/i);
+  assert.match(html, /Review my message/i);
   assert.doesNotMatch(html, /message sent|thank you for your submission/i);
 });
 
 test("the home page states the delivery gap rather than implying it works", async () => {
   const html = await (await render("/")).text();
-  assert.match(html, /not connected yet/i);
+  assert.match(html, /cannot send yet/i);
   assert.doesNotMatch(html, /message sent|we will get back to you/i);
 });
 

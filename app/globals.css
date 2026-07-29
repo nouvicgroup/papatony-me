@@ -2150,6 +2150,23 @@ h3 {
     grid-template-columns: 1fr;
   }
 
+  /* The desktop layout pins these to explicit tracks; clear that or they stay
+     trapped in an implicit second column once the grid collapses. */
+  .contact-intro .kicker,
+  .contact-intro h1,
+  .contact-intro > p:last-child {
+    grid-column: 1;
+    grid-row: auto;
+  }
+
+  .contact-intro {
+    gap: 22px;
+  }
+
+  .contact-intro h1 {
+    max-width: none;
+  }
+
   .record-provenance,
   .ministry-line {
     gap: 32px;
@@ -2418,8 +2435,10 @@ h3 {
   /* --- Hero: shorter copy, portrait inside the first screen --- */
 
   /* Layered mobile hero: the portrait leads, and the copy panel rises over its
-     lower half. `-62.5%` resolves against the hero's content width, which is
-     also the portrait's width, so it lands on exactly half of a 4:5 frame. */
+     bottom quarter, leaving three quarters of the image visible. Percentages
+     resolve against the hero's content width, which is also the portrait's
+     width. The overlap is capped by the primary action, which must stay clear
+     of the tab bar. */
   .home-hero {
     gap: 0;
     padding: 12px var(--page-padding) 0;
@@ -2434,8 +2453,8 @@ h3 {
     background: var(--cloud);
     border-radius: 24px 24px 0 0;
     box-shadow: 0 -18px 40px -18px rgba(11, 16, 32, 0.35);
-    margin: -62.5% calc(var(--page-padding) * -1) 0;
-    padding: 26px var(--page-padding) 34px;
+    margin: -30% calc(var(--page-padding) * -1) 0;
+    padding: 20px var(--page-padding) 30px;
     position: relative;
     z-index: 2;
   }
@@ -2443,7 +2462,7 @@ h3 {
   .eyebrow {
     font-size: 12px;
     letter-spacing: 0.1em;
-    margin-bottom: 16px;
+    margin-bottom: 12px;
   }
 
   .hero-name {
@@ -2451,7 +2470,7 @@ h3 {
   }
 
   .hero-known {
-    margin: 8px 0 18px;
+    margin: 6px 0 14px;
   }
 
   .home-hero h1 {
@@ -2459,7 +2478,7 @@ h3 {
   }
 
   .hero-lead {
-    margin-top: 18px;
+    margin-top: 14px;
     max-width: none;
   }
 
@@ -2472,13 +2491,25 @@ h3 {
   }
 
   .hero-actions {
-    gap: 12px 22px;
-    margin-top: 24px;
+    align-items: center;
+    flex-wrap: nowrap;
+    gap: 16px;
+    margin-top: 18px;
   }
 
   .hero-actions .button {
-    flex: 1 1 auto;
-    min-width: 100%;
+    flex: 0 0 auto;
+    font-size: 13px;
+    gap: 8px;
+    min-height: 42px;
+    padding: 10px 16px;
+    white-space: nowrap;
+  }
+
+  .hero-actions .text-link {
+    font-size: 13px;
+    gap: 6px;
+    white-space: nowrap;
   }
 
   .hero-portrait {
@@ -2539,74 +2570,55 @@ h3 {
   /* --- Pager becomes a swipe deck --- */
 
   .pager {
-    margin: 32px -20px 0;
+    margin-top: 26px;
   }
 
   .pager-track {
     border-top: 0;
-    display: flex;
-    gap: 14px;
-    overflow-x: auto;
-    padding: 0 20px 4px;
-    scroll-padding-left: 20px;
-    scroll-snap-type: x mandatory;
-    scrollbar-width: none;
+    display: grid;
+    gap: 12px;
+    grid-template-columns: repeat(2, 1fr);
+    overflow: visible;
   }
 
-  .pager-track::-webkit-scrollbar {
-    display: none;
-  }
-
-  .pager-track article {
+  .pager-track article,
+  .pager-track article:last-child {
     background: var(--paper);
     border: 1px solid var(--hairline);
-    border-radius: 18px;
-    border-right: 1px solid var(--hairline);
-    flex: 0 0 82%;
-    padding: 22px 22px 26px;
-    scroll-snap-align: start;
+    border-radius: 16px;
+    box-shadow: 0 1px 2px rgba(11, 16, 32, 0.04);
+    display: flex;
+    flex-direction: column;
+    padding: 16px 15px 18px;
   }
 
   .pager-track article::before {
-    border-radius: 18px 18px 0 0;
-    left: 18px;
-    right: 18px;
+    border-radius: 16px 16px 0 0;
+    left: 15px;
+    right: 15px;
     top: 0;
     transform: scaleX(1);
     width: auto;
   }
 
-  .pager-track article:last-child {
-    padding-right: 22px;
+  .pager-track span {
+    font-size: 12px;
   }
 
   .pager-track h3 {
-    margin: 16px 0 10px;
+    font-size: 17px;
+    letter-spacing: -0.022em;
+    line-height: 1.2;
+    margin: 12px 0 8px;
+  }
+
+  .pager-track p {
+    font-size: 13.5px;
+    line-height: 1.55;
   }
 
   .pager-dots {
-    display: flex;
-    gap: 7px;
-    justify-content: center;
-    margin-top: 20px;
-  }
-
-  .pager-dots button {
-    background: rgba(11, 16, 32, 0.18);
-    border: 0;
-    border-radius: 999px;
-    cursor: pointer;
-    height: 6px;
-    padding: 0;
-    transition:
-      background-color 220ms ease,
-      width 220ms ease;
-    width: 6px;
-  }
-
-  .pager-dots button.active {
-    background: var(--cobalt);
-    width: 22px;
+    display: none;
   }
 
   /* --- Bands --- */
@@ -2711,11 +2723,19 @@ h3 {
 
   /* --- Inner pages --- */
 
+  /* The base rule centres items; in a column flex container that shrinks the
+     media to its content width, and its only child is absolutely positioned,
+     so the frame collapsed to 0x0. */
   .page-hero {
+    align-items: stretch;
     display: flex;
     flex-direction: column;
     gap: 28px;
     padding-top: 28px;
+  }
+
+  .page-hero-media {
+    width: 100%;
   }
 
   .page-hero-media,
@@ -2730,7 +2750,6 @@ h3 {
 
   .domain-grid,
   .mandate-grid,
-  .pager-track:not(:hover),
   .process-grid,
   .platform-detail-grid {
     grid-template-columns: 1fr;
@@ -2806,23 +2825,77 @@ h3 {
     gap: 40px;
   }
 
+  /* Native-feeling form: filled fields with real tap targets rather than
+     hairline underlines, and a full-width action. */
   .inquiry-form {
-    border-radius: 18px;
-    padding: 22px 18px;
+    background: transparent;
+    border: 0;
+    border-radius: 0;
+    padding: 0;
+  }
+
+  .inquiry-form label {
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+
+  .inquiry-form label > span {
+    font-family: var(--sans);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0;
+    text-transform: none;
+  }
+
+  .inquiry-form input,
+  .inquiry-form select,
+  .inquiry-form textarea {
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    border-radius: 12px;
+    min-height: 50px;
+    padding: 13px 14px;
+  }
+
+  .inquiry-form textarea {
+    min-height: 120px;
+  }
+
+  .inquiry-form input:focus,
+  .inquiry-form select:focus,
+  .inquiry-form textarea:focus {
+    background: rgba(255, 255, 255, 0.09);
+    border-color: var(--aqua);
   }
 
   .form-grid {
     grid-template-columns: 1fr;
   }
 
+  .form-status {
+    border-radius: 12px;
+    border-left-width: 3px;
+  }
+
   .form-submit {
     align-items: stretch;
-    flex-direction: column;
-    gap: 18px;
+    flex-direction: column-reverse;
+    gap: 14px;
   }
 
   .form-submit button {
+    border-radius: 14px;
     justify-content: center;
+    min-height: 52px;
+    width: 100%;
+  }
+
+  .form-submit small {
+    text-align: center;
+  }
+
+  .copy-inquiry {
+    min-height: 46px;
     width: 100%;
   }
 
@@ -3196,8 +3269,17 @@ h3 {
 /* On the narrowest phones the tagline cannot hold one line at a readable
    size, so it wraps instead of being clipped. */
 @media (max-width: 379px) {
-  .intro-track > section:first-child .intro-identity small {
+  /* Below this width the straplines cannot hold one line at a readable size,
+     so they wrap rather than overflow the page. */
+  .intro-track > section:first-child .intro-identity small,
+  .site-footer p,
+  .site-footer > small {
     white-space: normal;
+  }
+
+  /* The inline action row needs more room than these screens have. */
+  .hero-actions {
+    flex-wrap: wrap;
   }
 
   .intro-track > section {

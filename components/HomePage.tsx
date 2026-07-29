@@ -11,296 +11,312 @@ interface HomePageProps {
 
 const content = {
   en: {
-    eyebrow: "Cameroon · Property · Enterprise",
-    name: "Dr. Anthony Nkumbe",
-    known: "Known as Papa Tony",
-    headline: "Cameroon opportunity, assessed on the ground.",
-    leadFull:
-      "Founders, property owners, investors, and institutions arrive with an interest in Cameroon. Anthony Nkumbe helps them qualify it, meet the right local counterparts, and reach an informed next step.",
-    leadShort:
-      "Qualify an opportunity in Cameroon, meet the right counterparts, reach an informed next step.",
-    primary: "Start an opportunity brief",
-    secondary: "How engagement works",
-    heroAlt:
-      "Anthony Nkumbe seated at a wood-panelled executive desk in a dark suit",
-    heroCaption: "Dr. Anthony Nkumbe",
-    heroCaptionMeta: "Cameroon",
-
-    recordKicker: "The record",
-    recordTitle: "Roles held, not results claimed.",
-    recordLead:
-      "Standing here comes from positions currently held across enterprise, property, cooperatives, and institutions. Outcomes belong to the parties involved and are not advertised on this page.",
-    roles: [
-      ["Chief Executive", "Rainbow Group of Companies"],
-      ["Certified consultant, negotiator & facilitator", "Real estate"],
-      ["Low-cost building facilitator", "Multiple municipalities"],
-      ["Vice President", "CHEDE Union of Cooperatives"],
-      ["Executive member", "Africa Arise Business Consortium"],
-      ["Technical adviser", "Processing companies"],
-      ["Founder", "Eagles’ Family Assembly"],
+    "eyebrow": "Cameroon · Property · Enterprise",
+    "name": "Dr. Anthony Nkumbe",
+    "known": "Known as Papa Tony",
+    "headline": "Know the ground before you commit in Cameroon.",
+    "leadFull": "You have something in mind here — a property, a partner, a project. Papa Tony helps you find out whether it is real, who you would actually be dealing with, and what it would take to move.",
+    "leadShort": "Find out whether it is real, who you would be dealing with, and what it takes to move.",
+    "primary": "Start a conversation",
+    "secondary": "See how he works",
+    "heroAlt": "Anthony Nkumbe seated at a wood-panelled executive desk in a dark suit",
+    "heroCaption": "Dr. Anthony Nkumbe",
+    "heroCaptionMeta": "Cameroon",
+    "recordKicker": "The record",
+    "recordTitle": "The positions he holds today.",
+    "recordLead": "These are current roles, not past ones. Results belong to the people he worked with, so you will not find figures on this page that cannot be backed up.",
+    "roles": [
+      [
+        "Chief Executive",
+        "Rainbow Group of Companies"
+      ],
+      [
+        "Certified consultant, negotiator & facilitator",
+        "Real estate"
+      ],
+      [
+        "Low-cost building facilitator",
+        "Multiple municipalities"
+      ],
+      [
+        "Vice President",
+        "CHEDE Union of Cooperatives"
+      ],
+      [
+        "Executive member",
+        "Africa Arise Business Consortium"
+      ],
+      [
+        "Technical adviser",
+        "Processing companies"
+      ],
+      [
+        "Founder",
+        "Eagles’ Family Assembly"
+      ],
       [
         "Regional coordinator, West Africa",
-        "Kingdom World for Jesus Int’l Church Fellowship",
-      ],
+        "Kingdom World for Jesus Int’l Church Fellowship"
+      ]
     ],
-    provenance:
-      "Roles as stated by Dr. Anthony Nkumbe. Dates, scale, and independent references are being documented and will be published here as each one is confirmed.",
-    pendingLabel: "Still to be published",
-    pending: [
-      "Named engagements with dates, role, and geography",
-      "Measurable results confirmed by the parties involved",
-      "Attributed references, published with permission",
+    "provenance": "Dates, scale and outside references are still being confirmed. They will appear here once they are verified, and not before.",
+    "pendingLabel": "Coming, once verified",
+    "pending": [
+      "Specific projects, with dates and where they happened",
+      "Results, confirmed by the people involved",
+      "References, named and with permission"
     ],
-
-    mandateKicker: "Where he is useful",
-    mandateTitle: "Four ways an engagement usually starts.",
-    mandateLead:
-      "Each one begins by defining the opportunity, testing the context, and identifying the people and diligence required to proceed responsibly.",
-    pagerLabel: "Ways to engage",
-    pillars: [
+    "mandateKicker": "What he can help with",
+    "mandateTitle": "Four reasons people call.",
+    "mandateLead": "Whatever you bring, the first job is the same: work out what is actually there, who matters, and what still needs checking.",
+    "pagerLabel": "What he can help with",
+    "pillars": [
       {
-        number: "01",
-        title: "Qualify a property opportunity",
-        text: "Clarify property interests, local process, decision makers, negotiation needs, and the independent diligence still required.",
+        "number": "01",
+        "title": "Buying or selling property",
+        "text": "What the land or building really is, who controls it, and what you still need to check."
       },
       {
-        number: "02",
-        title: "Structure an enterprise partnership",
-        text: "Frame the commercial need before connecting operators, cooperatives, institutions, and suitable prospective partners.",
+        "number": "02",
+        "title": "Finding a local partner",
+        "text": "What you actually need from a partner — then the right introductions."
       },
       {
-        number: "03",
-        title: "Navigate local context",
-        text: "Bring grounded Cameroon perspective to cross-border conversations involving municipalities, institutions, and enterprise leaders.",
+        "number": "03",
+        "title": "Reading the local picture",
+        "text": "How things really work with municipalities, institutions and owners here."
       },
       {
-        number: "04",
-        title: "Develop leadership capacity",
-        text: "Convene and equip leaders through platforms connecting enterprise, institution building, responsible service, and purpose.",
-      },
+        "number": "04",
+        "title": "Building your people",
+        "text": "Training and bringing leaders together, through his school and summits."
+      }
     ],
-    enterpriseTitle: "Property, Land and Building Site. At the Center of the Project",
-    enterpriseBody:
-      "Certified real estate consulting, negotiation and facilitation, low-cost building work in municipal contexts, and enterprise advisory across cooperatives and processing.",
-    enterpriseLink: "Explore enterprise work",
-    enterpriseAlt: "Construction site with reinforcement work in progress",
-
-    engagementKicker: "How engagement works",
-    engagementTitle: "Clarity before commitment.",
-    steps: [
+    "enterpriseTitle": "Property, Land and Building Site. At the Center of the Project",
+    "enterpriseBody": "Property consulting and negotiation, low-cost building schemes with municipalities, and advice to cooperatives and processing businesses.",
+    "enterpriseLink": "More on the property work",
+    "enterpriseAlt": "Construction site with reinforcement work in progress",
+    "engagementKicker": "How it works",
+    "engagementTitle": "How a conversation usually goes.",
+    "steps": [
       [
-        "Define",
-        "Clarify the asset, enterprise, geography, decision makers, timeline, and intended outcome.",
+        "You explain it",
+        "The property, the business, the people involved, your timing, and what a good outcome would look like for you."
       ],
       [
-        "Examine",
-        "Separate what is known from what still requires verification, and name where local professional advice is needed.",
+        "He separates fact from assumption",
+        "What is actually known, what someone has assumed, and where you will need a lawyer, a surveyor or an accountant."
       ],
       [
-        "Connect",
-        "Bring the relevant parties into a bounded conversation with clear roles and expectations.",
+        "He brings in the right people",
+        "A bounded conversation with the people who matter, everyone clear on who is who and what is being discussed."
       ],
       [
-        "Advance",
-        "Agree practical next steps while independent legal, technical, and financial diligence stays with you.",
-      ],
+        "You decide the next step",
+        "Legal, technical and financial checks stay yours. He will point you to them; he will not do them for you."
+      ]
     ],
-    engagementNote:
-      "Papa Tony works as a real estate consultant and investment facilitator — not as a financial adviser or wealth manager. No investment outcome is promised.",
-    engagementAlt:
-      "Anthony Nkumbe explaining a point at a laptop during a working session",
-
-    operatorKicker: "The operator",
-    operatorTitle: "Trained on land. Built through institutions.",
-    operatorStory: [
-      "Papa Tony trained as an agronomist at FASA, University of Dschang — a formation that began with land, production, and the practical realities of local development.",
-      "The work widened into real estate consulting, negotiation, building facilitation, cooperatives, and investment conversations. The role stayed the same throughout: define the opportunity, read the context, reach the right counterpart.",
+    "engagementNote": "He is a real estate consultant and investment facilitator. He is not a financial adviser and not a wealth manager. He does not promise returns.",
+    "engagementAlt": "Anthony Nkumbe explaining a point at a laptop during a working session",
+    "operatorKicker": "Background",
+    "operatorTitle": "He started with soil, not spreadsheets.",
+    "operatorStory": [
+      "He trained as an agronomist at FASA in Dschang. That is where the habit started — look at the actual land, the actual yield, the actual people, before deciding anything.",
+      "Property, negotiation, building, cooperatives and investment came later. The job never really changed: work out what is there, read the room, find the right person to talk to."
     ],
-    credentialsLabel: "Formation",
-    credentials: [
+    "credentialsLabel": "Where he trained",
+    "credentials": [
       "Agronomy — FASA, University of Dschang",
       "Certified real estate consultant, negotiator, and facilitator",
       "Full Gospel Bible Institute",
       "Cornerstone University and Seminary",
-      "Evangel Theological Seminary",
+      "Evangel Theological Seminary"
     ],
-    operatorLink: "Read the official profile",
-    operatorAlt:
-      "Anthony Nkumbe standing at an office desk holding a portfolio",
-
-    institutionsKicker: "Leadership & ministry",
-    institutionsTitle: "Platforms that turn conviction into capacity.",
-    institutionsBody:
-      "Papa Tony founds, leads, and convenes platforms where entrepreneurship, leadership formation, and regional collaboration can develop.",
-    institutionsLink: "See the leadership record",
-    platforms: [
-      ["ESMEL", "Ministry, entrepreneurship, and leadership formation"],
-      ["ELES", "Leadership empowerment and convening"],
-      ["MBS", "Business dialogue for ministers and leaders"],
+    "operatorLink": "Read the full profile",
+    "operatorAlt": "Anthony Nkumbe standing at an office desk holding a portfolio",
+    "institutionsKicker": "Leadership & ministry",
+    "institutionsTitle": "He builds the rooms other leaders grow in.",
+    "institutionsBody": "Papa Tony founded and runs a school, and convenes the summits where entrepreneurs, ministers and leaders are trained.",
+    "institutionsLink": "See what he leads",
+    "platforms": [
+      [
+        "ESMEL",
+        "A school for ministry, business and leadership"
+      ],
+      [
+        "ELES",
+        "A summit for leaders"
+      ],
+      [
+        "MBS",
+        "Business thinking for ministers"
+      ]
     ],
-    ministryLine:
-      "Faith is the foundation rather than a separate identity. Through Eagles’ Family Assembly he carries a mandate to recover the world with the Word, expressed as identity, stewardship, rural impact, and service.",
-    ministryLink: "Visit Eagles’ Family Assembly",
-    ministrySecondary: "Read the ministry foundation",
-
-    legacyKicker: "Family & legacy",
-    legacyQuote: "Build people who can build beyond you.",
-    legacyBody:
-      "Papa Tony and Rev. Carine Nkumbe are parents to four biological children and to a wider family of adopted and spiritual sons and daughters. The measure they use is people strengthened to carry responsibility.",
-
-    ctaKicker: "A serious conversation begins with context",
-    ctaTitle: "Bring the opportunity. Clarify the fit.",
-    ctaBody:
-      "For property, enterprise, institutional leadership, speaking, or ministry inquiries, share the context and the outcome you are working toward.",
-    cta: "Discuss an opportunity",
-    ctaStatus:
-      "Online delivery of the inquiry form is not connected yet. The official destination channel will be published here once it is confirmed.",
+    "ministryLine": "His faith is not a separate compartment. Through Eagles’ Family Assembly he works on the same things — people who know who they are, handle money well, and do not forget the rural communities they came from.",
+    "ministryLink": "Visit Eagles’ Family Assembly",
+    "ministrySecondary": "More on the ministry",
+    "legacyKicker": "Family & legacy",
+    "legacyQuote": "Build people who can build beyond you.",
+    "legacyBody": "Papa Tony and Rev. Carine Nkumbe have four children of their own, and a much wider family of adopted and spiritual sons and daughters. He measures the work by who can carry it without him.",
+    "ctaKicker": "Before you get in touch",
+    "ctaTitle": "Tell him what you are looking at.",
+    "ctaBody": "Property, a business, an invitation to speak, a leadership programme, or something to do with the ministry. Say what it is and what you want to happen.",
+    "cta": "Start a conversation",
+    "ctaStatus": "The form cannot send yet — no email or WhatsApp number has been published on the site. Until one is, it will tell you so rather than pretend."
   },
   fr: {
-    eyebrow: "Cameroun · Immobilier · Entreprise",
-    name: "Dr Anthony Nkumbe",
-    known: "Connu sous le nom de Papa Tony",
-    headline: "Les opportunités camerounaises, évaluées sur le terrain.",
-    leadFull:
-      "Entrepreneurs, propriétaires, investisseurs et institutions arrivent avec un intérêt pour le Cameroun. Anthony Nkumbe les aide à le qualifier, à rencontrer les bons interlocuteurs locaux et à définir une prochaine étape éclairée.",
-    leadShort:
-      "Qualifier une opportunité au Cameroun, rencontrer les bons interlocuteurs, avancer de façon éclairée.",
-    primary: "Présenter une opportunité",
-    secondary: "Le déroulement d'un échange",
-    heroAlt:
-      "Anthony Nkumbe assis à un bureau de direction lambrissé, en costume sombre",
-    heroCaption: "Dr Anthony Nkumbe",
-    heroCaptionMeta: "Cameroun",
-
-    recordKicker: "Le parcours",
-    recordTitle: "Des fonctions exercées, pas des résultats revendiqués.",
-    recordLead:
-      "L'autorité vient ici des fonctions actuellement exercées dans l'entreprise, l'immobilier, les coopératives et les institutions. Les résultats appartiennent aux parties concernées et ne sont pas affichés sur cette page.",
-    roles: [
-      ["Directeur général", "Rainbow Group of Companies"],
-      ["Consultant, négociateur & facilitateur certifié", "Immobilier"],
-      ["Facilitateur de logements à coût maîtrisé", "Plusieurs municipalités"],
-      ["Vice-président", "CHEDE Union of Cooperatives"],
-      ["Membre exécutif", "Africa Arise Business Consortium"],
-      ["Conseiller technique", "Unités de transformation"],
-      ["Fondateur", "Eagles’ Family Assembly"],
+    "eyebrow": "Cameroun · Immobilier · Entreprise",
+    "name": "Dr Anthony Nkumbe",
+    "known": "Connu sous le nom de Papa Tony",
+    "headline": "Connaissez le terrain avant de vous engager au Cameroun.",
+    "leadFull": "Vous avez quelque chose en tête ici : un bien, un partenaire, un projet. Papa Tony vous aide à savoir si c’est du solide, avec qui vous traiteriez réellement, et ce qu’il faudrait pour avancer.",
+    "leadShort": "Savoir si c’est du solide, avec qui vous traiteriez, et ce qu’il faut pour avancer.",
+    "primary": "Entamer l’échange",
+    "secondary": "Voir sa façon de travailler",
+    "heroAlt": "Anthony Nkumbe assis à un bureau de direction lambrissé, en costume sombre",
+    "heroCaption": "Dr Anthony Nkumbe",
+    "heroCaptionMeta": "Cameroun",
+    "recordKicker": "Le parcours",
+    "recordTitle": "Les fonctions qu’il exerce aujourd’hui.",
+    "recordLead": "Ce sont des fonctions actuelles, pas anciennes. Les résultats appartiennent à ceux avec qui il a travaillé : vous ne trouverez donc pas ici de chiffres invérifiables.",
+    "roles": [
       [
-        "Coordonnateur régional, Afrique de l'Ouest",
-        "Kingdom World for Jesus Int’l Church Fellowship",
+        "Directeur général",
+        "Rainbow Group of Companies"
       ],
+      [
+        "Consultant, négociateur & facilitateur certifié",
+        "Immobilier"
+      ],
+      [
+        "Facilitateur de logements à coût maîtrisé",
+        "Plusieurs municipalités"
+      ],
+      [
+        "Vice-président",
+        "CHEDE Union of Cooperatives"
+      ],
+      [
+        "Membre exécutif",
+        "Africa Arise Business Consortium"
+      ],
+      [
+        "Conseiller technique",
+        "Unités de transformation"
+      ],
+      [
+        "Fondateur",
+        "Eagles’ Family Assembly"
+      ],
+      [
+        "Coordonnateur régional, Afrique de l’Ouest",
+        "Kingdom World for Jesus Int’l Church Fellowship"
+      ]
     ],
-    provenance:
-      "Fonctions telles que déclarées par le Dr Anthony Nkumbe. Les dates, l'ampleur et les références indépendantes sont en cours de documentation et seront publiées ici au fur et à mesure de leur confirmation.",
-    pendingLabel: "Reste à publier",
-    pending: [
-      "Des missions nommées, avec dates, rôle et zone géographique",
-      "Des résultats mesurables confirmés par les parties concernées",
-      "Des références attribuées, publiées avec autorisation",
+    "provenance": "Les dates, l’ampleur et les références extérieures sont en cours de confirmation. Elles paraîtront ici une fois vérifiées, pas avant.",
+    "pendingLabel": "À venir, après vérification",
+    "pending": [
+      "Des projets précis, avec dates et lieux",
+      "Des résultats, confirmés par les personnes concernées",
+      "Des références, nommées et avec autorisation"
     ],
-
-    mandateKicker: "Là où il est utile",
-    mandateTitle: "Quatre façons d'entamer un échange.",
-    mandateLead:
-      "Chacune commence par définir l'opportunité, lire le contexte et identifier les acteurs et les diligences nécessaires pour avancer sérieusement.",
-    pagerLabel: "Modes d'engagement",
-    pillars: [
+    "mandateKicker": "Ce sur quoi il peut aider",
+    "mandateTitle": "Quatre raisons de l’appeler.",
+    "mandateLead": "Quel que soit le sujet, le premier travail est le même : établir ce qui existe vraiment, qui compte, et ce qu’il reste à vérifier.",
+    "pagerLabel": "Ce sur quoi il peut aider",
+    "pillars": [
       {
-        number: "01",
-        title: "Qualifier une opportunité immobilière",
-        text: "Clarifier le bien, les procédures locales, les décideurs, la négociation et les diligences indépendantes encore nécessaires.",
+        "number": "01",
+        "title": "Acheter ou vendre un bien",
+        "text": "Ce qu’est vraiment le bien, qui le contrôle, et ce qu’il vous reste à vérifier."
       },
       {
-        number: "02",
-        title: "Structurer un partenariat d'entreprise",
-        text: "Définir le besoin commercial avant de rapprocher opérateurs, coopératives, institutions et partenaires potentiels pertinents.",
+        "number": "02",
+        "title": "Trouver un partenaire local",
+        "text": "Ce dont vous avez réellement besoin — puis les bonnes mises en relation."
       },
       {
-        number: "03",
-        title: "Lire le contexte local",
-        text: "Apporter une perspective camerounaise concrète aux échanges transfrontaliers avec municipalités, institutions et dirigeants.",
+        "number": "03",
+        "title": "Lire le contexte local",
+        "text": "Comment cela fonctionne vraiment avec les municipalités et les institutions."
       },
       {
-        number: "04",
-        title: "Développer les capacités de leadership",
-        text: "Rassembler et former des leaders autour de l'entreprise, de la construction institutionnelle, du service responsable et de la mission.",
-      },
+        "number": "04",
+        "title": "Former vos équipes",
+        "text": "Former et rassembler des dirigeants, via son école et ses sommets."
+      }
     ],
-    enterpriseTitle: "Immobilier, foncier et chantier. Au centre du projet",
-    enterpriseBody:
-      "Conseil, négociation et facilitation immobilière certifiés, logements à coût maîtrisé en contexte municipal, et conseil aux entreprises, coopératives et unités de transformation.",
-    enterpriseLink: "Explorer l'activité entrepreneuriale",
-    enterpriseAlt: "Chantier de construction avec travaux de ferraillage en cours",
-
-    engagementKicker: "Le déroulement d'un échange",
-    engagementTitle: "Clarifier avant de s'engager.",
-    steps: [
+    "enterpriseTitle": "Immobilier, foncier et chantier. Au centre du projet",
+    "enterpriseBody": "Conseil et négociation immobilière, programmes de logements à coût maîtrisé avec les municipalités, et conseil aux coopératives et aux unités de transformation.",
+    "enterpriseLink": "En savoir plus sur l’immobilier",
+    "enterpriseAlt": "Chantier de construction avec travaux de ferraillage en cours",
+    "engagementKicker": "Comment ça se passe",
+    "engagementTitle": "Le déroulement habituel d’un échange.",
+    "steps": [
       [
-        "Définir",
-        "Préciser l'actif, l'entreprise, la zone, les décideurs, le calendrier et le résultat attendu.",
+        "Vous exposez",
+        "Le bien, l’entreprise, les personnes concernées, votre calendrier, et ce qu’un bon résultat représenterait pour vous."
       ],
       [
-        "Examiner",
-        "Distinguer ce qui est établi de ce qui reste à vérifier, et nommer les domaines nécessitant un avis professionnel local.",
+        "Il sépare le fait de l’hypothèse",
+        "Ce qui est avéré, ce qui n’est que supposé, et là où il vous faudra un avocat, un géomètre ou un comptable."
       ],
       [
-        "Relier",
-        "Réunir les parties pertinentes dans un échange délimité, avec des rôles et des attentes clairs.",
+        "Il réunit les bonnes personnes",
+        "Un échange délimité avec ceux qui comptent, chacun sachant qui est qui et de quoi l’on parle."
       ],
       [
-        "Avancer",
-        "Convenir des prochaines étapes, les diligences juridiques, techniques et financières indépendantes restant à votre charge.",
-      ],
+        "Vous décidez de la suite",
+        "Les vérifications juridiques, techniques et financières restent les vôtres. Il vous y oriente ; il ne les fait pas à votre place."
+      ]
     ],
-    engagementNote:
-      "Papa Tony intervient comme consultant immobilier et facilitateur d'investissement, et non comme conseiller financier ou gestionnaire de patrimoine. Aucun résultat d'investissement n'est promis.",
-    engagementAlt:
-      "Anthony Nkumbe expliquant un point devant un ordinateur portable pendant une séance de travail",
-
-    operatorKicker: "L'homme de terrain",
-    operatorTitle: "Formé par la terre. Bâti par les institutions.",
-    operatorStory: [
-      "Papa Tony s'est formé comme agronome à la FASA de l'Université de Dschang — une formation partie de la terre, de la production et des réalités concrètes du développement local.",
-      "L'activité s'est ensuite étendue au conseil immobilier, à la négociation, à la facilitation de construction, aux coopératives et aux échanges d'investissement. Le rôle est resté le même : définir l'opportunité, lire le contexte, trouver le bon interlocuteur.",
+    "engagementNote": "Il est consultant immobilier et facilitateur d’investissement. Il n’est ni conseiller financier ni gestionnaire de patrimoine. Il ne promet aucun rendement.",
+    "engagementAlt": "Anthony Nkumbe expliquant un point devant un ordinateur portable pendant une séance de travail",
+    "operatorKicker": "Parcours",
+    "operatorTitle": "Il a commencé par la terre, pas par les tableaux.",
+    "operatorStory": [
+      "Il s’est formé comme agronome à la FASA de Dschang. C’est là qu’est née l’habitude : regarder la terre réelle, le rendement réel, les gens réels, avant de décider quoi que ce soit.",
+      "L’immobilier, la négociation, la construction, les coopératives et l’investissement sont venus ensuite. Le métier n’a pas vraiment changé : établir ce qui existe, lire le contexte, trouver le bon interlocuteur."
     ],
-    credentialsLabel: "Formation",
-    credentials: [
+    "credentialsLabel": "Où il s’est formé",
+    "credentials": [
       "Agronomie — FASA, Université de Dschang",
       "Consultant, négociateur et facilitateur immobilier certifié",
       "Full Gospel Bible Institute",
       "Cornerstone University and Seminary",
-      "Evangel Theological Seminary",
+      "Evangel Theological Seminary"
     ],
-    operatorLink: "Lire le profil officiel",
-    operatorAlt:
-      "Anthony Nkumbe debout à un bureau, un porte-documents à la main",
-
-    institutionsKicker: "Leadership & ministère",
-    institutionsTitle: "Des plateformes qui transforment la conviction en capacité.",
-    institutionsBody:
-      "Papa Tony fonde, dirige et convoque des plateformes où progressent l'entrepreneuriat, la formation au leadership et la collaboration régionale.",
-    institutionsLink: "Voir le parcours institutionnel",
-    platforms: [
-      ["ESMEL", "Formation au ministère, à l'entrepreneuriat et au leadership"],
-      ["ELES", "Renforcement et rassemblement des leaders"],
-      ["MBS", "Dialogue économique pour ministres et responsables"],
+    "operatorLink": "Lire le profil complet",
+    "operatorAlt": "Anthony Nkumbe debout à un bureau, un porte-documents à la main",
+    "institutionsKicker": "Leadership & ministère",
+    "institutionsTitle": "Il crée les lieux où d’autres dirigeants grandissent.",
+    "institutionsBody": "Papa Tony a fondé et dirige une école, et anime les sommets où se forment entrepreneurs, ministres et responsables.",
+    "institutionsLink": "Voir ce qu’il dirige",
+    "platforms": [
+      [
+        "ESMEL",
+        "Une école de ministère, d’entreprise et de leadership"
+      ],
+      [
+        "ELES",
+        "Un sommet pour les dirigeants"
+      ],
+      [
+        "MBS",
+        "La réflexion économique pour les ministres"
+      ]
     ],
-    ministryLine:
-      "La foi est le fondement, non une identité séparée. À travers Eagles' Family Assembly, il porte le mandat de « récupérer le monde par la Parole », vécu comme identité, intendance, impact rural et service.",
-    ministryLink: "Visiter Eagles’ Family Assembly",
-    ministrySecondary: "Découvrir le fondement ministériel",
-
-    legacyKicker: "Famille & transmission",
-    legacyQuote: "Former des personnes capables de bâtir au-delà de vous.",
-    legacyBody:
-      "Papa Tony et la Révérende Carine Nkumbe sont parents de quatre enfants biologiques et d'une famille élargie d'enfants adoptés ainsi que de fils et filles spirituels. Leur mesure : des personnes fortifiées pour porter des responsabilités.",
-
-    ctaKicker: "Une conversation sérieuse commence par le contexte",
-    ctaTitle: "Présentez l'opportunité. Vérifions l'adéquation.",
-    ctaBody:
-      "Pour toute demande liée à l'immobilier, l'entreprise, le leadership institutionnel, une intervention ou le ministère, partagez le contexte et le résultat recherché.",
-    cta: "Échanger sur une opportunité",
-    ctaStatus:
-      "L'envoi en ligne du formulaire n'est pas encore connecté. Le canal de contact officiel sera publié ici dès sa confirmation.",
+    "ministryLine": "Sa foi n’est pas un compartiment à part. À travers Eagles’ Family Assembly, il travaille sur les mêmes choses : des personnes qui savent qui elles sont, qui gèrent bien l’argent, et qui n’oublient pas les campagnes d’où elles viennent.",
+    "ministryLink": "Visiter Eagles’ Family Assembly",
+    "ministrySecondary": "En savoir plus sur le ministère",
+    "legacyKicker": "Famille & transmission",
+    "legacyQuote": "Former des personnes capables de bâtir au-delà de vous.",
+    "legacyBody": "Papa Tony et la Révérende Carine Nkumbe ont quatre enfants, et une famille bien plus large d’enfants adoptés ainsi que de fils et filles spirituels. Il mesure son travail à ceux qui peuvent le porter sans lui.",
+    "ctaKicker": "Avant de le contacter",
+    "ctaTitle": "Dites-lui ce que vous avez en vue.",
+    "ctaBody": "Un bien, une entreprise, une invitation à intervenir, un programme de leadership, ou quelque chose lié au ministère. Dites de quoi il s’agit et ce que vous souhaitez obtenir.",
+    "cta": "Entamer l’échange",
+    "ctaStatus": "Le formulaire ne peut pas encore envoyer — aucune adresse e-mail ni numéro WhatsApp n’est publié sur le site. Tant que ce ne sera pas le cas, il vous le dira au lieu de faire semblant."
   },
 };
 
