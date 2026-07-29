@@ -1,36 +1,52 @@
 /**
  * Cloudflare Turnstile.
  *
- * Nothing here activates until both halves are configured:
- *   NEXT_PUBLIC_TURNSTILE_SITE_KEY  — public, embedded in the page
- *   TURNSTILE_SECRET_KEY            — server only, never sent to the browser
+ * The site key is public by design and ships in the page. The secret is read
+ * from `TURNSTILE_SECRET` in the server environment and must never appear in
+ * source, in the client bundle, or in logs.
  *
- * Until the inquiry form has a delivery endpoint there is no submission to
- * protect, so the widget stays unrendered rather than loading a third-party
- * script on every contact view. Wire `verifyTurnstile` into the delivery route
- * the moment one exists — a token collected and never verified is worse than
- * no token at all, because it looks like protection and is not.
+ * Verification is server-side only: browser → /api/inquiry → siteverify.
+ * Never call siteverify from the browser.
  */
 
-const VERIFY_URL =
-  "https://challenges.cloudflare.com/turnstile/v0/siteverify";
+const VERIFY_URL = "https://challenges.cloudflare.com/turnstile/v0/siteverify";
 
-export const TURNSTILE_SITE_KEY: string =
-  process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY ?? "";
+/** Public site key for the widget created in the Cloudflare dashboard. */
+export const DEFAULT_TURNSTILE_SITE_KEY = "0x4AAAAAAEA2E1BXMoAtEPd7";
 
-/** True once a site key is present, i.e. the widget should render. */
-export const turnstileConfigured = TURNSTILE_SITE_KEY.length > 0;
+/** Server-side: the live value, overridable per environment. */
+export function serverSiteKey(): string {
+  return process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY || DEFAULT_TURNSTILE_SITE_KEY;
+}
+
+/**
+ * Client-side: the layout injects the server's value on `window`, so staging
+ * and test environments can swap the widget without a rebuild.
+ */
+export function siteKey(): string {
+  if (typeof window !== "undefined") {
+    const injected = (window as { __TURNSTILE_SITE_KEY__?: string })
+      .__TURNSTILE_SITE_KEY__;
+    if (injected) return injected;
+  }
+  return DEFAULT_TURNSTILE_SITE_KEY;
+}
+
+/** Telemetry marker required on every cf-turnstile div. */
+export const TURNSTILE_ACTION = "turnstile-spin-v2";
+
+export const turnstileConfigured = true;
 
 export interface TurnstileResult {
   success: boolean;
-  /** Cloudflare's machine-readable reasons, useful in logs. */
+  /** Cloudflare's machine-readable reasons, useful in server logs. */
   errorCodes: string[];
 }
 
 /**
- * Server-side check of a Turnstile token. Call this before accepting or
- * forwarding any inquiry; a failed or missing verification must reject the
- * submission rather than fall through.
+ * Canonical server-side siteverify. Fails closed: any network error, non-2xx,
+ * non-JSON body or missing secret returns `success: false`, so the caller
+ * rejects rather than falling through.
  */
 export async function verifyTurnstile(
   token: string | null | undefined,
@@ -38,21 +54,23 @@ export async function verifyTurnstile(
   remoteIp?: string | null,
 ): Promise<TurnstileResult> {
   if (!secret) {
-    return { success: false, errorCodes: ["missing-secret-key"] };
+    return { success: false, errorCodes: ["missing-input-secret"] };
   }
   if (!token) {
     return { success: false, errorCodes: ["missing-input-response"] };
   }
 
-  const body = new FormData();
-  body.append("secret", secret);
-  body.append("response", token);
+  const body = new URLSearchParams({ secret, response: token });
   if (remoteIp) body.append("remoteip", remoteIp);
 
   try {
-    const response = await fetch(VERIFY_URL, { method: "POST", body });
+    const response = await fetch(VERIFY_URL, {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body,
+    });
     if (!response.ok) {
-      return { success: false, errorCodes: [`http-${response.status}`] };
+      return { success: false, errorCodes: [`siteverify-${response.status}`] };
     }
     const data = (await response.json()) as {
       success?: boolean;
@@ -63,6 +81,6 @@ export async function verifyTurnstile(
       errorCodes: data["error-codes"] ?? [],
     };
   } catch {
-    return { success: false, errorCodes: ["verification-request-failed"] };
+    return { success: false, errorCodes: ["siteverify-request-failed"] };
   }
 }

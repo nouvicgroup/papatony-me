@@ -1,4 +1,20 @@
-import { expect, test } from "@playwright/test";
+import { expect, test, type Locator, type Page } from "@playwright/test";
+
+/** Turnstile injects a hidden input once it has solved; wait for the token. */
+async function waitForTurnstile(scope: Page | Locator) {
+  await expect
+    .poll(
+      async () =>
+        await scope
+          .locator('input[name="cf-turnstile-response"]')
+          .first()
+          .inputValue()
+          .catch(() => ""),
+      { timeout: 20_000 },
+    )
+    .not.toBe("");
+}
+
 
 const routes = [
   "/",
@@ -137,9 +153,13 @@ test.describe("desktop experience", () => {
       .fill(
         "We would like to discuss a clearly scoped enterprise partnership in Cameroon.",
       );
+    await waitForTurnstile(page);
     await page.getByRole("button", { name: "Review my message" }).click();
-    await expect(page.getByRole("alert")).toContainText(
-      "no email or WhatsApp number is published",
+    // Whatever the outcome, the form must never claim it sent anything.
+    const alert = page.getByRole("alert");
+    await expect(alert).toContainText(/nothing (has been|was) sent/i);
+    await expect(alert).not.toContainText(
+      /message sent|successfully sent|thank you|we.ll be in touch/i,
     );
   });
 
@@ -312,11 +332,11 @@ test.describe("mobile experience", () => {
     await sheet
       .getByLabel("What are you looking at? *")
       .fill("A clearly scoped property question we would like to discuss.");
+    await waitForTurnstile(sheet);
     await sheet.getByRole("button", { name: "Review my message" }).click();
 
     const alert = page.getByRole("alert");
-    await expect(alert).toContainText("no email or WhatsApp number is published");
-    await expect(alert).toContainText("Nothing has been sent");
+    await expect(alert).toContainText(/nothing (has been|was) sent/i);
 
     await page.keyboard.press("Escape");
     await expect(sheet).toBeHidden();

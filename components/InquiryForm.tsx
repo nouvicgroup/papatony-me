@@ -10,7 +10,15 @@ interface InquiryFormProps {
   locale: Locale;
 }
 
-type FormStatus = "idle" | "invalid" | "not-configured" | "copied" | "copy-failed";
+type FormStatus =
+  | "idle"
+  | "invalid"
+  | "checking"
+  | "not-configured"
+  | "sent"
+  | "blocked"
+  | "copied"
+  | "copy-failed";
 
 function subscribeToHydration() {
   return () => {};
@@ -32,6 +40,9 @@ const copy = {
     ],
     choose: "Choose one",
     submit: "Review my message",
+    checking: "Checking you are human\u2026",
+    sent: "Sent. I\u2019ll reply to the address you gave.",
+    blocked: "That check did not pass, so nothing was sent. Please try again.",
     note: "Only used to reply to you.",
     invalid: "Please fill in the required fields, and check the email address.",
     unavailable:
@@ -64,6 +75,9 @@ const copy = {
     ],
     choose: "Choisissez",
     submit: "Relire mon message",
+    checking: "V\u00e9rification en cours\u2026",
+    sent: "Envoy\u00e9. Je r\u00e9pondrai \u00e0 l\u2019adresse indiqu\u00e9e.",
+    blocked: "La v\u00e9rification n\u2019a pas abouti, rien n\u2019a \u00e9t\u00e9 envoy\u00e9. R\u00e9essayez.",
     note: "Sert uniquement \u00e0 vous r\u00e9pondre.",
     invalid:
       "Merci de remplir les champs obligatoires et de v\u00e9rifier l\u2019adresse e-mail.",
@@ -88,6 +102,7 @@ export function InquiryForm({ locale }: InquiryFormProps) {
   const [status, setStatus] = useState<FormStatus>("idle");
   const [intention, setIntention] = useState("");
   const [turnstileToken, setTurnstileToken] = useState("");
+  const [resetSignal, setResetSignal] = useState(0);
   const formRef = useRef<HTMLFormElement>(null);
   const hydrated = useSyncExternalStore(
     subscribeToHydration,
@@ -96,9 +111,11 @@ export function InquiryForm({ locale }: InquiryFormProps) {
   );
   const text = copy[locale];
   const prepared =
-    status === "not-configured" || status === "copied" || status === "copy-failed";
+    status === "not-configured" ||
+    status === "copied" ||
+    status === "copy-failed";
 
-  function handleSubmit(event: FormEvent<HTMLFormElement>) {
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const form = event.currentTarget;
     if (!form.checkValidity() || !intention) {
@@ -106,12 +123,32 @@ export function InquiryForm({ locale }: InquiryFormProps) {
       form.reportValidity();
       return;
     }
-    // Only gates when Turnstile is actually configured; see lib/turnstile.ts.
     if (turnstileConfigured && !turnstileToken) {
       setStatus("invalid");
       return;
     }
-    setStatus("not-configured");
+
+    setStatus("checking");
+    const body = new FormData(form);
+    body.set("cf-turnstile-response", turnstileToken);
+
+    try {
+      const response = await fetch("/api/inquiry", { method: "POST", body });
+      if (!response.ok) {
+        // Rejected — the spent token must be replaced before a retry.
+        setResetSignal((n) => n + 1);
+        setTurnstileToken("");
+        setStatus("blocked");
+        return;
+      }
+      const data = (await response.json()) as { delivered?: boolean };
+      // "sent" only when the server actually delivered it.
+      setStatus(data.delivered ? "sent" : "not-configured");
+    } catch {
+      setResetSignal((n) => n + 1);
+      setTurnstileToken("");
+      setStatus("blocked");
+    }
   }
 
   async function copyInquiry() {
@@ -138,7 +175,13 @@ export function InquiryForm({ locale }: InquiryFormProps) {
   }
 
   const statusMessage =
-    status === "invalid"
+    status === "sent"
+      ? text.sent
+      : status === "checking"
+      ? text.checking
+      : status === "blocked"
+        ? text.blocked
+        : status === "invalid"
       ? text.invalid
       : status === "copied"
         ? text.copied
@@ -181,7 +224,11 @@ export function InquiryForm({ locale }: InquiryFormProps) {
       </label>
       {status !== "idle" && (
         <div
-          className={status === "invalid" ? "form-status error" : "form-status"}
+          className={
+            status === "invalid" || status === "blocked"
+              ? "form-status error"
+              : "form-status"
+          }
           role="alert"
         >
           <p>{statusMessage}</p>
@@ -192,10 +239,14 @@ export function InquiryForm({ locale }: InquiryFormProps) {
           )}
         </div>
       )}
-      <TurnstileWidget locale={locale} onToken={setTurnstileToken} />
+      <TurnstileWidget
+        locale={locale}
+        onToken={setTurnstileToken}
+        resetSignal={resetSignal}
+      />
       <div className="form-submit">
         <small>{text.note}</small>
-        <button type="submit" disabled={!hydrated}>
+        <button type="submit" disabled={!hydrated || status === "checking"}>
           {text.submit}
           <span aria-hidden="true">↗</span>
         </button>

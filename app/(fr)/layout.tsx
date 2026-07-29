@@ -5,6 +5,7 @@ import {
   rootMetadata,
   websiteSchema,
 } from "@/lib/site";
+import { serverSiteKey } from "@/lib/turnstile";
 import "../globals.css";
 
 export const metadata: Metadata = rootMetadata;
@@ -15,6 +16,11 @@ export default function FrenchRootLayout({
   return (
     <html lang="fr">
       <body>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `window.__TURNSTILE_SITE_KEY__=${JSON.stringify(serverSiteKey())}`,
+          }}
+        />
         <a className="skip-link" href="#main-content">
           Aller au contenu
         </a>

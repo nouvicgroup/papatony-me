@@ -12,6 +12,13 @@ export default defineConfig({
   },
   webServer: {
     command: "npx vinext dev --port 4173",
+    // Cloudflare's published always-passes testing pair, so the suite
+    // exercises the real verify path. Not credentials.
+    // https://developers.cloudflare.com/turnstile/troubleshooting/testing/
+    env: {
+      NEXT_PUBLIC_TURNSTILE_SITE_KEY: "1x00000000000000000000AA",
+      TURNSTILE_SECRET: "1x0000000000000000000000000000000AA",
+    },
     url: "http://localhost:4173",
     reuseExistingServer: false,
     timeout: 120_000,
