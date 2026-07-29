@@ -15,8 +15,8 @@ const content = {
     "name": "Dr. Anthony Nkumbe",
     "known": "Known as Papa Tony",
     "headline": "Know the ground before you commit in Cameroon.",
-    "leadFull": "You've got something in mind here — a property, a partner, a project. I help you find out whether it's real, who you'd actually be dealing with, and what it would take to move.",
-    "leadShort": "Find out whether it's real, who you'd be dealing with, and what it takes to move.",
+    "leadFull": "A property, a partner, a project: before you commit here, you need to know what is real, who you would actually be dealing with, and what it would take to move. That is the work I do.",
+    "leadShort": "Know what is real, who you are dealing with, and what it takes to move.",
     "primary": "Start a conversation",
     "secondary": "See how I work",
     "heroAlt": "Anthony Nkumbe seated at a wood-panelled executive desk in a dark suit",
@@ -24,7 +24,7 @@ const content = {
     "heroCaptionMeta": "Cameroon",
     "recordKicker": "The record",
     "recordTitle": "What I do, and where.",
-    "recordLead": "These are roles I hold now, not ones I used to. Results belong to the people I worked with, so you won't find numbers on this page I can't back up.",
+    "recordLead": "These are roles I hold today, not titles I once held. You will not find a figure on this page I cannot stand behind.",
     "roles": [
       [
         "Chief Executive",
@@ -59,8 +59,8 @@ const content = {
         "Kingdom World for Jesus Int’l Church Fellowship"
       ]
     ],
-    "provenance": "Dates, scale and outside references are still being confirmed. They'll appear here once they're verified, and not before.",
-    "pendingLabel": "Coming, once verified",
+    "provenance": "Specific projects, dates and outside references are being confirmed with the people involved, and appear here once they are.",
+    "pendingLabel": "Being confirmed now",
     "pending": [
       "Specific projects, with dates and where they happened",
       "Results, confirmed by the people involved",
@@ -79,7 +79,7 @@ const content = {
       {
         "number": "02",
         "title": "Finding a local partner",
-        "text": "What you actually need from a partner — then the right introductions."
+        "text": "First, what you actually need from a partner. Then the right introductions."
       },
       {
         "number": "03",
@@ -92,7 +92,7 @@ const content = {
         "text": "Training and bringing leaders together, through my school and summits."
       }
     ],
-    "enterpriseTitle": "Property, Land and Building Site. At the Center of the Project",
+    "enterpriseTitle": "Property, land and the building site: where every project starts.",
     "enterpriseBody": "Property consulting and negotiation, low-cost building schemes with municipalities, and advice to cooperatives and processing businesses.",
     "enterpriseLink": "More on the property work",
     "enterpriseAlt": "Construction site with reinforcement work in progress",
@@ -121,7 +121,7 @@ const content = {
     "operatorKicker": "Background",
     "operatorTitle": "I started with soil, not spreadsheets.",
     "operatorStory": [
-      "I trained as an agronomist at FASA in Dschang. That's where the habit started — look at the actual land, the actual yield, the actual people, before deciding anything.",
+      "I trained as an agronomist at FASA in Dschang. That is where the habit started: look at the actual land, the actual yield, the actual people, before deciding anything.",
       "Property, negotiation, building, cooperatives and investment came later. The job never really changed: work out what's there, read the room, find the right person to talk to."
     ],
     "credentialsLabel": "Where I trained",
@@ -161,24 +161,23 @@ const content = {
     "ctaKicker": "Before you get in touch",
     "ctaTitle": "Tell me what you're looking at.",
     "ctaBody": "A property, a business, an invitation to speak, a leadership programme, or something to do with the ministry. Say what it is and what you want to happen.",
-    "cta": "Start a conversation",
-    "ctaStatus": "The form can't send yet — there's no email or WhatsApp number published on the site. Until there is, it'll tell you so rather than pretend."
+    "cta": "Start a conversation"
   },
   fr: {
     "eyebrow": "Cameroun · Immobilier · Entreprise",
     "name": "Dr Anthony Nkumbe",
     "known": "Connu sous le nom de Papa Tony",
     "headline": "Connaissez le terrain avant de vous engager au Cameroun.",
-    "leadFull": "Vous avez quelque chose en tête ici : un bien, un partenaire, un projet. Je vous aide à savoir si c’est du solide, avec qui vous traiteriez réellement, et ce qu’il faudrait pour avancer.",
-    "leadShort": "Savoir si c’est du solide, avec qui vous traiteriez, et ce qu’il faut pour avancer.",
-    "primary": "Entamer l’échange",
+    "leadFull": "Un bien, un partenaire, un projet : avant de vous engager ici, vous devez savoir ce qui est réel, avec qui vous traiteriez vraiment, et ce qu’il faudrait pour avancer. C’est là mon travail.",
+    "leadShort": "Savoir ce qui est réel, avec qui vous traitez, et ce qu’il faut pour avancer.",
+    "primary": "Engager la conversation",
     "secondary": "Ma façon de travailler",
     "heroAlt": "Anthony Nkumbe assis à un bureau de direction lambrissé, en costume sombre",
     "heroCaption": "Dr Anthony Nkumbe",
     "heroCaptionMeta": "Cameroun",
     "recordKicker": "Le parcours",
     "recordTitle": "Ce que je fais, et où.",
-    "recordLead": "Ce sont des fonctions que j’exerce aujourd’hui, pas d’anciennes. Les résultats appartiennent à ceux avec qui j’ai travaillé : vous ne trouverez donc pas ici de chiffres que je ne peux pas étayer.",
+    "recordLead": "Ce sont des fonctions que j’exerce aujourd’hui, non d’anciens titres. Vous ne trouverez ici aucun chiffre que je ne puisse assumer.",
     "roles": [
       [
         "Directeur général",
@@ -213,8 +212,8 @@ const content = {
         "Kingdom World for Jesus Int’l Church Fellowship"
       ]
     ],
-    "provenance": "Les dates, l’ampleur et les références extérieures sont en cours de confirmation. Elles paraîtront ici une fois vérifiées, pas avant.",
-    "pendingLabel": "À venir, après vérification",
+    "provenance": "Les projets précis, les dates et les références extérieures sont en cours de confirmation auprès des personnes concernées, et paraîtront ici dès qu’elles le seront.",
+    "pendingLabel": "En cours de confirmation",
     "pending": [
       "Des projets précis, avec dates et lieux",
       "Des résultats, confirmés par les personnes concernées",
@@ -233,7 +232,7 @@ const content = {
       {
         "number": "02",
         "title": "Trouver un partenaire local",
-        "text": "Ce dont vous avez réellement besoin — puis les bonnes mises en relation."
+        "text": "D’abord ce dont vous avez réellement besoin, puis les bonnes mises en relation."
       },
       {
         "number": "03",
@@ -246,7 +245,7 @@ const content = {
         "text": "Former et rassembler des dirigeants, via mon école et mes sommets."
       }
     ],
-    "enterpriseTitle": "Immobilier, foncier et chantier. Au centre du projet",
+    "enterpriseTitle": "Immobilier, foncier et chantier : le point de départ de chaque projet.",
     "enterpriseBody": "Conseil et négociation immobilière, programmes de logements à coût maîtrisé avec les municipalités, et conseil aux coopératives et aux unités de transformation.",
     "enterpriseLink": "En savoir plus sur l’immobilier",
     "enterpriseAlt": "Chantier de construction avec travaux de ferraillage en cours",
@@ -315,8 +314,7 @@ const content = {
     "ctaKicker": "Avant de me contacter",
     "ctaTitle": "Dites-moi ce que vous avez en vue.",
     "ctaBody": "Un bien, une entreprise, une invitation à intervenir, un programme de leadership, ou quelque chose lié au ministère. Dites de quoi il s’agit et ce que vous souhaitez obtenir.",
-    "cta": "Entamer l’échange",
-    "ctaStatus": "Le formulaire ne peut pas encore envoyer — aucune adresse e-mail ni numéro WhatsApp n’est publié sur le site. Tant que ce ne sera pas le cas, il vous le dira au lieu de faire semblant."
+    "cta": "Engager la conversation"
   },
 };
 
@@ -563,7 +561,6 @@ export function HomePage({ locale }: HomePageProps) {
           label={text.cta}
           locale={locale}
         />
-        <small className="cta-status">{text.ctaStatus}</small>
       </section>
     </main>
   );

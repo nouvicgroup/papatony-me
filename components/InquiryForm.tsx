@@ -46,10 +46,10 @@ const copy = {
     note: "Only used to reply to you.",
     invalid: "Please fill in the required fields, and check the email address.",
     unavailable:
-      "Your message is ready, but I have nowhere to receive it yet \u2014 no email or WhatsApp number is published. Nothing has been sent. Copy it and send it however you normally reach me.",
+      "Your message is ready, but delivery from this page is temporarily unavailable. Nothing has been sent. Copy it below and send it through the channel you normally use to reach me.",
     copyAction: "Copy my message",
     copied:
-      "Copied. Nothing was sent from this page \u2014 paste it wherever you're reaching me.",
+      "Copied. Nothing was sent from this page; paste it wherever you're reaching me.",
     copyFailed:
       "Your browser blocked the copy. Select the text in the fields above and copy it by hand. Nothing has been sent.",
     labels: {
@@ -82,10 +82,10 @@ const copy = {
     invalid:
       "Merci de remplir les champs obligatoires et de v\u00e9rifier l\u2019adresse e-mail.",
     unavailable:
-      "Votre message est pr\u00eat, mais il n\u2019y a pas encore o\u00f9 l\u2019envoyer \u2014 aucune adresse e-mail ni num\u00e9ro WhatsApp n\u2019est publi\u00e9. Rien n\u2019a \u00e9t\u00e9 envoy\u00e9. Copiez-le et transmettez-le par le canal que vous utilisez d\u2019habitude.",
+      "Votre message est pr\u00eat, mais l\u2019envoi depuis cette page est momentan\u00e9ment indisponible. Rien n\u2019a \u00e9t\u00e9 envoy\u00e9. Copiez-le ci-dessous et transmettez-le par le canal que vous utilisez d\u2019habitude.",
     copyAction: "Copier mon message",
     copied:
-      "Copi\u00e9. Rien n\u2019a \u00e9t\u00e9 envoy\u00e9 depuis cette page \u2014 collez le texte l\u00e0 o\u00f9 vous le joignez.",
+      "Copi\u00e9. Rien n\u2019a \u00e9t\u00e9 envoy\u00e9 depuis cette page ; collez le texte l\u00e0 o\u00f9 vous le joignez.",
     copyFailed:
       "Votre navigateur a bloqu\u00e9 la copie. S\u00e9lectionnez le texte des champs ci-dessus et copiez-le \u00e0 la main. Rien n\u2019a \u00e9t\u00e9 envoy\u00e9.",
     labels: {

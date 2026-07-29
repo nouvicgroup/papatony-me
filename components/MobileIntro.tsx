@@ -25,7 +25,7 @@ const copy = {
         body: "Purpose · Leadership · Property · Business",
       },
       {
-        eyebrow: "What he does",
+        eyebrow: "What I do",
         title: "Property, enterprise, institutions.",
         body: "Certified real estate consulting and negotiation, low-cost building facilitation, cooperatives, and enterprise advisory.",
       },
@@ -48,7 +48,7 @@ const copy = {
         body: "Mission · Leadership · Immobilier · Affaires",
       },
       {
-        eyebrow: "Son activité",
+        eyebrow: "Ce que je fais",
         title: "Immobilier, entreprise, institutions.",
         body: "Conseil et négociation immobilière certifiés, logements à coût maîtrisé, coopératives et conseil aux entreprises.",
       },

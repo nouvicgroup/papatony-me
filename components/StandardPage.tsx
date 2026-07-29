@@ -17,28 +17,28 @@ interface StandardPageProps {
 const enterprise = {
   en: {
     kicker: "Property & enterprise",
-    title: "Opportunity needs more than capital. It needs context.",
+    title: "Before money moves, someone has to know the ground.",
     lead:
-      "I work where property, enterprise, local relationships and cross-border partnership meet — helping serious people understand the terrain before they decide how to proceed.",
+      "Property, enterprise, local relationships, cross-border partners: my work is to establish what a deal really involves in Cameroon before you decide how far to take it.",
     imageAlt:
       "Anthony Nkumbe seated at a bright office desk",
     domainsTitle: "Areas of engagement",
     domains: [
       [
         "Real estate consulting",
-        "Structured conversations around property interests, local process, negotiation, and responsible facilitation in Cameroon.",
+        "Advice and negotiation on buying, selling and holding property in Cameroon: what the asset really is, who controls it, and how the local process actually runs.",
       ],
       [
         "Building facilitation",
-        "Engagement around low-cost building approaches and municipal contexts, without presenting a one-size-fits-all solution.",
+        "Low-cost building schemes worked out with municipalities, matched to the site and the budget rather than a single template.",
       ],
       [
         "Enterprise partnerships",
-        "Connecting suitable operators, institutions, cooperatives, and partners around a clearly defined commercial need.",
+        "Introductions between operators, institutions and cooperatives, once the commercial need is clearly defined.",
       ],
       [
         "Investment facilitation",
-        "Preparing introductions and discussions between opportunity owners and prospective capital partners. No investment outcomes are promised.",
+        "Preparing the ground between opportunity owners and prospective capital partners. I facilitate the conversation; I promise no outcome.",
       ],
     ],
     approachKicker: "Working approach",
@@ -63,33 +63,32 @@ const enterprise = {
     ],
     note:
       "I am a real estate consultant and investment facilitator, not a financial adviser or wealth manager. Every opportunity needs independent due diligence.",
-    ctaTitle: "Have a property or enterprise conversation in mind?",
-    cta: "Share the context",
+    ctaTitle: "Looking at a property or a business in Cameroon?",
+    cta: "Start a conversation",
   },
   fr: {
     kicker: "Immobilier & entreprise",
-    title:
-      "Une opportunité exige plus que du capital. Elle exige une lecture du terrain.",
+    title: "Avant que l’argent ne bouge, il faut connaître le terrain.",
     lead:
-      "J’interviens là où se croisent l’immobilier, l’entreprise, les relations locales et les partenariats transfrontaliers, pour aider des interlocuteurs sérieux à comprendre le terrain avant de décider.",
+      "Immobilier, entreprise, relations locales, partenaires transfrontaliers : mon travail est d’établir ce qu’un projet implique vraiment au Cameroun avant que vous ne décidiez jusqu’où aller.",
     imageAlt: "Anthony Nkumbe assis à un bureau lumineux",
     domainsTitle: "Domaines d'intervention",
     domains: [
       [
         "Conseil immobilier",
-        "Échanges structurés autour des intérêts immobiliers, des procédures locales, de la négociation et d'une facilitation responsable au Cameroun.",
+        "Conseil et négociation pour acheter, vendre ou conserver un bien au Cameroun : ce qu'est réellement l'actif, qui le contrôle, et comment la procédure locale se déroule vraiment.",
       ],
       [
         "Facilitation de construction",
-        "Réflexion sur des approches de construction à coût maîtrisé et sur les contextes municipaux, sans solution uniforme.",
+        "Des programmes de construction à coût maîtrisé élaborés avec les municipalités, adaptés au site et au budget plutôt qu'à un modèle unique.",
       ],
       [
         "Partenariats d'entreprise",
-        "Mise en relation d'opérateurs, d'institutions, de coopératives et de partenaires adaptés à un besoin commercial clairement défini.",
+        "Des mises en relation entre opérateurs, institutions et coopératives, une fois le besoin commercial clairement défini.",
       ],
       [
         "Facilitation d'investissement",
-        "Préparation de mises en relation entre porteurs d'opportunités et partenaires financiers potentiels, sans garantie de résultat.",
+        "Préparer le terrain entre porteurs d'opportunités et partenaires financiers potentiels. Je facilite la conversation ; je ne promets aucun résultat.",
       ],
     ],
     approachKicker: "Méthode de travail",
@@ -114,17 +113,17 @@ const enterprise = {
     ],
     note:
       "Je suis consultant immobilier et facilitateur d’investissement, et non conseiller financier ou gestionnaire de patrimoine. Toute opportunité exige une diligence indépendante.",
-    ctaTitle: "Vous souhaitez parler d'un projet immobilier ou d'entreprise ?",
-    cta: "Présenter le contexte",
+    ctaTitle: "Vous regardez un bien ou une entreprise au Cameroun ?",
+    cta: "Engager la conversation",
   },
 };
 
 const leadership = {
   en: {
     kicker: "Leadership & institutions",
-    title: "Convening people around formation, enterprise, and service.",
+    title: "Leaders are formed in rooms someone had to build.",
     lead:
-      "I have founded and led institutions built to strengthen people, organise shared purpose, and turn conviction into something that lasts.",
+      "The schools, summits and associations here exist for one purpose: to form people who can carry responsibility, and who keep forming others after I leave the room.",
     imageAlt:
       "Anthony Nkumbe in a formal portrait at a leadership conference",
     recordTitle: "An institutional record",
@@ -143,17 +142,17 @@ const leadership = {
     platforms: [
       [
         "ESMEL",
-        "A formation platform connecting ministry, entrepreneurship, and leadership.",
+        "A school where ministry, entrepreneurship and leadership are taught as one discipline.",
         "/media/esmel.jpeg",
       ],
       [
         "ELES",
-        "A summit designed to empower leaders and widen the quality of leadership conversation.",
+        "A summit where leaders are challenged and equipped, not just gathered.",
         "/media/eles.jpeg",
       ],
       [
         "MBS",
-        "A business summit bringing economic and enterprise thinking into ministerial leadership.",
+        "A summit that brings business thinking to ministers who run real organisations.",
         "/media/mbs.jpeg",
       ],
     ],
@@ -164,10 +163,9 @@ const leadership = {
   },
   fr: {
     kicker: "Leadership & institutions",
-    title:
-      "Rassembler les personnes autour de la formation, de l'entreprise et du service.",
+    title: "Les leaders se forment dans des lieux que quelqu'un a dû bâtir.",
     lead:
-      "J’ai fondé et dirigé des institutions destinées à fortifier les personnes, organiser une mission commune et transformer les convictions en structures durables.",
+      "Les écoles, sommets et associations présentés ici ont un seul but : former des personnes capables de porter des responsabilités, et qui continuent d'en former d'autres après moi.",
     imageAlt:
       "Portrait officiel d'Anthony Nkumbe lors d'une rencontre de leadership",
     recordTitle: "Un parcours institutionnel",
@@ -186,17 +184,17 @@ const leadership = {
     platforms: [
       [
         "ESMEL",
-        "Une plateforme de formation qui relie ministère, entrepreneuriat et leadership.",
+        "Une école où ministère, entrepreneuriat et leadership s'enseignent comme une seule discipline.",
         "/media/esmel.jpeg",
       ],
       [
         "ELES",
-        "Un sommet conçu pour renforcer les leaders et élever la qualité du dialogue.",
+        "Un sommet où les leaders sont confrontés et équipés, pas seulement rassemblés.",
         "/media/eles.jpeg",
       ],
       [
         "MBS",
-        "Un sommet qui intègre la réflexion économique et entrepreneuriale au leadership ministériel.",
+        "Un sommet qui apporte la réflexion d'entreprise aux ministres qui dirigent de vraies organisations.",
         "/media/mbs.jpeg",
       ],
     ],
@@ -231,8 +229,8 @@ const about = {
     ],
     familyTitle: "Family & generational responsibility",
     family:
-      "I am married to Rev. Carine Nkumbe. We are parents to four biological children, and parental and spiritual figures to a wider family of adopted children, sons and daughters. Family portraits will only be added with specific approval.",
-    cta: "Discuss an opportunity",
+      "I am married to Rev. Carine Nkumbe. We are parents to four biological children, and parental and spiritual figures to a wider family of adopted children, sons and daughters.",
+    cta: "Start a conversation",
   },
   fr: {
     kicker: "Profil officiel",
@@ -244,7 +242,7 @@ const about = {
     storyTitle: "Une vie cohérente",
     story: [
       "Je me suis formé comme agronome à la FASA de l’Université de Dschang. Mon parcours a commencé au contact de la terre, de la production, des systèmes et des réalités du développement local.",
-      "Son activité s'est ensuite étendue au conseil immobilier, à la négociation, à la facilitation de construction, au conseil aux entreprises, aux coopératives et aux échanges d'investissement. Son rôle reste celui d'un connecteur et d'un facilitateur.",
+      "Mon activité s'est ensuite étendue au conseil immobilier, à la négociation, à la facilitation de construction, au conseil aux entreprises, aux coopératives et aux échanges d'investissement. Partout, mon rôle reste le même : connecteur et facilitateur, pour aider à définir l'opportunité, comprendre le contexte et trouver le bon interlocuteur.",
       "La foi est le fondement, non une identité publique séparée. Fondateur d’Eagles’ Family Assembly et convocateur de plateformes de leadership, je forme depuis des décennies des personnes autour de l’identité, l’intendance, l’entreprise, la responsabilité et le service.",
     ],
     formationTitle: "Formation & ancrage professionnel",
@@ -257,8 +255,8 @@ const about = {
     ],
     familyTitle: "Famille & responsabilité générationnelle",
     family:
-      "Je suis marié à la Révérende Carine Nkumbe. Nous sommes parents de quatre enfants biologiques et accompagnons une famille élargie d’enfants adoptés ainsi que de fils et filles spirituels. Les portraits familiaux ne seront ajoutés qu’après validation.",
-    cta: "Échanger sur une opportunité",
+      "Je suis marié à la Révérende Carine Nkumbe. Nous sommes parents de quatre enfants biologiques et accompagnons une famille élargie d’enfants adoptés ainsi que de fils et filles spirituels.",
+    cta: "Engager la conversation",
   },
 };
 
@@ -331,7 +329,7 @@ const contact = {
   en: {
     kicker: "Get in touch",
     title: "Tell me what you're looking at.",
-    lead: "Enough detail for me to say whether I'm the right person to help. Property, business, an invitation to speak, leadership or ministry \u2014 all fine.",
+    lead: "Give me enough detail to say whether I am the right person to help. Property, business, an invitation to speak, leadership, ministry: all welcome.",
     sidebarTitle: "What to include",
     sidebar: [
       "What it is, in one sentence",
@@ -339,13 +337,11 @@ const contact = {
       "What you want to happen",
       "Any dates you are working to",
     ],
-    status:
-      "Nothing can be sent from this page yet \u2014 no email address or WhatsApp number has been published. The form will say so rather than pretend.",
   },
   fr: {
-    kicker: "Le contacter",
+    kicker: "Prendre contact",
     title: "Dites-moi ce que vous avez en vue.",
-    lead: "Assez de d\u00e9tails pour qu\u2019il dise s\u2019il est la bonne personne. Un bien, une entreprise, une invitation \u00e0 intervenir, le leadership ou le minist\u00e8re \u2014 tout convient.",
+    lead: "Donnez-moi assez de d\u00e9tails pour que je puisse dire si je suis la bonne personne. Un bien, une entreprise, une invitation \u00e0 intervenir, le leadership ou le minist\u00e8re : tout est bienvenu.",
     sidebarTitle: "\u00c0 pr\u00e9ciser",
     sidebar: [
       "De quoi il s\u2019agit, en une phrase",
@@ -353,8 +349,6 @@ const contact = {
       "Ce que vous souhaitez obtenir",
       "Les \u00e9ch\u00e9ances \u00e9ventuelles",
     ],
-    status:
-      "Rien ne peut encore \u00eatre envoy\u00e9 depuis cette page \u2014 aucune adresse e-mail ni num\u00e9ro WhatsApp n\u2019est publi\u00e9. Le formulaire vous le dira au lieu de faire semblant.",
   },
 };
 
@@ -366,19 +360,19 @@ const privacy = {
     sections: [
       [
         "Information you provide",
-        "When contact delivery is activated, the inquiry form may collect your name, email address, organisation, inquiry type, and message. Do not submit confidential financial, legal, identity, or health information.",
+        "The inquiry form collects your name, email address, organisation, inquiry type, and message. Do not submit confidential financial, legal, identity, or health information.",
       ],
       [
         "How it will be used",
         "Information submitted through the inquiry channel will be used only to assess and respond to the stated request, maintain necessary correspondence, and protect the website from misuse.",
       ],
       [
-        "Current form status",
-        "The website does not currently transmit or store inquiry form content. It validates entries locally and displays an honest delivery-unavailable message until an official destination is configured.",
+        "How messages travel",
+        "Submitted messages pass a spam-protection check and are then delivered by email to the site's official address. The website itself stores nothing; your message exists only in the email correspondence it creates. If delivery is ever unavailable, the form says so at the moment you submit.",
       ],
       [
-        "Third-party links",
-        "This website links to EaglesFamily.org. External sites operate under their own privacy practices and are responsible for their own content.",
+        "Third-party services and links",
+        "The inquiry form is protected by Cloudflare Turnstile, which processes technical signals to verify you are human. This website also links to EaglesFamily.org. External services and sites operate under their own privacy practices.",
       ],
     ],
   },
@@ -389,19 +383,19 @@ const privacy = {
     sections: [
       [
         "Informations communiquées",
-        "Lorsque l'envoi sera activé, le formulaire pourra recueillir votre nom, adresse e-mail, organisation, type de demande et message. N'y transmettez pas de données financières, juridiques, médicales ou d'identité confidentielles.",
+        "Le formulaire recueille votre nom, adresse e-mail, organisation, type de demande et message. N'y transmettez pas de données financières, juridiques, médicales ou d'identité confidentielles.",
       ],
       [
         "Utilisation prévue",
         "Les informations transmises serviront uniquement à examiner la demande, y répondre, conserver les échanges nécessaires et protéger le site contre les abus.",
       ],
       [
-        "État actuel du formulaire",
-        "Le site ne transmet ni ne stocke actuellement le contenu du formulaire. Les saisies sont validées localement et un message transparent indique que l'envoi reste indisponible.",
+        "Acheminement des messages",
+        "Les messages soumis passent un contrôle anti-spam puis sont remis par e-mail à l'adresse officielle du site. Le site lui-même ne stocke rien ; votre message n'existe que dans la correspondance e-mail qu'il crée. Si l'envoi devenait indisponible, le formulaire vous le dirait au moment de la soumission.",
       ],
       [
-        "Liens externes",
-        "Ce site renvoie vers EaglesFamily.org. Les sites externes appliquent leurs propres règles de confidentialité et restent responsables de leur contenu.",
+        "Services tiers et liens externes",
+        "Le formulaire est protégé par Cloudflare Turnstile, qui traite des signaux techniques pour vérifier que vous êtes humain. Ce site renvoie également vers EaglesFamily.org. Les services et sites externes appliquent leurs propres règles de confidentialité.",
       ],
     ],
   },
@@ -702,7 +696,6 @@ export function StandardPage({ locale, page }: StandardPageProps) {
                 <li key={item}>{item}</li>
               ))}
             </ul>
-            <p className="contact-status">{text.status}</p>
           </aside>
           <InquiryForm locale={locale} />
         </section>

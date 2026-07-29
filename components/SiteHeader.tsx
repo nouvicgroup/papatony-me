@@ -22,7 +22,7 @@ const labels = {
     leadership: "Leadership",
     about: "About",
     ministry: "Ministry",
-    contact: "Discuss an opportunity",
+    contact: "Start a conversation",
     home: "Papa Tony home",
   },
   fr: {
@@ -30,7 +30,7 @@ const labels = {
     leadership: "Leadership",
     about: "À propos",
     ministry: "Ministère",
-    contact: "Échanger sur une opportunité",
+    contact: "Engager la conversation",
     home: "Accueil Papa Tony",
   },
 };
@@ -50,7 +50,7 @@ const screenTitles: Record<Locale, Partial<Record<PageKey, string>>> = {
     leadership: "Leadership",
     about: "Profil officiel",
     ministry: "Ministère",
-    contact: "Le contacter",
+    contact: "Prendre contact",
     privacy: "Confidentialité",
   },
 };

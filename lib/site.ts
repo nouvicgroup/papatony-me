@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 export const SITE_URL = "https://papatony.me";
 export const SITE_NAME = "Papa Tony";
 export const SITE_DESCRIPTION =
-  "Anthony Nkumbe helps founders, property owners, investors, and institutions qualify opportunities and reach informed next steps in Cameroon.";
+  "Anthony Nkumbe, known as Papa Tony: certified real estate consultant, enterprise facilitator, and institution builder in Cameroon. He helps investors, property owners, and institutions know the ground before they commit.";
 
 /**
  * No approved Rev. Carine Nkumbe portrait exists, and the generated legacy
@@ -124,7 +124,7 @@ const seo: Record<Locale, Record<PageKey, PageSeo>> = {
       title: "Anthony Nkumbe — Papa Tony",
       absoluteTitle: true,
       description:
-        "Anthony Nkumbe, known as Papa Tony: Cameroon property consultant, enterprise facilitator, and institution builder. Qualify an opportunity and reach an informed next step.",
+        "Anthony Nkumbe, known as Papa Tony: Cameroon property consultant, enterprise facilitator, and institution builder. He helps you know what is real, who you are dealing with, and what it takes to move.",
     },
     enterprise: {
       title: "Property & Enterprise",
@@ -162,7 +162,7 @@ const seo: Record<Locale, Record<PageKey, PageSeo>> = {
       title: "Anthony Nkumbe — Papa Tony",
       absoluteTitle: true,
       description:
-        "Anthony Nkumbe, dit Papa Tony : consultant immobilier, facilitateur d'entreprise et bâtisseur d'institutions au Cameroun. Qualifiez une opportunité et avancez de façon éclairée.",
+        "Anthony Nkumbe, dit Papa Tony : consultant immobilier, facilitateur d'entreprise et bâtisseur d'institutions au Cameroun. Il vous aide à savoir ce qui est réel, avec qui vous traitez, et ce qu'il faut pour avancer.",
     },
     enterprise: {
       title: "Immobilier & Entreprise",
