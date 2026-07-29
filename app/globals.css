@@ -2457,7 +2457,7 @@ h3 {
   }
 
   .eyebrow {
-    font-size: 11.5px;
+    font-size: 12px;
     letter-spacing: 0.1em;
     margin-bottom: 16px;
   }
@@ -2514,7 +2514,7 @@ h3 {
      upper band of the portrait. */
   .portrait-caption {
     bottom: auto;
-    font-size: 11.5px;
+    font-size: 12px;
     left: 18px;
     right: 18px;
     top: 18px;
